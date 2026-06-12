@@ -21,7 +21,8 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git remote *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(gh pr create --title 'Redesign hero layout and update tagline copy' --body ' *)"
     ]
   }
 }

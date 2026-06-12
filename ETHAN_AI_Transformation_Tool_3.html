@@ -145,6 +145,76 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .xform-item b{font-weight:700;display:block;color:var(--ink)}
 .xform-item span{color:var(--grey-2)}
 
+/* ── ORG CHART ── */
+.oc-wrap{margin-top:28px}
+.oc-toggle{display:flex;gap:0;border:1px solid var(--ink);width:fit-content;margin-bottom:20px}
+.oc-tab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+        font-weight:700;padding:10px 22px;background:var(--paper);color:var(--ink);cursor:pointer;transition:.15s}
+.oc-tab.on{background:var(--ink);color:#fff}
+.oc-tab:hover:not(.on){background:var(--paper-2)}
+.oc-sublabel{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+             color:var(--muted);margin-bottom:20px}
+.oc-layer{display:grid;grid-template-columns:108px 1fr;gap:12px;align-items:start;margin-bottom:8px}
+.oc-lbl{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+        color:var(--muted);padding-top:10px;line-height:1.5}
+.oc-cards{display:flex;flex-wrap:wrap;gap:6px;flex:1}
+.oc-card{border:1px solid var(--line);padding:9px 11px;flex:1;min-width:110px}
+.oc-card .ocn{font-weight:700;font-size:12px;color:var(--ink);line-height:1.3;margin-bottom:2px}
+.oc-card .ocs{font-size:10.5px;color:var(--muted);line-height:1.4}
+/* Standard — white bg */
+.ck-base{background:var(--paper);border-color:var(--line)}
+/* Filled dark — strategic / AI-owned */
+.ck-dark{background:var(--ink);border-color:var(--ink)}.ck-dark .ocn{color:#fff}.ck-dark .ocs{color:#aaa}
+/* Mid tone — important but not AI */
+.ck-mid{background:var(--grey-3);border-color:var(--grey-3)}.ck-mid .ocn{color:#fff}.ck-mid .ocs{color:#bbb}
+/* Tinted — evolved / improved */
+.ck-tint{background:var(--paper-2);border-color:var(--line);border-left:3px solid var(--ink)}
+.ck-tint .ocn{color:var(--ink)}.ck-tint .ocs{color:var(--grey-1)}
+/* Outline — new roles */
+.ck-new{background:var(--paper);border:2px solid var(--ink)}
+.ck-new .ocn{color:var(--ink)}.ck-new .ocs{color:var(--grey-1)}
+/* Risk — left accent */
+.ck-risk{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--grey-1)}
+.ck-risk .ocn{color:var(--grey-1)}.ck-risk .ocs{color:var(--muted)}
+/* Soft — forming/embryonic */
+.ck-soft{background:var(--paper-2);border-color:var(--line)}
+.ck-soft .ocn{color:var(--ink)}.ck-soft .ocs{color:var(--muted)}
+.oc-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+        padding:2px 6px;margin-top:5px}
+.ot-dark{background:var(--ink);color:#fff}
+.ot-mid{background:var(--grey-3);color:#fff}
+.ot-outline{background:var(--paper);color:var(--ink);border:1px solid var(--grey-1)}
+.ot-tint{background:var(--paper-2);color:var(--grey-1);border:1px solid var(--line)}
+/* coloured status tags */
+.ot-navy{background:#0E2841;color:#fff}
+.ot-slate{background:#2E4A62;color:#fff}
+.ot-amber{background:#D97706;color:#fff}
+.ot-green{background:#00B050;color:#fff}
+.ot-ai{background:#4C1D95;color:#fff}
+/* Platform Engineering bar — spans full width below BUs */
+.oc-platform-bar{background:var(--ink);padding:10px 14px;margin:4px 0 8px 120px;
+                  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.oc-platform-bar .ocn{font-weight:700;font-size:12px;color:#fff}
+.oc-platform-bar .ocs{font-size:10.5px;color:#aaa;margin-top:2px}
+.oc-platform-bar .oc-tag{margin-top:0}
+/* GDC banner */
+.oc-gdc{padding:12px 14px;margin:8px 0 0 120px;border:1px solid var(--line)}
+.oc-gdc-n{background:var(--paper-2)}
+.oc-gdc-p{background:var(--paper);border-left:3px solid var(--ink)}
+.oc-gdc .ocn{font-weight:700;font-size:12.5px;margin-bottom:3px;color:var(--ink)}
+.oc-gdc .ocs{font-size:11px;color:var(--muted);line-height:1.45}
+.oc-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+.oc-leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.oc-leg-dot{width:9px;height:9px;flex-shrink:0;border:1px solid transparent}
+/* AI banner */
+.oc-ai-banner{background:var(--ink);padding:12px 16px;display:flex;align-items:center;gap:16px;margin-bottom:12px}
+.oc-ai-banner .ocn{color:#fff;font-weight:700;font-size:13px;margin-bottom:3px}
+.oc-ai-banner .ocs{color:#aaa;font-size:11px;line-height:1.5}
+.oc-ai-stat{text-align:right;flex-shrink:0;background:var(--grey-3);padding:8px 14px}
+.oc-ai-stat .asl{font-size:9px;font-weight:700;color:#aaa;letter-spacing:.1em;text-transform:uppercase}
+.oc-ai-stat .asn{font-size:22px;font-weight:700;color:#fff;line-height:1.1}
+.oc-ai-stat .ass{font-size:10px;color:#aaa}
+
 /* ── SUBTABS ── */
 .subtabs{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
 .subtab{background:var(--paper);padding:12px 16px;flex:1;min-width:120px;text-align:left;transition:.15s}
@@ -812,21 +882,180 @@ function FY26RAG(){
   );
 }
 
+function OrgChart(){
+  const [state,setState]=useState('current');
+  const f=state==='future';
+  return (
+    <div className="oc-wrap">
+      <div className="oc-toggle">
+        <button className={"oc-tab"+(state==='current'?" on":"")} onClick={()=>setState('current')}>Today — Current State</button>
+        <button className={"oc-tab"+(state==='future'?" on":"")} onClick={()=>setState('future')}>AI-Era 2030</button>
+      </div>
+      <div className="oc-sublabel">{f?"FY28–FY30 · AI-augmented · Platform-led delivery":"FY26 · People-led · Reactive delivery model"}</div>
+
+      {f && (
+        <div className="oc-ai-banner">
+          <div style={{flex:1}}>
+            <div className="ocn">Agentic AI Platform — Always-on autonomous layer</div>
+            <div className="ocs">Maeve and specialist agents handle L1 triage · Event correlation and noise suppression · Automated runbook execution · 24/7 coverage without human staffing cost</div>
+          </div>
+          <div className="oc-ai-stat">
+            <div className="asl">Target</div>
+            <div className="asn">40–60%</div>
+            <div className="ass">L1 deflection rate</div>
+          </div>
+        </div>
+      )}
+
+      {/* Management */}
+      <div className="oc-layer">
+        <div className="oc-lbl">Management</div>
+        <div className="oc-cards">
+          <div className="oc-card ck-dark">
+            <div className="ocn">Head of Managed Services</div>
+            <div className="ocs">Direct client accountability. Operations management and P&amp;L ownership</div>
+            <span className="oc-tag ot-navy">AU Onshore</span>
+          </div>
+          <div className="oc-card ck-mid">
+            <div className="ocn">BU Leads</div>
+            <div className="ocs">Engineering BU heads. Technical and commercial accountability per practice</div>
+            <span className="oc-tag ot-navy">AU Onshore</span>
+          </div>
+          {f && <>
+            <div className="oc-card ck-new">
+              <div className="ocn">Head of Platforms &amp; Tooling</div>
+              <div className="ocs">New role. Governs ServiceNow, NinjaOne, observability, Inforcer, Ethan Online</div>
+              <span className="oc-tag ot-amber">New Role</span>
+            </div>
+            <div className="oc-card ck-new">
+              <div className="ocn">AI GTM</div>
+              <div className="ocs">New role. Drives AI product portfolio and sales. Bridges delivery capability and commercial opportunity</div>
+              <span className="oc-tag ot-amber">New Role</span>
+            </div>
+          </>}
+        </div>
+      </div>
+
+      {/* Engineering BUs */}
+      <div className="oc-layer">
+        <div className="oc-lbl">Engineering BUs</div>
+        <div className="oc-cards">
+          {f ? <>
+            <div className="oc-card ck-base"><div className="ocn">Network</div><div className="ocs">L3–L4 specialist focus. Routine L2 automated. Observability-driven</div></div>
+            <div className="oc-card ck-base"><div className="ocn">UC</div><div className="ocs">Specialist bench model. Vendor-native alerting. Advisory-led</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Cyber</div><div className="ocs">Posture automation, E8 compliance dashboards, Ethan Assurance signals</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Intelligent Workplace</div><div className="ocs">AI deflects L1/L2. EUC engineers on complex advisory and architecture</div></div>
+            <div className="oc-card ck-base"><div className="ocn">ETHAN Cloud</div><div className="ocs">IaC-driven. Observability pipeline. Platform-led ops and self-healing infrastructure</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Cloud &amp; Infrastructure</div><div className="ocs">Public cloud, servers, Wintel and storage. AI-assisted monitoring and runbook execution</div></div>
+          </> : <>
+            <div className="oc-card ck-base"><div className="ocn">Network</div><div className="ocs">L2–L4 engineers. Break-fix and change delivery</div></div>
+            <div className="oc-card ck-base"><div className="ocn">UC</div><div className="ocs">Mitel, Cisco, Teams voice and collaboration</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Cyber</div><div className="ocs">Security operations and compliance</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Intelligent Workplace</div><div className="ocs">EUC, M365, endpoint management L1–L3</div></div>
+            <div className="oc-card ck-base"><div className="ocn">ETHAN Cloud</div><div className="ocs">Private cloud and hosted infrastructure</div></div>
+            <div className="oc-card ck-base"><div className="ocn">Cloud &amp; Infrastructure</div><div className="ocs">Public cloud, servers, Wintel and storage. Break-fix and change delivery</div></div>
+          </>}
+        </div>
+      </div>
+
+      {/* Platform Engineering + GDC — future: both as foundation layer beneath BUs */}
+      {f ? (
+        <>
+          <div className="oc-platform-bar">
+            <div>
+              <div className="ocn">Platform Engineering &amp; SRE</div>
+              <div className="ocs">Full SRE model — DevOps, IaC, CI/CD, platform reliability at scale. Specialists, architects and forward-deployed engineers serving all BUs</div>
+            </div>
+            <span className="oc-tag ot-amber">Evolved BU</span>
+          </div>
+          <div className="oc-gdc oc-gdc-p">
+            <div className="ocn">ETHAN Global Delivery Centres — Scaled &amp; Specialist</div>
+            <div className="ocs">GDC teams shift from high-volume L1 toward L2 engineering, advanced assurance, and AI-assisted operations. Human effort concentrated on judgment, complexity, and client relationships.</div>
+            <span className="oc-tag ot-slate" style={{marginTop:8,display:'inline-block'}}>GDC — Upskilled &amp; Growing</span>
+          </div>
+        </>
+      ) : (
+        <div className="oc-gdc oc-gdc-n">
+          <div className="ocn">ETHAN Global Delivery Centres</div>
+          <div className="ocs">Service desk, assurance, event management and MIM functions delivered across ETHAN's global delivery centres. Teams provide the volume delivery backbone for MS operations across all accounts.</div>
+          <span className="oc-tag ot-slate" style={{marginTop:8,display:'inline-block'}}>GDC</span>
+        </div>
+      )}
+
+      {/* Service Operations */}
+      <div className="oc-layer">
+        <div className="oc-lbl">Service Operations</div>
+        <div className="oc-cards">
+          {f ? <>
+            <div className="oc-card ck-dark">
+              <div className="ocn">Service Desk</div>
+              <div className="ocs">Agents handle exception and empathy cases. AI owns L1 volume via Maeve</div>
+              <span className="oc-tag ot-ai">AI Augmented</span>
+            </div>
+            <div className="oc-card ck-tint"><div className="ocn">Service Management</div><div className="ocs">SDMs evolve to Client Success Advisors. SLOs replace SLAs. Value Bank reporting</div><span className="oc-tag ot-green">Evolving Role</span></div>
+            <div className="oc-card ck-tint"><div className="ocn">Service Assurance</div><div className="ocs">Mature AI ITIL functions with Human in the loop processing</div><span className="oc-tag ot-green">Process Matured</span></div>
+            <div className="oc-card ck-dark"><div className="ocn">Event Management</div><div className="ocs">Fully autonomous. AI-driven noise suppression, anomaly detection, predictive alerting</div><span className="oc-tag ot-ai">Fully AI</span></div>
+            <div className="oc-card ck-tint"><div className="ocn">Billing</div><div className="ocs">Automated reconciliation and anomaly detection. Zero manual MRC adjustments</div><span className="oc-tag ot-green">Automated</span></div>
+          </> : <>
+            <div className="oc-card ck-soft"><div className="ocn">Service Desk</div><div className="ocs">L1 triage and ticket routing. 54 staff. High volume, people-staffed</div><span className="oc-tag ot-slate">GDC</span></div>
+            <div className="oc-card ck-base"><div className="ocn">Service Management</div><div className="ocs">SDMs, SLAs, client reviews, CSI register</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+            <div className="oc-card ck-soft"><div className="ocn">Service Assurance</div><div className="ocs">Monitoring, alerting and major incident management. Reactive posture</div><span className="oc-tag ot-slate">GDC</span></div>
+            <div className="oc-card ck-soft"><div className="ocn">Event Management</div><div className="ocs">Alert triage, noise filtering, event correlation. Manual and tool-dependent today</div><span className="oc-tag ot-slate">GDC</span></div>
+            <div className="oc-card ck-base"><div className="ocn">Billing</div><div className="ocs">MRC reconciliation and adjustment register. Manual process</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+          </>}
+        </div>
+      </div>
+
+      {/* Enabling Functions */}
+      <div className="oc-layer">
+        <div className="oc-lbl">Enabling Functions</div>
+        <div className="oc-cards">
+          {f ? <>
+            <div className="oc-card ck-tint"><div className="ocn">Transition</div><div className="ocs">Onboarding pipeline fully governed. Structured handover gates into live operations</div><span className="oc-tag ot-green">Governed</span></div>
+            <div className="oc-card ck-dark"><div className="ocn">AI &amp; Automation Team</div><div className="ocs">Owns the agentic AI platform. Prompt engineering, KB management, agent development and audit</div><span className="oc-tag ot-ai">New Team</span></div>
+          </> : <>
+            <div className="oc-card ck-base"><div className="ocn">Transition</div><div className="ocs">Customer onboarding. Pipeline and handover management</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+            <div className="oc-card ck-soft"><div className="ocn">AI &amp; DevOps / Ethan Online</div><div className="ocs">Embryonic. Agentic AI in pilot, observability build in progress</div><span className="oc-tag ot-amber">Forming</span></div>
+            <div className="oc-card ck-risk"><div className="ocn">Observability</div><div className="ocs">Basic monitoring only. No unified stack. L3–L6 largely absent across accounts</div><span className="oc-tag ot-tint">Gap</span></div>
+          </>}
+        </div>
+      </div>
+
+      {/* Platform Capability — future only */}
+      {f && (
+        <div className="oc-layer">
+          <div className="oc-lbl">Platform Capability</div>
+          <div className="oc-cards">
+            <div className="oc-card ck-dark"><div className="ocn">Ethan Online / DevOps</div><div className="ocs">Customer-facing assurance dashboard, compliance state, ITSM integrations</div><span className="oc-tag ot-amber">Maturing</span></div>
+            <div className="oc-card ck-dark"><div className="ocn">Observability Platform</div><div className="ocs">Unified L1–L6 stack. Queen/Bee pipeline, Grafana, Prometheus, closed-loop remediation across all accounts</div><span className="oc-tag ot-ai">Core Infrastructure</span></div>
+          </div>
+        </div>
+      )}
+
+      {/* Legend */}
+      <div className="oc-legend">
+        {f ? <>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AI autonomous / strategic</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',borderColor:'var(--ink)',borderLeftWidth:3,borderLeftStyle:'solid'}}></div>Materially improved</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'2px solid var(--ink)'}}></div>New role / team</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>AU Onshore</div>
+        </> : <>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AU Onshore (management)</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'1px solid var(--line)'}}></div>AU Onshore (BU / ops)</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>GDC / forming</div>
+          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',borderLeft:'3px solid var(--grey-1)',border:'1px solid var(--line)'}}></div>Risk / gap</div>
+        </>}
+      </div>
+    </div>
+  );
+}
+
 function Destination(){
   return (
     <div className="view">
       <SecHead num="04" kicker="Where We Are Going" title={"The 2030\nDestination"}/>
       <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> We are bought for the outcomes our platform delivers — not the hours our people log.</p>
-      <div className="xform">
-        <div className="xform-col">
-          <h3>FY26 — Current State</h3>
-          {XFORM_TODAY.map((x,k)=><div className="xform-item" key={k}><b>{x.k}</b><span>{x.v}</span></div>)}
-        </div>
-        <div className="xform-col">
-          <h3>FY28–30 — AI-Augmented Future</h3>
-          {XFORM_FUTURE.map((x,k)=><div className="xform-item" key={k}><b>{x.k}</b><span>{x.v}</span></div>)}
-        </div>
-      </div>
+      <OrgChart/>
       <div className="cmp" style={{marginTop:24}}>
         <div className="cmp-head-row"><div>Dimension</div><div>Today</div><div>By 2030</div></div>
         {DEST_ROWS.map((r,k)=>(
