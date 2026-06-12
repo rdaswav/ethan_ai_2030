@@ -64,28 +64,27 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .rule{height:1px;background:var(--line);margin:36px 0}
 
 /* ── HERO ── */
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:space-between;
-      padding:48px 0 56px;background:var(--black);color:#fff;position:relative;overflow:hidden}
-.hero::before{content:"AI TRANSFORMATION";position:absolute;right:-40px;top:50%;
-              transform:translateY(-50%) rotate(90deg);font-family:var(--display);
-              font-size:120px;color:#1c1c1c;white-space:nowrap;pointer-events:none;letter-spacing:.02em}
+.hero{height:100vh;min-height:580px;display:grid;
+      grid-template-rows:auto 1fr auto;
+      padding:0;background:var(--black);color:#fff;position:relative;overflow:hidden}
 .hero-ey{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:#7a7a7a;
-         text-transform:uppercase;padding-left:56px}
-/* Full-bleed headline — no horizontal padding so text can run edge-to-edge */
-.hero h1{font-family:var(--display);font-weight:900;letter-spacing:-.04em;line-height:.84;
-         font-size:clamp(72px,19vw,280px);text-transform:uppercase;padding:0 10px}
-.hero h1 .yr{-webkit-text-stroke:3px #fff;color:transparent}
-.hero-bottom{padding-left:56px}
-.hero-sub{font-size:clamp(17px,2.2vw,26px);line-height:1.38;max-width:26ch;margin-top:0;
-          font-weight:400;color:#d9d9d9}
-.hero-sub b{color:#fff;font-weight:700}
-.enter{display:inline-flex;align-items:center;gap:12px;margin-top:36px;background:#fff;
-       color:#111;font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
-       text-transform:uppercase;padding:14px 24px;font-weight:700;transition:.2s}
-.enter:hover{transform:translateX(4px)}
-.hero-foot{position:absolute;bottom:36px;left:56px;right:56px;display:flex;
-           justify-content:space-between;font-family:var(--mono);font-size:10px;
-           letter-spacing:.12em;color:#6a6a6a;text-transform:uppercase}
+         text-transform:uppercase;padding:44px 56px 0}
+.hero-main{display:flex;align-items:flex-end;overflow:hidden;padding:0 8px}
+.hero h1{font-family:var(--display);font-weight:900;letter-spacing:-.04em;line-height:.88;
+         font-size:clamp(60px,16vw,240px);text-transform:uppercase;margin:0}
+/* bottom row: sub-copy left, 2030 right */
+.hero-bottom{display:grid;grid-template-columns:1fr auto;align-items:flex-end;
+             padding:32px 48px 48px 56px;gap:24px;border-top:1px solid #2a2a2a}
+.hero-sub{font-size:clamp(14px,1.4vw,20px);line-height:1.45;max-width:32ch;
+          font-weight:400;color:#b0b0b0;margin:0 0 24px}
+.enter{display:inline-flex;align-items:center;gap:12px;background:#fff;
+       color:#111;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+       text-transform:uppercase;padding:13px 22px;font-weight:700;transition:.2s;white-space:nowrap}
+.enter:hover{background:#e0e0e0}
+.hero-yr{font-family:var(--display);font-weight:900;font-size:clamp(80px,13vw,200px);
+         letter-spacing:-.04em;line-height:1;-webkit-text-stroke:2px #fff;
+         color:transparent;text-transform:uppercase;white-space:nowrap;user-select:none}
+.hero-foot{display:none}
 
 /* ── CALLOUT ── */
 .callout{margin-top:30px;background:var(--black);color:#fff;padding:26px 28px;border-left:4px solid #fff}
@@ -938,13 +937,14 @@ function Hero({onEnter}){
     <div className="hero">
       <div className="hero-ey">ETHAN MANAGED SERVICES &nbsp;&middot;&nbsp; STRATEGY &nbsp;&middot;&nbsp; INTERNAL</div>
       <div className="hero-main">
-        <h1>MANAGED<br/>SERVICES <span className="yr">2030</span></h1>
+        <h1>MANAGED<br/>SERVICES</h1>
       </div>
       <div className="hero-bottom">
         <div>
-          <div className="hero-sub">We stop selling hours. We start selling the <b>outcomes our platform delivers</b> — the five-year strategy for an AI-first managed services business.</div>
+          <div className="hero-sub">Autonomous. Outcome-driven. Platform-built. The next five years of managed services.</div>
           <button className="enter" onClick={onEnter}>Enter the strategy →</button>
         </div>
+        <div className="hero-yr">2030</div>
       </div>
     </div>
   );
