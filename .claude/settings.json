@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -Command \"$input_json = $input | ConvertFrom-Json; $fp = $input_json.tool_input.file_path; if ($fp -match 'ETHAN_AI_Transformation_Tool_3\\.html$') { $dir = Split-Path $fp; $ver_dir = Join-Path $dir 'versions'; if (-not (Test-Path $ver_dir)) { New-Item -ItemType Directory -Path $ver_dir | Out-Null }; $ts = Get-Date -Format 'yyyyMMdd_HHmmss'; $dest = Join-Path $ver_dir ('ETHAN_AI_Transformation_Tool_3_' + $ts + '.html'); Copy-Item $fp $dest } \"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
