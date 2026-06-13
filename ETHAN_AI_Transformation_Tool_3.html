@@ -920,7 +920,7 @@ function OrgChart(){
     <div className="oc-wrap">
       <div className="oc-toggle">
         <button className={"oc-tab"+(state==='current'?" on":"")} onClick={()=>setState('current')}>Today — Current State</button>
-        <button className={"oc-tab"+(state==='future'?" on":"")} onClick={()=>setState('future')}>AI-Era 2030</button>
+        <button className={"oc-tab"+(state==='future'?" on":"")} onClick={()=>setState('future')}>AI-Era MS 2.0</button>
       </div>
       <div className="oc-sublabel">{f?"FY28–FY30 · AI-augmented · Platform-led delivery":"FY26 · People-led · Reactive delivery model"}</div>
 
@@ -1084,7 +1084,7 @@ function OrgChart(){
 function Destination(){
   return (
     <div className="view">
-      <SecHead num="04" kicker="Where We Are Going" title={"The 2030\nDestination"}/>
+      <SecHead num="04" kicker="Where We Are Going" title={"The 2.0\nDestination"}/>
       <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> AI handles volumes and our people are free to do what they do best.</p>
       <OrgChart/>
       <div className="cmp" style={{marginTop:24}}>
@@ -1205,7 +1205,7 @@ function Hero({onEnter}){
           <div className="hero-sub">Autonomous. Outcome-driven. Platform-built. The next five years of managed services.</div>
           <button className="enter" onClick={onEnter}>Enter the strategy →</button>
         </div>
-        <div className="hero-yr">2030</div>
+        <div className="hero-yr">2.0</div>
       </div>
     </div>
   );
@@ -1686,7 +1686,7 @@ function App(){
             </button>
           ))}
         </nav>
-        <div className="rail-foot">Strategy · FY26 · 2030<br/>← → to navigate</div>
+        <div className="rail-foot">Strategy · FY26 · MS 2.0<br/>← → to navigate</div>
       </aside>
 
       <div className="mobtop">
