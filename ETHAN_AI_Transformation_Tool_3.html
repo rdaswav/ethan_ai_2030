@@ -410,6 +410,32 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .tsb-btn-secondary:hover{background:var(--paper-3)}
 .tsb-btn-secondary.tsb-copied{background:var(--grey-3);color:#fff;border-color:var(--grey-3)}
 
+/* ── IDEAS & INITIATIVES ── */
+.idea-block{border:1px solid var(--line);padding:24px;margin-bottom:1px}
+.idea-block-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.idea-field{margin-top:18px}
+.toggle-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.toggle-btn{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+            font-weight:700;padding:9px 16px;cursor:pointer;border:1px solid var(--line);
+            background:var(--paper-2);color:var(--muted);transition:.15s}
+.toggle-btn:hover{border-color:var(--ink);color:var(--ink)}
+.toggle-btn.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.star-btn{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+          background:none;border:1px solid var(--line);padding:6px 12px;cursor:pointer;
+          color:var(--muted);transition:.15s}
+.star-btn.star-on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.idea-remove{font-family:var(--mono);font-size:16px;background:none;border:none;cursor:pointer;
+             color:var(--muted);padding:4px 8px;transition:.15s;line-height:1}
+.idea-remove:hover{color:var(--ink)}
+.idea-add{width:100%;margin-top:1px;padding:18px;border:1px dashed var(--line);background:var(--paper);
+          font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--muted);cursor:pointer;transition:.15s}
+.idea-add:hover{border-color:var(--ink);color:var(--ink)}
+.ideas-cta{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+           color:var(--ink);background:var(--paper-2);border:1px solid var(--line);
+           padding:10px 18px;cursor:pointer;margin-top:16px;transition:.15s;font-weight:700}
+.ideas-cta:hover{background:var(--ink);color:#fff}
+
 /* ── PAGER ── */
 .pager{display:flex;justify-content:space-between;margin-top:56px;border-top:1px solid var(--line);padding-top:20px}
 .pager button{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey-1);font-weight:700;transition:.16s;display:flex;flex-direction:column;gap:4px}
@@ -470,7 +496,7 @@ const SECTIONS = [
   {id:"agents",  label:"AI Agent Roadmap"},
   {id:"arc",     label:"Five-Year Arc"},
   {id:"exec",    label:"Execution Plan"},
-  {id:"team",    label:"Team Strategy Builder"},
+  {id:"team",    label:"Ideas & Initiatives"},
 ];
 
 const SIGNALS = [
@@ -621,15 +647,15 @@ const IMPS = [
 ];
 
 const PHASES = [
-  {n:"Phase 0",when:"Months 1–3",h:"Baseline",p:"Non-negotiable and first. The cost-per-interaction baseline is the measurement instrument for the whole programme. Representative baselines by tier — individual models only for Tier 1 accounts where commercial commitments follow.",t:"Output: delivery-cost model · readiness scoring · workforce scenarios at 30/60/80% · tiger team live."},
-  {n:"Phase 1",when:"Months 3–9",h:"Pilot and prove",p:"Two Tier 1 accounts — one chosen for AI readiness, one for strategic reason. All three levers activate together. Integration gaps closed under separately funded scope. Maeve runs supervised; OCM conversation begins in parallel; pattern library starts day one.",t:"Target: 5–8% cost-to-deliver reduction on the two pilots."},
-  {n:"Phase 2",when:"Months 9–18",h:"Scale and embed",p:"Apply the proven playbook by readiness. Tier 2 gets the standardised deployment; Tier 3 begins receiving platform-level capabilities. The first AI Dividend activates on a documented Tier 1 account — the reference the sales motion needs.",t:"Target: AI-mature accounts tracking toward target GP range, workforce transition managed and documented."},
+  {n:"Phase 0",when:"Months 1–3",h:"Baseline",p:"Non-negotiable and first. Understand our current costs and targets for the programme.",t:"Output: delivery-cost model · readiness scoring · workforce scenarios at 30/60/80% · tiger team live."},
+  {n:"Phase 1",when:"Months 3–9",h:"Pilot and prove",p:"Two accounts — one chosen for AI readiness, one for strategic reason. All three levers activate together. AI Agents runs supervised; people development begins in parallel; pattern library starts day one.",t:"Target: 5–8% cost-to-deliver reduction on the two pilots."},
+  {n:"Phase 2",when:"Months 9–18",h:"Scale and embed",p:"Apply the proven playbook by readiness. Tier 2 and 3 gets the standardised deployment.",t:"Target: AI-mature accounts tracking toward target GP range, workforce transition managed and documented."},
 ];
 
 const EXEC_LEVERS = [
-  ["Lever 1 — Service desk displacement","Primary lever","AI resolution reaching 30–50% of desk volume in 18 months, building to 60–70% by month 24–36."],
-  ["Lever 2 — Delivery-mix rationalisation","Secondary lever","A managed 30–40% reduction over 18 months through natural attrition, tied to resolution-rate milestones."],
-  ["Lever 3 — Engineer capacity expansion","Supporting lever","Every hour AI frees converts to avoided hiring and absorbed advisory work. The most board-palatable lever."],
+  ["Lever 1 — Service delivery transformation","Primary lever","AI resolution reaching 30–50% of volume in 18 months, building to 60–70% by month 24–36."],
+  ["Lever 2 — AI Delivery-mix rationalisation","Secondary lever","Workforce refactoring over 18 months tied to AI resolution-rate milestones."],
+  ["Lever 3 — Engineer capacity expansion","Supporting lever","Every hour AI frees converts to avoided hiring and allows for advisory work our clients love."],
 ];
 
 const AGENT_TEAMS = [{"code":"L1/L2/L3","name":"Service Operations","opportunity":"If 25\u201330% of ticket volume can be auto-resolved or auto-routed, that\u2019s recoverable engineer capacity and a measurably better day for the people who remain.","lenses":{"cost":[{"h":"now","text":"First-response drafts generated automatically \u2014 engineer reviews, not writes"},{"h":"now","text":"Identify the 20% of ticket types consuming 60% of handle time"},{"h":"near","text":"Auto-triage routes tickets to the right queue and person without manual classification"},{"h":"near","text":"Known-issue patterns resolved via runbook execution before any engineer is paged"}],"qual":[{"h":"now","text":"Consistent resolution notes on every ticket \u2014 no more blank work notes that make the next engineer start from scratch"},{"h":"near","text":"SLA breach risk flagged automatically before it becomes a miss"},{"h":"near","text":"Engineering and platform health checks automated \u2014 technical recommendations aggregated and surfaced without manual collation"},{"h":"near","text":"Runbook adherence tracked \u2014 deviations from agreed process surfaced, not discovered at audit"}],"emp":[{"h":"now","text":"Engineers stop writing first-response boilerplate \u2014 the work nobody wanted"},{"h":"near","text":"On-call burden reduced as agents handle known patterns overnight without escalation"},{"h":"near","text":"Engineers arrive at a ticket with context already assembled \u2014 not reconstructing what happened"}]},"domain":"RUN"},{"code":"SDM","name":"Client Advocacy","opportunity":"Escalation propensity scoring means the SDM acts before the client reaches breaking point. The difference between a recovery conversation and a termination notice is often just timing.","lenses":{"cost":[{"h":"now","text":"Client-facing report drafts generated from structured inputs \u2014 SDM refines, doesn\u2019t build from scratch"},{"h":"near","text":"SDM service reporting generated automatically from ServiceNow and other data sources"},{"h":"near","text":"Weekly account health digest replaces manual status chasing across teams"}],"qual":[{"h":"near","text":"Churn risk score per account \u2014 SDM knows which clients need attention before the client calls"},{"h":"near","text":"Contractual obligation coverage visible at all times \u2014 SDM demonstrates value, not just describes it"},{"h":"long","text":"Escalation propensity scoring \u2014 uses SNOW ticket trends, sentiment, and other data sets to predict which accounts are heading toward an escalation"}],"emp":[{"h":"now","text":"SDMs spend time in client relationships, not assembling slide decks"},{"h":"near","text":"Difficult client conversations are better prepared \u2014 agent surfaces context so SDM walks in informed"},{"h":"long","text":"Removes the Sunday-night anxiety of not knowing which accounts might call Monday with a problem"}]},"domain":"RUN"},{"code":"SEC","name":"Cyber \u0026 Security","opportunity":"Continuous compliance evidence is the foundation of Ethan Assurance \u2014 and frees Cyber from the treadmill of manual evidence gathering so they can focus on genuine security work.","lenses":{"cost":[{"h":"now","text":"Draft security advisory summaries and client-facing incident comms generated automatically"},{"h":"near","text":"Compliance evidence harvested continuously \u2014 no manual assembly at audit time"},{"h":"near","text":"Security alert triage filters noise before an analyst is engaged"},{"h":"near","text":"Patch compliance reporting generated automatically across the estate"}],"qual":[{"h":"near","text":"Essential Eight posture visible per client in real time"},{"h":"near","text":"Gap register maintained continuously, remediation tasks auto-created in SNOW"},{"h":"near","text":"Consistent evidence mapping to control frameworks \u2014 removes analyst interpretation variability"}],"emp":[{"h":"near","text":"Analysts stop spending audit season manually pulling screenshots and log exports"},{"h":"near","text":"Alert fatigue reduced \u2014 analysts engage with events that actually warrant their attention"}]},"domain":"RUN"},{"code":"CLD","name":"Cloud \u0026 Platforms","opportunity":"Aggregating health check recommendations across clients turns reactive support into a proactive advisory capability \u2014 a story you can tell at renewal.","lenses":{"cost":[{"h":"now","text":"Recurring platform incidents identified as automation candidates"},{"h":"near","text":"Routine platform health checks and telemetry triage handled before engineers are engaged"},{"h":"near","text":"Automated runbooks for common cloud ops \u2014 scaling events, backup verification, resource clean-up"}],"qual":[{"h":"near","text":"Technical recommendations aggregated across platform health checks \u2014 patterns identified across clients and surfaced as proactive advisory"},{"h":"near","text":"OpenTelemetry signals correlated with SNOW CIs \u2014 platform engineers get context, not just raw alerts"},{"h":"near","text":"Configuration drift detected and flagged before it causes an incident"}],"emp":[{"h":"now","text":"Platform engineers stop being paged for alerts an agent could resolve or dismiss"},{"h":"near","text":"Out-of-hours burden reduced when agents handle the overnight base load"}]},"domain":"RUN"},{"code":"BIL","name":"Billing \u0026 Commercial","opportunity":"Aged projects with unactivated MRC/NRC are silent revenue leakage. An agent that surfaces them automatically recovers money that would otherwise disappear into the project backlog.","lenses":{"cost":[{"h":"now","text":"MRC reconciliation against contracted scope automated \u2014 discrepancies surfaced before they become disputes"},{"h":"near","text":"Out-of-scope work identified from ticket and time data \u2014 consumption billing cases built automatically"},{"h":"near","text":"Monthly billing run validated against contract entitlements without manual cross-referencing"}],"qual":[{"h":"near","text":"Transition governance \u2014 aged projects where MRC or NRC has not yet activated surfaced for commercial action"},{"h":"near","text":"Billing accuracy improves when scope drift is flagged at point of delivery, not at invoice time"},{"h":"long","text":"AI Finance Manager \u2014 P\u0026L trending and predictive analytics across multiple data feeds, surface margin issues before month-end surprises"}],"emp":[{"h":"now","text":"Billing staff stop doing manual line-by-line contract reconciliation at month end"},{"h":"near","text":"Fewer billing disputes when accuracy improves upstream"}]},"domain":"RUN"},{"code":"TRN","name":"Transition Management","opportunity":"Poor transition is the most common cause of early client dissatisfaction and inflated cost in the first 90 days. Explicit PS-to-MS scope alignment also fixes the root cause of most day-2 support failures.","lenses":{"cost":[{"h":"now","text":"Transition onboarding checklists generated automatically \u2014 PS scope and MS day-2 deliverables explicitly aligned before go-live"},{"h":"near","text":"Knowledge transfer from PS to MS structured and captured automatically via PIR outputs"},{"h":"near","text":"Transition milestone tracking and status reporting automated in SNOW"}],"qual":[{"h":"near","text":"Handover pack completeness checked against standard \u2014 missing items flagged before go-live"},{"h":"near","text":"Transition governance \u2014 monitors pipeline for aged projects where MRC/NRC should have activated, escalates to commercial and management"},{"h":"near","text":"Transition risks surfaced from similar past onboardings"}],"emp":[{"h":"now","text":"Clear structured handovers mean the MS team starts with confidence \u2014 not anxiety"},{"h":"near","text":"Explicit PS-to-MS scope alignment removes the blame cycle when day-2 support is unclear"},{"h":"near","text":"Transition managers stop inheriting undocumented environments"}]},"domain":"RUN"},{"code":"MGT","name":"Management \u0026 BU Lead","opportunity":"Management time is the most expensive time in the division. Every hour assembling data is an hour not spent on the decisions it should inform \u2014 or the people conversations that keep good staff.","lenses":{"cost":[{"h":"now","text":"Executive summary and narrative drafted from structured data inputs \u2014 BU Lead refines"},{"h":"near","text":"Labour cost against MRC tracked continuously \u2014 over-delivery visible in real time"},{"h":"near","text":"Portfolio health dashboard replaces multiple disconnected status updates"},{"h":"long","text":"AI Finance Manager \u2014 aggregates multiple data feeds, P\u0026L trending and predictive analytics surface issues before month end"}],"qual":[{"h":"near","text":"RAG status across client portfolio with trend direction \u2014 a trajectory, not a snapshot"},{"h":"near","text":"Transition governance \u2014 aged projects and unactivated MRC/NRC surfaced to BU Lead for action"},{"h":"near","text":"Project MORE KPIs tracked continuously \u2014 GP%, MRR growth, retention rate"},{"h":"long","text":"At-risk accounts with contributing factors and predictive churn signal"}],"emp":[{"h":"now","text":"BU Leads spend time on decisions and people \u2014 not assembling data that should already exist"},{"h":"near","text":"Performance conversations based on facts, not anecdote"},{"h":"near","text":"Workload distribution visible \u2014 burnout risk spotted before it becomes a resignation"}]},"domain":"RUN"},{"code":"PMO","name":"PMO","opportunity":"The PMO\u2019s value is governance and visibility \u2014 but most PMO time goes on assembly, not analysis. The transition governance lens makes the PMO the early warning system for revenue not yet activated.","lenses":{"cost":[{"h":"now","text":"Project status report drafted from Kantata data \u2014 PM reviews, doesn\u2019t build"},{"h":"near","text":"Budget burn rate and forecast-to-complete calculated automatically from Kantata actuals"},{"h":"near","text":"Post-implementation reviews assembled in 30 minutes from actuals, not 2 days"},{"h":"near","text":"Resource utilisation forecast \u2014 8-week rolling view"}],"qual":[{"h":"near","text":"Scope drift detected in-flight \u2014 agent flags divergence from SOW before it\u2019s absorbed silently"},{"h":"near","text":"Transition governance \u2014 aged projects where NRC/MRC should have activated, escalated to commercial before revenue slips"},{"h":"near","text":"Change request prompt generated automatically when out-of-scope work is identified"}],"emp":[{"h":"now","text":"PMs stop building status reports from disconnected spreadsheets"},{"h":"near","text":"Scope conversations happen earlier \u2014 PMs aren\u2019t raising creep after months of silent absorption"},{"h":"near","text":"Project closure is clean \u2014 PIR done properly rather than never done at all"}]},"domain":"DELIVER"},{"code":"ENG","name":"Engineering \u0026 Technical Delivery","opportunity":"","lenses":{"cost":[{"h":"now","text":"As-built documentation generated from implementation notes and change records \u2014 engineers implement, agent documents"},{"h":"near","text":"HLD draft components generated from reference architectures \u2014 engineers refine, not start from blank"},{"h":"near","text":"Bill of materials generated from solution design \u2014 no manual catalogue lookup"},{"h":"near","text":"SOW estimates calibrated against comparable past projects"}],"qual":[{"h":"now","text":"PS scope and MS day-2 deliverables explicitly aligned in as-built outputs \u2014 MS team knows exactly what they\u2019re supporting from day one"},{"h":"near","text":"Design decisions logged consistently \u2014 what was considered, what was chosen, and why"},{"h":"near","text":"Technical risks surfaced during design, not discovered mid-delivery"},{"h":"near","text":"Reference architecture patterns applied consistently across engineers"}],"emp":[{"h":"now","text":"Senior engineers stop writing as-built docs for work already completed \u2014 agent does it from their notes"},{"h":"near","text":"Engineers work on design decisions that need them, not BOM lookups and boilerplate"},{"h":"near","text":"Cleaner handovers mean less blame when MS inherits a project"}]},"domain":"DELIVER"},{"code":"ADV","name":"Consulting \u0026 Advisory","opportunity":"","lenses":{"cost":[{"h":"now","text":"Advisory report and recommendation drafts generated from structured inputs"},{"h":"near","text":"Client maturity assessments partially automated \u2014 data gathering from existing sources, human interpretation retained"},{"h":"near","text":"Proposal content library maintained and surfaced automatically for relevant engagements"}],"qual":[{"h":"near","text":"AI readiness scoring produces consistent, comparable outputs across clients"},{"h":"near","text":"Recommendations linked to reference implementations and past outcomes"},{"h":"long","text":"Advisory insights aggregated across the client base \u2014 patterns surfaced as thought leadership"}],"emp":[{"h":"now","text":"Consultants spend time on insight and recommendation, not report assembly"},{"h":"near","text":"Consistent methodology applied even when different consultants run similar engagements"}]},"domain":"DELIVER"},{"code":"ARC","name":"Solution Architecture","opportunity":"","lenses":{"cost":[{"h":"now","text":"Reference architecture components surfaced automatically for relevant solution contexts"},{"h":"near","text":"Bill of materials and effort estimates generated from solution design inputs"},{"h":"near","text":"HLD draft sections generated from reference patterns \u2014 architect refines, not starts blank"}],"qual":[{"h":"near","text":"Design consistency enforced \u2014 deviations from reference patterns flagged for deliberate decision, not oversight"},{"h":"near","text":"Technical risk register populated from design decisions automatically"},{"h":"long","text":"Cross-client architecture patterns identified \u2014 reusable components catalogued and maintained"}],"emp":[{"h":"now","text":"Architects stop reconstructing known patterns from memory and prior documents"},{"h":"near","text":"Design reviews faster when context is assembled before the meeting, not during it"}]},"domain":"DELIVER"},{"code":"BID","name":"Pre-Sales \u0026 Bid","opportunity":"","lenses":{"cost":[{"h":"now","text":"Bid response sections drafted from structured inputs \u2014 BD reviews and refines"},{"h":"near","text":"Proposal library maintained and surfaced for relevant opportunities"},{"h":"near","text":"Competitor and market context assembled automatically for major bids"}],"qual":[{"h":"near","text":"Win/loss patterns analysed \u2014 common objections and winning themes surfaced"},{"h":"near","text":"Pricing consistency checked against past comparable deals before submission"},{"h":"long","text":"Bid quality scoring against RFP requirements \u2014 gaps flagged before submission"}],"emp":[{"h":"now","text":"Bid teams stop rebuilding boilerplate from scratch for every response"},{"h":"near","text":"More time on differentiation and client-specific content, less on template assembly"}]},"domain":"LEAD"}];
@@ -664,7 +690,7 @@ function DeliveryShift(){
         <div className="lever">
           <div className="lname">The opportunity</div>
           <h3>Service grade choice</h3>
-          <p>AI creates a genuine tiering of service that didn't exist when everything was human-staffed. We can offer customers real options — different response profiles, coverage levels, and service grades at different price points — without compromising the quality ceiling.</p>
+          <p>AI creates a genuine tiering of service that didn't exist when everything was human-staffed. We can offer customers real options — AI/human coverage levels at different price points without compromising the quality ceiling.</p>
         </div>
       </div>
       <div className="summ">The goal is not to extract margin silently. It is to use AI to build a better, more flexible service — and to price that flexibility transparently. Customers get choice; ETHAN gets a structurally lower cost base underneath every tier.</div>
@@ -679,7 +705,7 @@ function MarginChart(){
   const gpPts=TRAJ.map((d,k)=>{const x=pad+k*(bw+gap)+bw/2;return[x,y(d.gp/100*maxV)];});
   return (
     <div>
-      <p className="body">As AI takes volume, labour revenue falls. <b>This looks like decline. It is the goal.</b> Cost falls faster than revenue, so gross-profit dollars and margin grow.</p>
+      <p className="body">As AI takes volume, labour cost falls. <b>This may lead to revenue decline as clients look for discounts.</b> Cost falls faster than revenue, so gross-profit dollars and margin grow as the AI platform scales.</p>
       <div className="chartwrap">
         <div className="chart-legend">
           <span className="lg-cost"><i></i>Cost to deliver</span>
@@ -735,7 +761,7 @@ function LayerStack(){
   const [open,setOpen]=useState(2);
   return (
     <div>
-      <p className="body">Agents operate on signals. Signal quality sets the ceiling on what AI can do. <b>The honest truth: most accounts' tooling isn't yet good enough.</b> That gap is a delivery problem before an AI problem.</p>
+      <p className="body">Agents operate on signals. Signal quality sets the ceiling on what AI can do. <b>The honest truth: our tooling isn't yet good enough.</b> We need to move towards observability and an AIOps future.</p>
       <div className="stack">
         {LAYERS.map((l,k)=>(
           <button key={k} className={"layer"+(open===k?" on":"")} onClick={()=>setOpen(open===k?-1:k)}>
@@ -761,7 +787,7 @@ function AgentRoadmap(){
   return (
     <div className="view">
       <SecHead num="06" kicker="By Team & Sub-Team" title="AI Agent Roadmap"/>
-      <p className="lede">Where agents have the highest impact — across three lenses, three horizons, and every team in the division.</p>
+      <p className="lede">We need to develop agents where they make the most impact across every team in Services.</p>
       <div className="agent-filter">
         <span className="agent-filter-label">Horizon</span>
         {[["all","All"],["now","Now — Basic Agents"],["near","Near Term — Platform + Integrations"],["long","Long Term — Data Science / Lakes"]].map(([v,l])=>(
@@ -799,6 +825,9 @@ function AgentRoadmap(){
           );
         })}
         {team.opportunity && <div className="opp-box"><div className="ok">The opportunity</div><p>{team.opportunity}</p></div>}
+        <div style={{marginTop:16}}>
+          <button className="ideas-cta" onClick={()=>navTo('team')}>Have an idea from this? Capture it &#8594;</button>
+        </div>
       </div>}
     </div>
   );
@@ -811,8 +840,8 @@ function Moment(){
   return (
     <div className="view">
       <SecHead num="01" kicker="The Case for Change" title={"The Moment\nWe Are In"}/>
-      <p className="lede">AI is not arriving. It has arrived. The question is not whether it changes the business — it does, irreversibly — but <b>whether we shape that change or are shaped by it.</b></p>
-      <p className="body">Labour has always been our primary cost and the unit by which we are bought. For the first time, AI makes it partially substitutable. A model built on selling skilled hours is a model with a falling ceiling. None of the signals below are about technology — all are about money and buying behaviour.</p>
+      <p className="lede">AI is not arriving. It has arrived. The question is not whether it changes the business but <b>whether we shape that change or are shaped by it.</b></p>
+      <p className="body">Labour has always been our primary cost and the unit by which MS has been built for 30 years. For the first time, AI makes it partially substitutable. The market and our clients are asking for more outcomes, lower prices. We need to be ready.</p>
       <div className="stats">
         {SIGNALS.map((s,k)=>(
           <div className="stat" key={k}>
@@ -822,7 +851,7 @@ function Moment(){
           </div>
         ))}
       </div>
-      <Callout>The choice is not whether to change. It is whether we author the change or inherit someone else's version of it. <b>This strategy is our authorship.</b></Callout>
+      <Callout>The choice is not whether to change. It is whether we author the change or are dragged into it.</Callout>
     </div>
   );
 }
@@ -879,7 +908,7 @@ function FY26RAG(){
           ))}
         </div>
       ))}
-      <Callout>The misses are the honest brief for FY27 and beyond. GP at 27% — three points short. Maeve at PoC, not production scale. The strategy that follows is built on that reality, not around it.</Callout>
+      <Callout>We missed the targets in FY26. GP at 27% — three points short. Maeve at PoC, not production scale. Labour cost growing out of step with revenue. The goals were correct and set us up for FY27 and beyond.</Callout>
     </div>
   );
 }
@@ -1056,7 +1085,7 @@ function Destination(){
   return (
     <div className="view">
       <SecHead num="04" kicker="Where We Are Going" title={"The 2030\nDestination"}/>
-      <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> We are bought for the outcomes our platform delivers — not the hours our people log.</p>
+      <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> AI handles volumes and our people are free to do what they do best.</p>
       <OrgChart/>
       <div className="cmp" style={{marginTop:24}}>
         <div className="cmp-head-row"><div>Dimension</div><div>Today</div><div>By 2030</div></div>
@@ -1068,7 +1097,7 @@ function Destination(){
           </div>
         ))}
       </div>
-      <p className="body" style={{marginTop:20}}>None of this is automatic. Left to drift, AI becomes a cost we absorb and a discount our customers extract. Built intentionally, it becomes the engine of a structurally better business. <b>The difference is strategy and discipline.</b></p>
+      <p className="body" style={{marginTop:20}}>None of this is automatic. Left to drift, AI becomes a cost we absorb and a discount our customers extract. Built intentionally, it becomes the engine of a structurally better business. <b>The difference is strategy, confidence and execution.</b></p>
     </div>
   );
 }
@@ -1124,7 +1153,7 @@ function Arc(){
           </div>
         ))}
       </div>
-      <Callout>The strategy is set out here. The execution plan — the next twelve to eighteen months — is in the appendix, and it is subordinate to this. <b>What it asks of each of us is to start building beneath it now, in our own teams, pulling in one direction.</b></Callout>
+      <Callout>The strategy is set out here. The execution plan — the next twelve to eighteen months is the next step. <b>We need to start now.</b></Callout>
     </div>
   );
 }
@@ -1134,7 +1163,7 @@ function Exec(){
     <div className="view">
       <SecHead num="App" kicker="Subordinate to the strategy" title={"The Execution\nPlan"}/>
       <div className="note">Phase 0–2 below is the Now → 18 months row of the Arc made operational — the same journey at a closer zoom.</div>
-      <p className="lede">The near-term layer beneath the strategy — deliberately separate, because the plan flexes while the strategy holds.</p>
+      <p className="lede">The near-term layer beneath the strategy</p>
       <div style={{marginTop:20,border:"1.5px solid var(--ink)",padding:"18px 22px"}}>
         <div style={{fontFamily:"var(--mono)",fontSize:10,letterSpacing:".14em",textTransform:"uppercase",color:"var(--muted)"}}>Programme target</div>
         <div style={{fontFamily:"'Arial Black',Arial",fontWeight:900,fontSize:24,marginTop:6,letterSpacing:"-.02em",lineHeight:1.2}}>Material annualised cost and margin improvement — three levers, operated in parallel at portfolio scale.</div>
@@ -1155,7 +1184,7 @@ function Exec(){
           </div>
         ))}
       </div>
-      <Callout>This plan is the version we start with, not the one we finish with. The strategy is the fixed point; the plan flexes against what the first accounts teach us. <b>Update it openly.</b></Callout>
+      <Callout>We need to move hard and fast to realise the benefits of our AI investments and be a leader in the market — while keeping what makes ETHAN special intact.</Callout>
     </div>
   );
 }
@@ -1193,6 +1222,38 @@ const TEAM_STATE = {
   confidence:'', champion:'', headline:''
 };
 
+// Module-level nav function for cross-component navigation
+let _navSetView = null;
+function navTo(viewId){ if(_navSetView) _navSetView(viewId); }
+
+// Ideas & Initiatives module-level state
+function mkIdea(){ return {what:'',hurt:'',lens:'',horizon:'',priority:'',top:false}; }
+const IDEAS_STATE = { name:'', team:'' };
+let IDEAS_LIST = [mkIdea()];
+let IDEAS_BLOCKER = '';
+function lsKey(name,team){
+  return 'ethan_ideas_'+(name||'').toLowerCase().replace(/\s+/g,'')+'_'+(team||'').toLowerCase().replace(/\s+/g,'');
+}
+
+function ToggleRow({opts,value,onChange}){
+  return (
+    <div className="toggle-row">
+      {opts.map((o,k)=>{
+        const lbl=typeof o==='object'?o.label:o;
+        const cls=typeof o==='object'&&value===lbl?o.cls:'';
+        const isOn=value===lbl;
+        return (
+          <button key={k}
+            className={`toggle-btn${isOn&&!cls?' on':''}${cls?' '+cls:''}`}
+            onClick={()=>onChange(isOn?'':lbl)}>
+            {lbl}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
 function simpleHash(str){
   let h=0;
   for(let i=0;i<str.length;i++){ h=Math.imul(31,h)+str.charCodeAt(i)|0; }
@@ -1201,46 +1262,105 @@ function simpleHash(str){
 
 const TSB_QUESTIONS=[
   {key:'q1',label:'Where are we now?',
-   prompt:"Describe your team's current state honestly — delivery model, tooling, capability, and how ready you think you are for what's coming."},
+   prompt:"Describe your team's current state honestly — delivery model, tooling, capability. What are the top 3 processes or platforms limiting your team's capacity."},
   {key:'q2',label:'What are we changing this year?',
-   prompt:"What does your team commit to changing in the next 12 months? Be specific about what looks different by year end.",
-   note:'The AI agent roadmap in section 06 is a reference if useful — not a menu.'},
+   prompt:"What does your team commit to changing in the next 12 months to resolve the above? AI, platforms, processes may be the answer."},
   {key:'q3',label:'How will we know it\'s working?',
-   prompt:"What will you measure, or observe, that tells you the change actually happened? A number, a milestone, a visible behaviour — whatever is honest."},
+   prompt:"What will you measure that tells you the change actually happened?"},
   {key:'q4',label:'What do we need?',
-   prompt:"What has to happen — a decision, a dependency, a capability, something from the programme or another team — for your plan to work?"},
+   prompt:"What has to happen — a decision, a dependency, a capability, something from another team?"},
 ];
 
-function TeamStrategy(){
-  const [s,setS]=useState({...TEAM_STATE});
-  const [copied,setCopied]=useState(false);
+function IdeasCapture(){
+  const [meta,setMeta]=useState({...IDEAS_STATE});
+  const [ideas,setIdeas]=useState(IDEAS_LIST.map(i=>({...i})));
+  const [blocker,setBlocker]=useState(IDEAS_BLOCKER);
+  const prevKeyRef=useRef('');
 
-  // Re-hydrate from module store on every mount (handles section navigation)
-  useEffect(()=>{ setS({...TEAM_STATE}); },[]);
+  useEffect(()=>{
+    setMeta({...IDEAS_STATE});
+    setIdeas(IDEAS_LIST.map(i=>({...i})));
+    setBlocker(IDEAS_BLOCKER);
+  },[]);
 
-  const upd=(k,v)=>{ TEAM_STATE[k]=v; setS(p=>({...p,[k]:v})); };
+  useEffect(()=>{
+    if(!meta.name||!meta.team) return;
+    const key=lsKey(meta.name,meta.team);
+    if(key===prevKeyRef.current) return;
+    prevKeyRef.current=key;
+    const saved=localStorage.getItem(key);
+    if(saved){
+      try{
+        const d=JSON.parse(saved);
+        const ni=d.ideas&&d.ideas.length?d.ideas:[mkIdea()];
+        const nb=d.blocker||'';
+        IDEAS_LIST.length=0; ni.forEach(i=>IDEAS_LIST.push({...i}));
+        IDEAS_BLOCKER=nb;
+        setIdeas(ni.map(i=>({...i}))); setBlocker(nb);
+      }catch(e){}
+    }
+  },[meta.name,meta.team]);
 
-  const ToggleGroup=({label,opts,stateKey})=>(
-    <div style={{marginTop:24}}>
-      <div className="tsb-qn" style={{fontSize:16,marginBottom:10}}>{label}</div>
-      <div className="subtabs" style={{marginTop:0}}>
-        {opts.map(o=>(
-          <button key={o} className={'subtab'+(s[stateKey]===o?' on':'')} onClick={()=>upd(stateKey,o)}>
-            <div className="st-l">{o}</div>
-          </button>
-        ))}
-      </div>
-    </div>
-  );
+  useEffect(()=>{
+    if(!meta.name||!meta.team) return;
+    localStorage.setItem(lsKey(meta.name,meta.team),JSON.stringify({ideas,blocker}));
+  },[ideas,blocker,meta.name,meta.team]);
+
+  const updMeta=(k,v)=>{ IDEAS_STATE[k]=v; setMeta(p=>({...p,[k]:v})); };
+
+  const updIdea=(idx,k,v)=>{
+    const next=ideas.map((id,i)=>i===idx?{...id,[k]:v}:id);
+    IDEAS_LIST.length=0; next.forEach(i=>IDEAS_LIST.push(i));
+    setIdeas(next);
+  };
+
+  const addIdea=()=>{
+    if(ideas.length>=5) return;
+    const next=[...ideas,mkIdea()];
+    IDEAS_LIST.push(mkIdea());
+    setIdeas(next);
+  };
+
+  const removeIdea=(idx)=>{
+    const next=ideas.filter((_,i)=>i!==idx);
+    IDEAS_LIST.length=0; next.forEach(i=>IDEAS_LIST.push(i));
+    setIdeas(next);
+  };
+
+  const setTop=(idx)=>{
+    const next=ideas.map((id,i)=>({...id,top:i===idx?!id.top:false}));
+    IDEAS_LIST.length=0; next.forEach(i=>IDEAS_LIST.push(i));
+    setIdeas(next);
+  };
+
+  const updBlocker=(v)=>{ IDEAS_BLOCKER=v; setBlocker(v); };
+
+  const LENS_OPTS=['Cost Out','Quality','Employee Satisfaction'];
+  const HORIZON_OPTS=[
+    {label:'Now — Basic agent',cls:'hb-now'},
+    {label:'Near — Platform + integrations',cls:'hb-near'},
+    {label:'Long — Data & analytics',cls:'hb-long'},
+  ];
+  const PRIORITY_OPTS=['Nice to have','Important','Critical'];
+
+  const escH=t=>(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>');
 
   const downloadCard=()=>{
-    const esc=t=>(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>');
-    const qa=(q,a)=>`<div class="qa"><div class="q">${esc(q)}</div><div class="${a?'a':'a-empty'}">${a?esc(a):'Not filled in.'}</div></div>`;
-    const html=`<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<title>Team Strategy Card${s.name?' — '+s.name:''}</title>
+    const date=new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'});
+    const ideaBlocks=ideas.map((idea,k)=>`
+      <div class="ic${idea.top?' ic-top':''}">
+        <div class="ic-hdr">
+          <span class="ic-badge">Idea ${String(k+1).padStart(2,'0')}</span>
+          ${idea.top?'<span class="ic-star">★ Top idea</span>':''}
+          ${idea.lens?`<span class="ic-chip">${escH(idea.lens)}</span>`:''}
+          ${idea.horizon?`<span class="ic-chip">${escH(idea.horizon)}</span>`:''}
+          ${idea.priority?`<span class="ic-chip">${escH(idea.priority)}</span>`:''}
+        </div>
+        <div class="iqa"><div class="iq">What would it do?</div><div class="${idea.what?'ia':'ia-e'}">${idea.what?escH(idea.what):'Not filled in.'}</div></div>
+        <div class="iqa"><div class="iq">Where does it hurt now?</div><div class="${idea.hurt?'ia':'ia-e'}">${idea.hurt?escH(idea.hurt):'Not filled in.'}</div></div>
+      </div>`).join('');
+    const html=`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/>
+<title>Ideas &amp; Initiatives${meta.name?' — '+meta.name:''}</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#1A1A1A;background:#fff;-webkit-font-smoothing:antialiased}
@@ -1249,113 +1369,138 @@ body{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#1A1A1A;backg
 .hdr-name{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-weight:900;font-size:42px;margin-top:12px;line-height:1;letter-spacing:-.03em}
 .hdr-tl{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#555;margin-top:14px;font-family:monospace}
 .hdr-team{font-size:18px;color:#ccc;margin-top:4px}
+.hdr-date{font-size:9.5px;font-family:monospace;color:#555;margin-top:10px;letter-spacing:.1em}
 .body{padding:40px 48px 56px;max-width:860px}
-.qa{margin-top:28px;padding-top:24px;border-top:1px solid #ddd}
-.qa:first-child{border-top:none;margin-top:0;padding-top:0}
-.q{font-family:'Arial Black','Arial Bold',Arial,sans-serif;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-.a{font-size:14px;line-height:1.65;color:#333;white-space:pre-wrap}
-.a-empty{font-size:13px;color:#aaa;font-style:italic}
-.divider{border:none;border-top:2px solid #111;margin:36px 0 28px}
-.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.si-lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#8C8C8C;margin-bottom:5px;font-family:monospace}
-.si-val{font-size:14px;font-weight:700}
-.hl-lbl{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#8C8C8C;margin-bottom:6px;font-family:monospace;margin-top:20px}
-.hl-val{font-size:16px;font-weight:700;font-style:italic;line-height:1.4}
+.ic{margin-top:28px;padding-top:24px;border-top:1px solid #ddd}
+.ic:first-child{border-top:none;margin-top:0;padding-top:0}
+.ic-top{padding:16px;background:#f8f8f8;border-left:3px solid #1A1A1A}
+.ic-hdr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.ic-badge{font-family:'Arial Black',Arial,sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;background:#1A1A1A;color:#fff;padding:3px 9px}
+.ic-star{font-size:10px;font-family:monospace;letter-spacing:.1em;color:#1A1A1A;border:1px solid #1A1A1A;padding:2px 8px}
+.ic-chip{font-size:9.5px;font-family:monospace;letter-spacing:.08em;text-transform:uppercase;background:#ededed;color:#444;padding:2px 8px}
+.iqa{margin-top:12px}
+.iq{font-family:'Arial Black',Arial,sans-serif;font-weight:900;font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;color:#666}
+.ia{font-size:13px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ia-e{font-size:13px;color:#aaa;font-style:italic}
+.blk{margin-top:36px;padding-top:28px;border-top:2px solid #1A1A1A}
 .foot{margin-top:36px;font-size:9px;letter-spacing:.12em;color:#bbb;text-transform:uppercase;font-family:monospace}
 @media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}.hdr{background:#111!important}}
-</style>
-</head>
-<body>
+</style></head><body>
 <div class="hdr">
-  <div class="hdr-brand">ETHAN &mdash; Team Strategy Card</div>
-  <div class="hdr-name">${esc(s.name||'Unnamed')}</div>
+  <div class="hdr-brand">ETHAN &mdash; Ideas &amp; Initiatives</div>
+  <div class="hdr-name">${escH(meta.name||'Unnamed')}</div>
   <div class="hdr-tl">Team</div>
-  <div class="hdr-team">${esc(s.team||'—')}</div>
+  <div class="hdr-team">${escH(meta.team||'—')}</div>
+  <div class="hdr-date">Submitted ${date}</div>
 </div>
 <div class="body">
-  ${qa('Where are we now?',s.q1)}
-  ${qa('What are we changing this year?',s.q2)}
-  ${qa('How will we know it\'s working?',s.q3)}
-  ${qa('What do we need?',s.q4)}
-  <hr class="divider"/>
-  <div class="status-grid">
-    <div><div class="si-lbl">Confidence in this plan</div><div class="si-val">${s.confidence||'—'}</div></div>
-    <div><div class="si-lbl">AI lead / champion</div><div class="si-val">${s.champion||'—'}</div></div>
-  </div>
-  ${s.headline?`<div class="hl-lbl">One headline commitment</div><div class="hl-val">${esc(s.headline)}</div>`:''}
-  <div class="foot">Generated ${new Date().toLocaleDateString('en-AU',{day:'numeric',month:'long',year:'numeric'})}</div>
-</div>
-</body>
-</html>`;
+  ${ideaBlocks}
+  ${blocker?`<div class="blk"><div class="iq">What would make these ideas impossible?</div><div class="ia">${escH(blocker)}</div></div>`:''}
+  <div class="foot">Generated ${date} &mdash; ETHAN AI &amp; Automation Backlog</div>
+</div></body></html>`;
     const blob=new Blob([html],{type:'text/html'});
     const a=document.createElement('a');
     a.href=URL.createObjectURL(blob);
-    a.download=`ETHAN_StrategyCard_${(s.name||'unnamed').replace(/\s+/g,'_')}.html`;
-    a.click();
-    URL.revokeObjectURL(a.href);
+    a.download=`ETHAN_Ideas_${(meta.name||'unnamed').replace(/\s+/g,'_')}.html`;
+    a.click(); URL.revokeObjectURL(a.href);
   };
 
-  const copySnippet=()=>{
-    const hash=simpleHash(s.q1+s.q2+s.q3+s.q4);
-    const json=JSON.stringify({
-      name:s.name||'',team:s.team||'',
-      headline:s.headline||'',
-      confidence:s.confidence||'',champion:s.champion||'',
-      lastUpdated:new Date().toISOString().slice(0,10),
-      answersHash:hash,
-    },null,2);
-    const confirm=()=>{ setCopied(true); setTimeout(()=>setCopied(false),2200); };
-    // navigator.clipboard requires secure context (https/localhost); fall back for file://
-    if(navigator.clipboard && window.isSecureContext){
-      navigator.clipboard.writeText(json).then(confirm);
-    } else {
-      const ta=document.createElement('textarea');
-      ta.value=json; ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
-      document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); document.body.removeChild(ta);
-      confirm();
-    }
+  const downloadCSV=()=>{
+    const date=new Date().toISOString().slice(0,10);
+    const q=v=>'"'+(v||'').replace(/"/g,'""')+'"';
+    const rows=[['Summary','Description','Reporter','Team','Value Lens','Horizon','Priority','Top Idea','Blocker','Submitted']];
+    ideas.forEach(idea=>{
+      const summary=(idea.what||'').split(/[.!?]/)[0].trim();
+      const desc=[idea.what,idea.hurt].filter(Boolean).join('\n\n');
+      rows.push([q(summary),q(desc),q(meta.name),q(meta.team),q(idea.lens),q(idea.horizon),q(idea.priority),q(idea.top?'Yes':'No'),q(blocker),q(date)]);
+    });
+    const csv=rows.map(r=>r.join(',')).join('\n');
+    const blob=new Blob([csv],{type:'text/csv'});
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download=`ETHAN_Ideas_${(meta.name||'unnamed').replace(/\s+/g,'_')}.csv`;
+    a.click(); URL.revokeObjectURL(a.href);
+  };
+
+  const clearAll=()=>{
+    if(!confirm('Clear all your ideas? This cannot be undone.')) return;
+    localStorage.removeItem(lsKey(meta.name,meta.team));
+    const fresh=[mkIdea()];
+    IDEAS_LIST.length=0; IDEAS_LIST.push(mkIdea());
+    IDEAS_BLOCKER=''; prevKeyRef.current='';
+    setIdeas(fresh); setBlocker('');
   };
 
   return (
     <div className="view">
-      <SecHead num="↳" kicker="Your team, your plan" title={"Team Strategy\nBuilder"}/>
-      <p className="lede">Four honest questions. Filled in by each team lead. Exported for the programme record.</p>
-      <p className="body" style={{marginTop:10}}>There are no right answers — only useful ones. The value is in the specificity, not the optimism.</p>
+      <SecHead num="09" kicker="Feed the backlog" title={"Ideas &\nInitiatives"}/>
+      <p className="lede">You have seen the strategy and what is possible in your area. Capture your highest-value ideas here — they go straight into the AI and automation backlog.</p>
+      <p className="body" style={{marginTop:12}}>ETHAN is building an AI and automation programme across managed services. This tool captures ideas from team leads and their teams — what to automate, what to agent-ise, what is taking too long or breaking too often. There are no wrong answers. Specificity is what makes an idea actionable.</p>
 
       <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:18,marginTop:28}}>
         {[['name','Your name','Full name'],['team','Your team','Team or sub-team name']].map(([k,lbl,ph])=>(
           <div key={k} className="tsb-field">
             <label className="tsb-label">{lbl}</label>
-            <input className="tsb-input" value={s[k]} onChange={e=>upd(k,e.target.value)} placeholder={ph}/>
+            <input className="tsb-input" value={meta[k]} onChange={e=>updMeta(k,e.target.value)} placeholder={ph}/>
           </div>
         ))}
       </div>
+      <div className="note" style={{marginTop:8}}>Your ideas are saved locally in this browser. Return any time to add more.</div>
 
-      {TSB_QUESTIONS.map(q=>(
-        <div key={q.key} className="tsb-block">
-          <div className="tsb-qn">{q.label}</div>
-          <div className="tsb-prompt">{q.prompt}</div>
-          <textarea className="tsb-ta" value={s[q.key]} onChange={e=>upd(q.key,e.target.value)}/>
-          {q.note&&<div className="note" style={{marginTop:8}}>{q.note}</div>}
-        </div>
-      ))}
+      <div style={{marginTop:32}}>
+        {ideas.map((idea,idx)=>(
+          <div key={idx} className="idea-block">
+            <div className="idea-block-hdr">
+              <span className="ph-n">Idea {String(idx+1).padStart(2,'0')}</span>
+              <div style={{display:'flex',gap:10,alignItems:'center'}}>
+                <button className={`star-btn${idea.top?' star-on':''}`} onClick={()=>setTop(idx)}>
+                  {idea.top?'★ Top idea':'☆ Top idea'}
+                </button>
+                {ideas.length>1&&<button className="idea-remove" onClick={()=>removeIdea(idx)}>&times;</button>}
+              </div>
+            </div>
 
-      <div className="rule"/>
+            {[
+              {k:'what',label:'What would it do?',ph:'Describe what the agent or automation would actually do. One or two sentences.'},
+              {k:'hurt',label:'Where does it hurt now?',ph:'What is the manual effort, the quality gap, or the thing people hate doing that this fixes?'},
+            ].map(f=>(
+              <div key={f.k} className="idea-field">
+                <label className="tsb-label">{f.label}</label>
+                <textarea className="tsb-ta" style={{minHeight:80}} value={idea[f.k]} onChange={e=>updIdea(idx,f.k,e.target.value)} placeholder={f.ph}/>
+              </div>
+            ))}
 
-      <ToggleGroup label="Confidence in this plan" opts={['Low','Medium','High']} stateKey="confidence"/>
-      <ToggleGroup label="AI lead / champion identified" opts={['Named','In progress','Not yet']} stateKey="champion"/>
+            <div className="idea-field">
+              <div className="tsb-label">Value lens</div>
+              <ToggleRow opts={LENS_OPTS} value={idea.lens} onChange={v=>updIdea(idx,'lens',v)}/>
+            </div>
+            <div className="idea-field">
+              <div className="tsb-label">Horizon</div>
+              <ToggleRow opts={HORIZON_OPTS} value={idea.horizon} onChange={v=>updIdea(idx,'horizon',v)}/>
+            </div>
+            <div className="idea-field">
+              <div className="tsb-label">Your priority</div>
+              <ToggleRow opts={PRIORITY_OPTS} value={idea.priority} onChange={v=>updIdea(idx,'priority',v)}/>
+            </div>
+          </div>
+        ))}
+        {ideas.length<5&&(
+          <button className="idea-add" onClick={addIdea}>+ Add another idea</button>
+        )}
+      </div>
 
-      <div style={{marginTop:24}}>
-        <div className="tsb-qn" style={{fontSize:16,marginBottom:10}}>One headline commitment</div>
-        <input className="tsb-input" value={s.headline} onChange={e=>upd('headline',e.target.value)}
-               placeholder="Summarise your year-one commitment in one sentence"/>
+      <div style={{marginTop:32}} className="tsb-block">
+        <div className="tsb-label" style={{marginBottom:4}}>What would make these ideas impossible? <span style={{fontStyle:'italic',opacity:.65}}>(optional)</span></div>
+        <textarea className="tsb-ta" value={blocker} onChange={e=>updBlocker(e.target.value)} placeholder="Blockers, dependencies, things that need to be true first."/>
       </div>
 
       <div style={{display:'flex',gap:10,marginTop:36,flexWrap:'wrap'}}>
-        <button className="tsb-btn tsb-btn-primary" onClick={downloadCard}>↓ Download my strategy card</button>
-        <button className={`tsb-btn tsb-btn-secondary${copied?' tsb-copied':''}`} onClick={copySnippet}>
-          {copied?'✓ Copied!':'{ } Copy export snippet'}
+        <button className="tsb-btn tsb-btn-primary" onClick={downloadCard}>&#8595; Download submission</button>
+        <button className="tsb-btn tsb-btn-secondary" onClick={downloadCSV}>&#8595; Download CSV for Jira</button>
+      </div>
+      <div style={{marginTop:20}}>
+        <button onClick={clearAll} style={{background:'none',border:'none',fontFamily:'var(--mono)',fontSize:'10px',letterSpacing:'.08em',color:'var(--muted)',cursor:'pointer',textDecoration:'underline',padding:0}}>
+          Clear all my ideas
         </button>
       </div>
     </div>
@@ -1500,6 +1645,7 @@ function App(){
   const stageRef=useRef(null);
   const idx=SECTIONS.findIndex(s=>s.id===view);
 
+  useEffect(()=>{ _navSetView=setView; return ()=>{ _navSetView=null; }; },[setView]);
   useEffect(()=>{ if(stageRef.current) stageRef.current.scrollTop=0; },[view]);
   // Restore pre-loaded edits (downloaded files) after every render — no-op when store is empty
   useEffect(()=>{
@@ -1521,7 +1667,7 @@ function App(){
   if(view==="hero") return <Hero onEnter={()=>setView("moment")}/> ;
 
   const pct=((idx+1)/SECTIONS.length)*100;
-  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,team:<TeamStrategy/>};
+  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,team:<IdeasCapture/>};
 
   return (
     <div id="app">

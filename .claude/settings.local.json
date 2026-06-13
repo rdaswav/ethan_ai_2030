@@ -22,7 +22,14 @@
       "Bash(git commit *)",
       "Bash(git remote *)",
       "Bash(git push *)",
-      "Bash(gh pr create --title 'Redesign hero layout and update tagline copy' --body ' *)"
+      "Bash(gh pr create --title 'Redesign hero layout and update tagline copy' --body ' *)",
+      "Bash(ls \"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\\\\\" | findstr -i \"logo\\\\|ethan\\\\|png\\\\|svg\\\\|jpg\\\\|webp\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\\\\\" | Where-Object {$_.Name -match '\\\\.\\(png|svg|jpg|jpeg|webp|ico\\)$|logo|ethan'} | Select-Object Name)",
+      "PowerShell(Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\(\"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\\\\Screenshot 2026-06-13 101029.png\"\\); \"$\\($img.Width\\) x $\\($img.Height\\)\"; $img.Dispose\\(\\))",
+      "Bash(git -C \"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\" diff --stat)",
+      "Bash(git -C \"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\" log --oneline -3)",
+      "Bash(git -C \"C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI\" add ETHAN_AI_Transformation_Tool_3.html .claude/settings.local.json)",
+      "Bash(git -C 'C:\\\\Users\\\\Rahoul.Das\\\\OneDrive - Ethan Corporate\\\\Documents\\\\PROJECTS\\\\AI' commit -m ' *)"
     ]
   }
 }
