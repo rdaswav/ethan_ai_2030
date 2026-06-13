@@ -26,7 +26,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 #app{display:flex;height:100vh;width:100vw}
 .rail{width:var(--rail);flex:0 0 var(--rail);background:var(--black);color:#fff;
       display:flex;flex-direction:column;height:100vh}
-.rail-top{padding:28px 22px 18px}
+.rail-top{padding:24px 20px 18px}
 .brand{font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:.18em}
 .brand-sub{font-family:var(--mono);font-size:9.5px;letter-spacing:.26em;color:#7a7a7a;margin-top:6px;text-transform:uppercase}
 .nav{flex:1;overflow-y:auto;padding:4px 0 16px}
@@ -368,15 +368,15 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .opp-box p{font-size:13.5px;color:var(--ink);line-height:1.55;font-style:italic}
 
 /* ── EDIT MODE ── */
-.edit-bar{position:fixed;bottom:24px;right:24px;z-index:200;display:flex;gap:8px;align-items:center;
-          background:var(--black);color:#fff;padding:10px 16px;font-family:var(--mono);
-          font-size:10.5px;letter-spacing:.1em;box-shadow:0 4px 24px rgba(0,0,0,.4)}
-.edit-bar .eb-label{color:#8a8a8a;text-transform:uppercase}
-.edit-bar button{background:#fff;color:#111;padding:6px 14px;font-family:var(--mono);
+.edit-bar{position:fixed;bottom:52px;left:0;width:var(--rail);z-index:200;display:flex;gap:8px;align-items:center;
+          background:transparent;color:#3a3a3a;padding:6px 22px;font-family:var(--mono);
+          font-size:10px;letter-spacing:.1em;border-top:1px solid #1e1e1e}
+.edit-bar .eb-label{color:#2e2e2e;text-transform:uppercase}
+.edit-bar button{background:#222;color:#3a3a3a;padding:5px 12px;font-family:var(--mono);
                  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-                 transition:.15s;cursor:pointer}
-.edit-bar button:hover{opacity:.85}
-.edit-bar .eb-dl{background:var(--grey-3);color:#fff}
+                 transition:.2s;cursor:pointer;border:1px solid #2a2a2a}
+.edit-bar button:hover{color:#888;border-color:#444}
+.edit-bar .eb-dl{background:#1e1e1e;color:#3a3a3a}
 [contenteditable]{outline:none;cursor:text}
 [contenteditable]:focus{background:rgba(255,255,255,.08);outline:1px dashed #888}
 .edit-mode-on [contenteditable]{outline:1px dashed #bbb;min-width:1em}
@@ -459,6 +459,8 @@ const {useState,useEffect,useRef,useCallback} = React;
 /* ═══════════════════════════════════════════════════════
    DATA
 ═══════════════════════════════════════════════════════ */
+const ETHAN_LOGO = "data:image/png;base64,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";
+
 const SECTIONS = [
   {id:"moment",  label:"The Moment"},
   {id:"fy26okr", label:"FY26 — What We Said"},
@@ -1164,6 +1166,7 @@ function Exec(){
 function Hero({onEnter}){
   return (
     <div className="hero">
+      <img src={ETHAN_LOGO} alt="ETHAN" style={{position:'absolute',top:32,right:40,zIndex:10,width:160,height:'auto'}}/>
       <div className="hero-ey">ETHAN MANAGED SERVICES &nbsp;&middot;&nbsp; STRATEGY &nbsp;&middot;&nbsp; INTERNAL</div>
       <div className="hero-main">
         <h1>MANAGED<br/>SERVICES</h1>
@@ -1515,12 +1518,7 @@ function App(){
     return ()=>window.removeEventListener("keydown",h);
   },[view,idx]);
 
-  if(view==="hero") return (
-    <>
-      <Hero onEnter={()=>setView("moment")}/>
-      <EditBar editMode={editMode} setEditMode={setEditMode}/>
-    </>
-  );
+  if(view==="hero") return <Hero onEnter={()=>setView("moment")}/> ;
 
   const pct=((idx+1)/SECTIONS.length)*100;
   const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,team:<TeamStrategy/>};
@@ -1529,8 +1527,7 @@ function App(){
     <div id="app">
       <aside className="rail">
         <div className="rail-top">
-          <div className="brand">ETHAN</div>
-          <div className="brand-sub">AI Transformation</div>
+          <img src={ETHAN_LOGO} alt="ETHAN" style={{width:160,height:'auto'}}/>
         </div>
         <nav className="nav">
           <button className="nav-item" onClick={()=>setView("hero")}>
