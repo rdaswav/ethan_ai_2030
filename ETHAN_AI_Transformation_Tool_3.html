@@ -211,6 +211,24 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .oc-ai-banner .ocn{color:#fff;font-weight:700;font-size:13px;margin-bottom:3px}
 .oc-ai-banner .ocs{color:#aaa;font-size:11px;line-height:1.5}
 .oc-ai-stat{text-align:right;flex-shrink:0;background:var(--grey-3);padding:8px 14px}
+/* Future-state three-pillar layout */
+.oc-future-top{display:flex;justify-content:center;margin-bottom:0}
+.oc-future-connector{width:1px;height:16px;background:var(--line);margin:0 auto}
+.oc-pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:0}
+.oc-pillar{display:flex;flex-direction:column}
+.oc-pillar-head{padding:10px 12px;font-weight:700;font-size:12px;color:#fff;margin-bottom:1px}
+.ph-navy{background:#0E2841}.ph-slate{background:#2E4A62}.ph-purple{background:#4C1D95}
+.oc-pillar-sub{font-size:10px;font-weight:400;margin-top:3px;color:rgba(255,255,255,.7)}
+.oc-pillar-body{display:flex;flex-direction:column;gap:1px;flex:1}
+.oc-pi{border:1px solid var(--line);padding:9px 11px;background:var(--paper)}
+.oc-pi .ocn{font-weight:700;font-size:12px;color:var(--ink);line-height:1.3;margin-bottom:2px}
+.oc-pi .ocs{font-size:10.5px;color:var(--muted);line-height:1.4}
+.oc-pi-evolved{border-left:3px solid var(--ink)}
+.oc-pi-new{border:1px dashed var(--line)}
+.oc-pi-ai{background:var(--ink);border-color:var(--ink)}.oc-pi-ai .ocn{color:#fff}.oc-pi-ai .ocs{color:#aaa}
+.oc-full-bar{padding:10px 16px}
+.oc-bar-ai{background:#4C1D95}.oc-bar-ai .ocn{color:#fff;font-weight:700;font-size:12px;margin-bottom:3px}.oc-bar-ai .ocs{font-size:10.5px;color:#C4B5FD}
+.oc-bar-gdc{background:#2E4A62}.oc-bar-gdc .ocn{color:#fff;font-weight:700;font-size:12px;margin-bottom:3px}.oc-bar-gdc .ocs{font-size:10.5px;color:#9AB5C8}
 .oc-ai-stat .asl{font-size:9px;font-weight:700;color:#aaa;letter-spacing:.1em;text-transform:uppercase}
 .oc-ai-stat .asn{font-size:22px;font-weight:700;color:#fff;line-height:1.1}
 .oc-ai-stat .ass{font-size:10px;color:#aaa}
@@ -500,10 +518,12 @@ const SECTIONS = [
 ];
 
 const SIGNALS = [
-  {n:"45%", src:"Forrester 2025", t:"of services buyers are expanding performance-based pricing. The per-seat contract is losing ground to the priced outcome."},
-  {n:"94%", src:"Gartner 2026",   t:"YoY growth in AI-native spend in Q1 2026, against 8% for traditional SaaS. The budget is already moving."},
-  {n:"50%", src:"Gartner 2026",   t:"of service-desk AI projects will be abandoned by 2027 — almost always for want of a baseline. That discipline is what we sell."},
-  {n:"60%", src:"Gartner 2026",   t:"of large IT services contracts will carry AI clawback clauses by 2027. Bring a position, or inherit the client's."},
+  {n:"45%", src:"Forrester 2025",   t:"Nearly half of enterprise buyers are moving away from paying for labour-based models. They want to pay for outcomes. Our pricing model is built on the thing they're walking away from."},
+  {n:"94%", src:"Gartner 2026",     t:"AI-native tools grew at 94% last year while traditional IT spend grew at 8%. Our clients are spending it somewhere — with us or without us."},
+  {n:"50%", src:"Gartner 2026",     t:"Half of all AI projects at service desks will be abandoned by 2027. The reason is almost always the same: no one measured what \"good\" looked like before they started, so they couldn't prove it worked. Knowing how to set that baseline before deployment is the discipline that makes AI stick — and it's something ETHAN can sell."},
+  {n:"60%", src:"Gartner 2026",     t:"Most large IT contracts will soon require vendors to share AI efficiency gains with the client. If we don't walk in with a position on this, the client will bring one to us."},
+  {n:"93%", src:"KPMG / HFS 2025", t:"of executives want providers who combine technology and process expertise. The MSP that only keeps the lights on is being disintermediated. Clients expect AI, strategy and consulting capability bundled into the same relationship — not as separate engagements."},
+  {n:"57%", src:"McKinsey MGI 2025",t:"of work hours are technically automatable today. The highest-exposure roles in IT ops are routine and specialised: ticket triage, event management, patch compliance. The roles that survive are those that cannot be encoded into a prompt or a runbook."},
 ];
 
 const OKRS = [
@@ -621,6 +641,8 @@ const PORT = [
   ["Agentic AI-powered MS","Existing MS refreshed with a variable AI/human mix. Service Desk as a Service with Maeve embedded.","CRO · MS"],
   ["Standalone agentic services","ETHAN-hosted autonomous services sold independently — e.g. Managed AI Change Management.","CTO · MS · CRO"],
   ["Agentic AI as a service","Agents that solve a specific customer problem. Priced on capacity and usage, not headcount.","CTO · Architecture"],
+  ["Model as a Service","Access to ETHAN-curated and managed AI models — provisioned, tuned, and governed for enterprise use. Sold on consumption or subscription.","CTO · Architecture"],
+  ["GPU as a Service","On-demand GPU compute for AI workloads. Removes the barrier of infrastructure investment for clients exploring or scaling AI.","CTO · ETHAN Cloud"],
   ["Consulting-led entry","A paid AI assessment scoring readiness and producing a use-case roadmap. Builds the pipeline above.","CRO · Advisory"],
 ];
 
@@ -840,7 +862,7 @@ function Moment(){
   return (
     <div className="view">
       <SecHead num="01" kicker="The Case for Change" title={"The Moment\nWe Are In"}/>
-      <p className="lede">AI is not arriving. It has arrived. The question is not whether it changes the business but <b>whether we shape that change or are shaped by it.</b></p>
+      <p className="lede">AI is not arriving. It has arrived. The question is not whether it changes the business but <b>how fast.</b></p>
       <p className="body">Labour has always been our primary cost and the unit by which MS has been built for 30 years. For the first time, AI makes it partially substitutable. The market and our clients are asking for more outcomes, lower prices. We need to be ready.</p>
       <div className="stats">
         {SIGNALS.map((s,k)=>(
@@ -924,159 +946,144 @@ function OrgChart(){
       </div>
       <div className="oc-sublabel">{f?"FY28–FY30 · AI-augmented · Platform-led delivery":"FY26 · People-led · Reactive delivery model"}</div>
 
-      {f && (
-        <div className="oc-ai-banner">
-          <div style={{flex:1}}>
-            <div className="ocn">Agentic AI Platform — Always-on autonomous layer</div>
-            <div className="ocs">Maeve and specialist agents handle L1 triage · Event correlation and noise suppression · Automated runbook execution · 24/7 coverage without human staffing cost</div>
-          </div>
-          <div className="oc-ai-stat">
-            <div className="asl">Target</div>
-            <div className="asn">40–60%</div>
-            <div className="ass">L1 deflection rate</div>
-          </div>
-        </div>
-      )}
-
-      {/* Management */}
-      <div className="oc-layer">
-        <div className="oc-lbl">Management</div>
-        <div className="oc-cards">
-          <div className="oc-card ck-dark">
-            <div className="ocn">Head of Managed Services</div>
-            <div className="ocs">Direct client accountability. Operations management and P&amp;L ownership</div>
-            <span className="oc-tag ot-navy">AU Onshore</span>
-          </div>
-          <div className="oc-card ck-mid">
-            <div className="ocn">BU Leads</div>
-            <div className="ocs">Engineering BU heads. Technical and commercial accountability per practice</div>
-            <span className="oc-tag ot-navy">AU Onshore</span>
-          </div>
-          {f && <>
-            <div className="oc-card ck-new">
-              <div className="ocn">Head of Platforms &amp; Tooling</div>
-              <div className="ocs">New role. Governs ServiceNow, NinjaOne, observability, Inforcer, Ethan Online</div>
-              <span className="oc-tag ot-amber">New Role</span>
-            </div>
-            <div className="oc-card ck-new">
-              <div className="ocn">AI GTM</div>
-              <div className="ocs">New role. Drives AI product portfolio and sales. Bridges delivery capability and commercial opportunity</div>
-              <span className="oc-tag ot-amber">New Role</span>
-            </div>
-          </>}
-        </div>
-      </div>
-
-      {/* Engineering BUs */}
-      <div className="oc-layer">
-        <div className="oc-lbl">Engineering BUs</div>
-        <div className="oc-cards">
-          {f ? <>
-            <div className="oc-card ck-base"><div className="ocn">Network</div><div className="ocs">L3–L4 specialist focus. Routine L2 automated. Observability-driven</div></div>
-            <div className="oc-card ck-base"><div className="ocn">UC</div><div className="ocs">Specialist bench model. Vendor-native alerting. Advisory-led</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Cyber</div><div className="ocs">Posture automation, E8 compliance dashboards, Ethan Assurance signals</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Intelligent Workplace</div><div className="ocs">AI deflects L1/L2. EUC engineers on complex advisory and architecture</div></div>
-            <div className="oc-card ck-base"><div className="ocn">ETHAN Cloud</div><div className="ocs">IaC-driven. Observability pipeline. Platform-led ops and self-healing infrastructure</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Cloud &amp; Infrastructure</div><div className="ocs">Public cloud, servers, Wintel and storage. AI-assisted monitoring and runbook execution</div></div>
-          </> : <>
-            <div className="oc-card ck-base"><div className="ocn">Network</div><div className="ocs">L2–L4 engineers. Break-fix and change delivery</div></div>
-            <div className="oc-card ck-base"><div className="ocn">UC</div><div className="ocs">Mitel, Cisco, Teams voice and collaboration</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Cyber</div><div className="ocs">Security operations and compliance</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Intelligent Workplace</div><div className="ocs">EUC, M365, endpoint management L1–L3</div></div>
-            <div className="oc-card ck-base"><div className="ocn">ETHAN Cloud</div><div className="ocs">Private cloud and hosted infrastructure</div></div>
-            <div className="oc-card ck-base"><div className="ocn">Cloud &amp; Infrastructure</div><div className="ocs">Public cloud, servers, Wintel and storage. Break-fix and change delivery</div></div>
-          </>}
-        </div>
-      </div>
-
-      {/* Platform Engineering + GDC — future: both as foundation layer beneath BUs */}
       {f ? (
         <>
-          <div className="oc-platform-bar">
-            <div>
-              <div className="ocn">Platform Engineering &amp; SRE</div>
-              <div className="ocs">Full SRE model — DevOps, IaC, CI/CD, platform reliability at scale. Specialists, architects and forward-deployed engineers serving all BUs</div>
+          {/* Three pillars */}
+          <div className="oc-pillars">
+
+            {/* Pillar 1: Engineering BUs */}
+            <div className="oc-pillar">
+              <div className="oc-pillar-head ph-navy">
+                Engineering BUs
+                <div className="oc-pillar-sub">Outcome-aligned. AI floor beneath each BU handles L1–L2 volume</div>
+              </div>
+              <div className="oc-pillar-body">
+                <div className="oc-pi"><div className="ocn">Network</div><div className="ocs">L3–L4 specialists</div><span className="oc-tag ot-navy">AU</span></div>
+                <div className="oc-pi"><div className="ocn">UC</div><div className="ocs">L3–L4 specialists</div><span className="oc-tag ot-navy">AU</span></div>
+                <div className="oc-pi"><div className="ocn">Cyber</div><div className="ocs">L3–L4 specialists</div><span className="oc-tag ot-navy">AU</span></div>
+                <div className="oc-pi"><div className="ocn">Intelligent Workplace</div><div className="ocs">L3–L4 specialists</div><span className="oc-tag ot-navy">AU</span></div>
+                <div className="oc-pi"><div className="ocn">Infra &amp; Cloud</div><div className="ocs">L3–L4 specialists</div><span className="oc-tag ot-navy">AU</span></div>
+                <div className="oc-pi"><div className="ocn">ETHAN Cloud</div><div className="ocs">IaC-driven · Private cloud</div><span className="oc-tag ot-navy">AU</span></div>
+              </div>
             </div>
-            <span className="oc-tag ot-amber">Evolved BU</span>
+
+            {/* Pillar 2: Service Operations */}
+            <div className="oc-pillar">
+              <div className="oc-pillar-head ph-slate">
+                Service Management
+                <div className="oc-pillar-sub">Human judgment layer above the AI floor</div>
+              </div>
+              <div className="oc-pillar-body">
+                <div className="oc-pi oc-pi-evolved"><div className="ocn">Service Management</div><div className="ocs">SDMs evolve to outcome-led · XLAs replace SLAs</div><span className="oc-tag ot-green">Evolved</span></div>
+                <div className="oc-pi oc-pi-evolved"><div className="ocn">Assurance &amp; MIM</div><div className="ocs">AI + Human team · Patterns by AI, judgment cases by humans</div><span className="oc-tag ot-green">AI + Human</span></div>
+                <div className="oc-pi oc-pi-ai"><div className="ocn">Service Desk (GDC)</div><div className="ocs">Exception + empathy cases only. AI owns L1 volume</div><span className="oc-tag ot-ai">AI-assisted</span></div>
+                <div className="oc-pi oc-pi-evolved"><div className="ocn">Billing</div><div className="ocs">Automated reconciliation · anomaly detection · exception-based human review</div><span className="oc-tag ot-green">Automated</span></div>
+                <div className="oc-pi"><div className="ocn">Transition</div><div className="ocs">Governed onboarding · structured handover gates into live operations</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+              </div>
+            </div>
+
+            {/* Pillar 3: Platform & AI */}
+            <div className="oc-pillar">
+              <div className="oc-pillar-head ph-purple">
+                Platform &amp; AI
+                <div className="oc-pillar-sub">Led by new Head of Platforms &amp; Tooling role · Overall platform and tooling design and management</div>
+              </div>
+              <div className="oc-pillar-body">
+                <div className="oc-pi oc-pi-evolved"><div className="ocn">Platform Engineering &amp; SRE</div><div className="ocs">DevOps · IaC · CI/CD · observability stack · closed-loop remediation · reliability at scale</div><span className="oc-tag ot-amber">Evolved BU</span></div>
+                <div className="oc-pi oc-pi-new"><div className="ocn">Ethan Online</div><div className="ocs">Client-facing dashboard · ITSM integrations · compliance and obligation management</div><span className="oc-tag ot-ai">Product Team</span></div>
+                <div className="oc-pi oc-pi-new"><div className="ocn">AI &amp; Automation</div><div className="ocs">Maeve · agent dev · KB · prompt eng · output audit</div><span className="oc-tag ot-ai">New Team</span></div>
+              </div>
+            </div>
+
           </div>
-          <div className="oc-gdc oc-gdc-p">
-            <div className="ocn">ETHAN Global Delivery Centres — Scaled &amp; Specialist</div>
-            <div className="ocs">GDC teams shift from high-volume L1 toward L2 engineering, advanced assurance, and AI-assisted operations. Human effort concentrated on judgment, complexity, and client relationships.</div>
-            <span className="oc-tag ot-slate" style={{marginTop:8,display:'inline-block'}}>GDC — Upskilled &amp; Growing</span>
+
+          {/* Full-width bottom bars */}
+          <div className="oc-full-bar oc-bar-ai" style={{marginTop:10}}>
+            <div className="ocn">Agentic AI Platform — operates beneath all three pillars</div>
+            <div className="ocs">Event management · L1 triage · Runbook execution · Compliance monitoring · Noise suppression · Always-on · No human in loop for standard events</div>
+          </div>
+          <div className="oc-full-bar oc-bar-gdc" style={{marginTop:4}}>
+            <div className="ocn">ETHAN Global Delivery Centres</div>
+            <div className="ocs">L2 engineering · Advanced assurance · AI-supervised SD · Upskilling alongside transformation · Multi-region · Anchor + specialist nodes</div>
+          </div>
+
+          {/* Legend */}
+          <div className="oc-legend">
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AI-assisted</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',borderLeft:'3px solid var(--ink)',border:'1px solid var(--line)'}}></div>Evolved role</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'1px dashed var(--line)'}}></div>New role / team</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>AU Onshore</div>
           </div>
         </>
       ) : (
-        <div className="oc-gdc oc-gdc-n">
-          <div className="ocn">ETHAN Global Delivery Centres</div>
-          <div className="ocs">Service desk, assurance, event management and MIM functions delivered across ETHAN's global delivery centres. Teams provide the volume delivery backbone for MS operations across all accounts.</div>
-          <span className="oc-tag ot-slate" style={{marginTop:8,display:'inline-block'}}>GDC</span>
-        </div>
-      )}
-
-      {/* Service Operations */}
-      <div className="oc-layer">
-        <div className="oc-lbl">Service Operations</div>
-        <div className="oc-cards">
-          {f ? <>
-            <div className="oc-card ck-dark">
-              <div className="ocn">Service Desk</div>
-              <div className="ocs">Agents handle exception and empathy cases. AI owns L1 volume via Maeve</div>
-              <span className="oc-tag ot-ai">AI Augmented</span>
+        <>
+          {/* Management */}
+          <div className="oc-layer">
+            <div className="oc-lbl">Management</div>
+            <div className="oc-cards">
+              <div className="oc-card ck-dark">
+                <div className="ocn">Head of Managed Services</div>
+                <div className="ocs">Direct client accountability. Operations management and P&amp;L ownership</div>
+                <span className="oc-tag ot-navy">AU Onshore</span>
+              </div>
+              <div className="oc-card ck-mid">
+                <div className="ocn">BU Leads</div>
+                <div className="ocs">Engineering BU heads. Technical and commercial accountability per practice</div>
+                <span className="oc-tag ot-navy">AU Onshore</span>
+              </div>
             </div>
-            <div className="oc-card ck-tint"><div className="ocn">Service Management</div><div className="ocs">SDMs evolve to Client Success Advisors. SLOs replace SLAs. Value Bank reporting</div><span className="oc-tag ot-green">Evolving Role</span></div>
-            <div className="oc-card ck-tint"><div className="ocn">Service Assurance</div><div className="ocs">Mature AI ITIL functions with Human in the loop processing</div><span className="oc-tag ot-green">Process Matured</span></div>
-            <div className="oc-card ck-dark"><div className="ocn">Event Management</div><div className="ocs">Fully autonomous. AI-driven noise suppression, anomaly detection, predictive alerting</div><span className="oc-tag ot-ai">Fully AI</span></div>
-            <div className="oc-card ck-tint"><div className="ocn">Billing</div><div className="ocs">Automated reconciliation and anomaly detection. Zero manual MRC adjustments</div><span className="oc-tag ot-green">Automated</span></div>
-          </> : <>
-            <div className="oc-card ck-soft"><div className="ocn">Service Desk</div><div className="ocs">L1 triage and ticket routing. 54 staff. High volume, people-staffed</div><span className="oc-tag ot-slate">GDC</span></div>
-            <div className="oc-card ck-base"><div className="ocn">Service Management</div><div className="ocs">SDMs, SLAs, client reviews, CSI register</div><span className="oc-tag ot-navy">AU Onshore</span></div>
-            <div className="oc-card ck-soft"><div className="ocn">Service Assurance</div><div className="ocs">Monitoring, alerting and major incident management. Reactive posture</div><span className="oc-tag ot-slate">GDC</span></div>
-            <div className="oc-card ck-soft"><div className="ocn">Event Management</div><div className="ocs">Alert triage, noise filtering, event correlation. Manual and tool-dependent today</div><span className="oc-tag ot-slate">GDC</span></div>
-            <div className="oc-card ck-base"><div className="ocn">Billing</div><div className="ocs">MRC reconciliation and adjustment register. Manual process</div><span className="oc-tag ot-navy">AU Onshore</span></div>
-          </>}
-        </div>
-      </div>
-
-      {/* Enabling Functions */}
-      <div className="oc-layer">
-        <div className="oc-lbl">Enabling Functions</div>
-        <div className="oc-cards">
-          {f ? <>
-            <div className="oc-card ck-tint"><div className="ocn">Transition</div><div className="ocs">Onboarding pipeline fully governed. Structured handover gates into live operations</div><span className="oc-tag ot-green">Governed</span></div>
-            <div className="oc-card ck-dark"><div className="ocn">AI &amp; Automation Team</div><div className="ocs">Owns the agentic AI platform. Prompt engineering, KB management, agent development and audit</div><span className="oc-tag ot-ai">New Team</span></div>
-          </> : <>
-            <div className="oc-card ck-base"><div className="ocn">Transition</div><div className="ocs">Customer onboarding. Pipeline and handover management</div><span className="oc-tag ot-navy">AU Onshore</span></div>
-            <div className="oc-card ck-soft"><div className="ocn">AI &amp; DevOps / Ethan Online</div><div className="ocs">Embryonic. Agentic AI in pilot, observability build in progress</div><span className="oc-tag ot-amber">Forming</span></div>
-            <div className="oc-card ck-risk"><div className="ocn">Observability</div><div className="ocs">Basic monitoring only. No unified stack. L3–L6 largely absent across accounts</div><span className="oc-tag ot-tint">Gap</span></div>
-          </>}
-        </div>
-      </div>
-
-      {/* Platform Capability — future only */}
-      {f && (
-        <div className="oc-layer">
-          <div className="oc-lbl">Platform Capability</div>
-          <div className="oc-cards">
-            <div className="oc-card ck-dark"><div className="ocn">Ethan Online / DevOps</div><div className="ocs">Customer-facing assurance dashboard, compliance state, ITSM integrations</div><span className="oc-tag ot-amber">Maturing</span></div>
-            <div className="oc-card ck-dark"><div className="ocn">Observability Platform</div><div className="ocs">Unified L1–L6 stack. Queen/Bee pipeline, Grafana, Prometheus, closed-loop remediation across all accounts</div><span className="oc-tag ot-ai">Core Infrastructure</span></div>
           </div>
-        </div>
-      )}
 
-      {/* Legend */}
-      <div className="oc-legend">
-        {f ? <>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AI autonomous / strategic</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',borderColor:'var(--ink)',borderLeftWidth:3,borderLeftStyle:'solid'}}></div>Materially improved</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'2px solid var(--ink)'}}></div>New role / team</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>AU Onshore</div>
-        </> : <>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AU Onshore (management)</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'1px solid var(--line)'}}></div>AU Onshore (BU / ops)</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>GDC / forming</div>
-          <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',borderLeft:'3px solid var(--grey-1)',border:'1px solid var(--line)'}}></div>Risk / gap</div>
-        </>}
-      </div>
+          {/* Engineering BUs */}
+          <div className="oc-layer">
+            <div className="oc-lbl">Engineering BUs</div>
+            <div className="oc-cards">
+              <div className="oc-card ck-base"><div className="ocn">Network</div><div className="ocs">L2–L4 engineers. Break-fix and change delivery</div></div>
+              <div className="oc-card ck-base"><div className="ocn">UC</div><div className="ocs">Mitel, Cisco, Teams voice and collaboration</div></div>
+              <div className="oc-card ck-base"><div className="ocn">Cyber</div><div className="ocs">Security operations and compliance</div></div>
+              <div className="oc-card ck-base"><div className="ocn">Intelligent Workplace</div><div className="ocs">EUC, M365, endpoint management L1–L3</div></div>
+              <div className="oc-card ck-base"><div className="ocn">ETHAN Cloud</div><div className="ocs">Private cloud and hosted infrastructure</div></div>
+              <div className="oc-card ck-base"><div className="ocn">Cloud &amp; Infrastructure</div><div className="ocs">Public cloud, servers, Wintel and storage. Break-fix and change delivery</div></div>
+            </div>
+          </div>
+
+          <div className="oc-gdc oc-gdc-n">
+            <div className="ocn">ETHAN Global Delivery Centres</div>
+            <div className="ocs">Service desk, assurance, event management and MIM functions delivered across ETHAN's global delivery centres. Teams provide the volume delivery backbone for MS operations across all accounts.</div>
+            <span className="oc-tag ot-slate" style={{marginTop:8,display:'inline-block'}}>GDC</span>
+          </div>
+
+          {/* Service Operations */}
+          <div className="oc-layer">
+            <div className="oc-lbl">Service Operations</div>
+            <div className="oc-cards">
+              <div className="oc-card ck-soft"><div className="ocn">Service Desk</div><div className="ocs">L1 triage and ticket routing. 54 staff. High volume, people-staffed</div><span className="oc-tag ot-slate">GDC</span></div>
+              <div className="oc-card ck-base"><div className="ocn">Service Management</div><div className="ocs">SDMs, SLAs, client reviews, CSI register</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+              <div className="oc-card ck-soft"><div className="ocn">Service Assurance</div><div className="ocs">Monitoring, alerting and major incident management. Reactive posture</div><span className="oc-tag ot-slate">GDC</span></div>
+              <div className="oc-card ck-soft"><div className="ocn">Event Management</div><div className="ocs">Alert triage, noise filtering, event correlation. Manual and tool-dependent today</div><span className="oc-tag ot-slate">GDC</span></div>
+              <div className="oc-card ck-base"><div className="ocn">Billing</div><div className="ocs">MRC reconciliation and adjustment register. Manual process</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+            </div>
+          </div>
+
+          {/* Enabling Functions */}
+          <div className="oc-layer">
+            <div className="oc-lbl">Enabling Functions</div>
+            <div className="oc-cards">
+              <div className="oc-card ck-base"><div className="ocn">Transition</div><div className="ocs">Customer onboarding. Pipeline and handover management</div><span className="oc-tag ot-navy">AU Onshore</span></div>
+              <div className="oc-card ck-soft"><div className="ocn">AI &amp; DevOps / Ethan Online</div><div className="ocs">Embryonic. Agentic AI in pilot, observability build in progress</div><span className="oc-tag ot-amber">Forming</span></div>
+              <div className="oc-card ck-risk"><div className="ocn">Observability</div><div className="ocs">Basic monitoring only. No unified stack. L3–L6 largely absent across accounts</div><span className="oc-tag ot-tint">Gap</span></div>
+            </div>
+          </div>
+
+          {/* Legend */}
+          <div className="oc-legend">
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--ink)'}}></div>AU Onshore (management)</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',border:'1px solid var(--line)'}}></div>AU Onshore (BU / ops)</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper-2)',border:'1px solid var(--line)'}}></div>GDC / forming</div>
+            <div className="oc-leg-item"><div className="oc-leg-dot" style={{background:'var(--paper)',borderLeft:'3px solid var(--grey-1)',border:'1px solid var(--line)'}}></div>Risk / gap</div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
