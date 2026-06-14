@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -384,6 +384,20 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .opp-box{margin-top:16px;border:1px solid var(--line);padding:14px 16px;background:var(--paper-2)}
 .opp-box .ok{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .opp-box p{font-size:13.5px;color:var(--ink);line-height:1.55;font-style:italic}
+.agent-disclaimer{border-left:3px solid var(--line);padding:10px 16px;margin-bottom:22px;background:var(--paper-2)}
+.agent-disclaimer p{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0}
+.agent-cards{margin-top:4px}
+.agent-card{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--line);border-top:none}
+.agent-card:first-child{border-top:1px solid var(--line)}
+.ac-left{padding:14px 16px;border-right:1px solid var(--line);background:var(--paper-2)}
+.ac-name{font-weight:700;font-size:15px;letter-spacing:-.01em}
+.ac-horizon{margin-top:6px}
+.ac-lens{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+          color:var(--muted);margin-top:8px}
+.ac-body{padding:14px 16px}
+.ac-what{font-size:13.5px;line-height:1.55;color:var(--ink)}
+.ac-serve{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+           color:var(--muted);margin-top:8px}
 
 /* ── EDIT MODE ── */
 .edit-bar{position:fixed;bottom:52px;left:0;width:var(--rail);z-index:200;display:flex;gap:8px;align-items:center;
@@ -638,12 +652,12 @@ const LAYERS = [
 ];
 
 const PORT = [
-  ["Agentic AI-powered MS","Existing MS refreshed with a variable AI/human mix. Service Desk as a Service with Maeve embedded.","CRO · MS"],
-  ["Standalone agentic services","ETHAN-hosted autonomous services sold independently — e.g. Managed AI Change Management.","CTO · MS · CRO"],
-  ["Agentic AI as a service","Agents that solve a specific customer problem. Priced on capacity and usage, not headcount.","CTO · Architecture"],
-  ["Model as a Service","Access to ETHAN-curated and managed AI models — provisioned, tuned, and governed for enterprise use. Sold on consumption or subscription.","CTO · Architecture"],
-  ["GPU as a Service","On-demand GPU compute for AI workloads. Removes the barrier of infrastructure investment for clients exploring or scaling AI.","CTO · ETHAN Cloud"],
-  ["Consulting-led entry","A paid AI assessment scoring readiness and producing a use-case roadmap. Builds the pipeline above.","CRO · Advisory"],
+  ["Agentic AI-powered MS","Existing MS refreshed with a variable AI/human mix. Service Desk as a Service with Maeve embedded."],
+  ["Standalone agentic services","ETHAN-hosted autonomous services sold independently — e.g. Managed AI Change Management."],
+  ["Agentic AI as a service","Agents that solve a specific customer problem. Priced on capacity and usage, not headcount."],
+  ["Model as a Service","Access to ETHAN-curated and managed AI models — provisioned, tuned, and governed for enterprise use. Sold on consumption or subscription."],
+  ["GPU as a Service","On-demand GPU compute for AI workloads. Removes the barrier of infrastructure investment for clients exploring or scaling AI."],
+  ["Consulting-led entry","A paid AI assessment scoring readiness and producing a use-case roadmap. Builds the pipeline above."],
 ];
 
 const LAER = [
@@ -680,7 +694,24 @@ const EXEC_LEVERS = [
   ["Lever 3 — Engineer capacity expansion","Supporting lever","Every hour AI frees converts to avoided hiring and allows for advisory work our clients love."],
 ];
 
-const AGENT_TEAMS = [{"code":"L1/L2/L3","name":"Service Operations","opportunity":"If 25\u201330% of ticket volume can be auto-resolved or auto-routed, that\u2019s recoverable engineer capacity and a measurably better day for the people who remain.","lenses":{"cost":[{"h":"now","text":"First-response drafts generated automatically \u2014 engineer reviews, not writes"},{"h":"now","text":"Identify the 20% of ticket types consuming 60% of handle time"},{"h":"near","text":"Auto-triage routes tickets to the right queue and person without manual classification"},{"h":"near","text":"Known-issue patterns resolved via runbook execution before any engineer is paged"}],"qual":[{"h":"now","text":"Consistent resolution notes on every ticket \u2014 no more blank work notes that make the next engineer start from scratch"},{"h":"near","text":"SLA breach risk flagged automatically before it becomes a miss"},{"h":"near","text":"Engineering and platform health checks automated \u2014 technical recommendations aggregated and surfaced without manual collation"},{"h":"near","text":"Runbook adherence tracked \u2014 deviations from agreed process surfaced, not discovered at audit"}],"emp":[{"h":"now","text":"Engineers stop writing first-response boilerplate \u2014 the work nobody wanted"},{"h":"near","text":"On-call burden reduced as agents handle known patterns overnight without escalation"},{"h":"near","text":"Engineers arrive at a ticket with context already assembled \u2014 not reconstructing what happened"}]},"domain":"RUN"},{"code":"SDM","name":"Client Advocacy","opportunity":"Escalation propensity scoring means the SDM acts before the client reaches breaking point. The difference between a recovery conversation and a termination notice is often just timing.","lenses":{"cost":[{"h":"now","text":"Client-facing report drafts generated from structured inputs \u2014 SDM refines, doesn\u2019t build from scratch"},{"h":"near","text":"SDM service reporting generated automatically from ServiceNow and other data sources"},{"h":"near","text":"Weekly account health digest replaces manual status chasing across teams"}],"qual":[{"h":"near","text":"Churn risk score per account \u2014 SDM knows which clients need attention before the client calls"},{"h":"near","text":"Contractual obligation coverage visible at all times \u2014 SDM demonstrates value, not just describes it"},{"h":"long","text":"Escalation propensity scoring \u2014 uses SNOW ticket trends, sentiment, and other data sets to predict which accounts are heading toward an escalation"}],"emp":[{"h":"now","text":"SDMs spend time in client relationships, not assembling slide decks"},{"h":"near","text":"Difficult client conversations are better prepared \u2014 agent surfaces context so SDM walks in informed"},{"h":"long","text":"Removes the Sunday-night anxiety of not knowing which accounts might call Monday with a problem"}]},"domain":"RUN"},{"code":"SEC","name":"Cyber \u0026 Security","opportunity":"Continuous compliance evidence is the foundation of Ethan Assurance \u2014 and frees Cyber from the treadmill of manual evidence gathering so they can focus on genuine security work.","lenses":{"cost":[{"h":"now","text":"Draft security advisory summaries and client-facing incident comms generated automatically"},{"h":"near","text":"Compliance evidence harvested continuously \u2014 no manual assembly at audit time"},{"h":"near","text":"Security alert triage filters noise before an analyst is engaged"},{"h":"near","text":"Patch compliance reporting generated automatically across the estate"}],"qual":[{"h":"near","text":"Essential Eight posture visible per client in real time"},{"h":"near","text":"Gap register maintained continuously, remediation tasks auto-created in SNOW"},{"h":"near","text":"Consistent evidence mapping to control frameworks \u2014 removes analyst interpretation variability"}],"emp":[{"h":"near","text":"Analysts stop spending audit season manually pulling screenshots and log exports"},{"h":"near","text":"Alert fatigue reduced \u2014 analysts engage with events that actually warrant their attention"}]},"domain":"RUN"},{"code":"CLD","name":"Cloud \u0026 Platforms","opportunity":"Aggregating health check recommendations across clients turns reactive support into a proactive advisory capability \u2014 a story you can tell at renewal.","lenses":{"cost":[{"h":"now","text":"Recurring platform incidents identified as automation candidates"},{"h":"near","text":"Routine platform health checks and telemetry triage handled before engineers are engaged"},{"h":"near","text":"Automated runbooks for common cloud ops \u2014 scaling events, backup verification, resource clean-up"}],"qual":[{"h":"near","text":"Technical recommendations aggregated across platform health checks \u2014 patterns identified across clients and surfaced as proactive advisory"},{"h":"near","text":"OpenTelemetry signals correlated with SNOW CIs \u2014 platform engineers get context, not just raw alerts"},{"h":"near","text":"Configuration drift detected and flagged before it causes an incident"}],"emp":[{"h":"now","text":"Platform engineers stop being paged for alerts an agent could resolve or dismiss"},{"h":"near","text":"Out-of-hours burden reduced when agents handle the overnight base load"}]},"domain":"RUN"},{"code":"BIL","name":"Billing \u0026 Commercial","opportunity":"Aged projects with unactivated MRC/NRC are silent revenue leakage. An agent that surfaces them automatically recovers money that would otherwise disappear into the project backlog.","lenses":{"cost":[{"h":"now","text":"MRC reconciliation against contracted scope automated \u2014 discrepancies surfaced before they become disputes"},{"h":"near","text":"Out-of-scope work identified from ticket and time data \u2014 consumption billing cases built automatically"},{"h":"near","text":"Monthly billing run validated against contract entitlements without manual cross-referencing"}],"qual":[{"h":"near","text":"Transition governance \u2014 aged projects where MRC or NRC has not yet activated surfaced for commercial action"},{"h":"near","text":"Billing accuracy improves when scope drift is flagged at point of delivery, not at invoice time"},{"h":"long","text":"AI Finance Manager \u2014 P\u0026L trending and predictive analytics across multiple data feeds, surface margin issues before month-end surprises"}],"emp":[{"h":"now","text":"Billing staff stop doing manual line-by-line contract reconciliation at month end"},{"h":"near","text":"Fewer billing disputes when accuracy improves upstream"}]},"domain":"RUN"},{"code":"TRN","name":"Transition Management","opportunity":"Poor transition is the most common cause of early client dissatisfaction and inflated cost in the first 90 days. Explicit PS-to-MS scope alignment also fixes the root cause of most day-2 support failures.","lenses":{"cost":[{"h":"now","text":"Transition onboarding checklists generated automatically \u2014 PS scope and MS day-2 deliverables explicitly aligned before go-live"},{"h":"near","text":"Knowledge transfer from PS to MS structured and captured automatically via PIR outputs"},{"h":"near","text":"Transition milestone tracking and status reporting automated in SNOW"}],"qual":[{"h":"near","text":"Handover pack completeness checked against standard \u2014 missing items flagged before go-live"},{"h":"near","text":"Transition governance \u2014 monitors pipeline for aged projects where MRC/NRC should have activated, escalates to commercial and management"},{"h":"near","text":"Transition risks surfaced from similar past onboardings"}],"emp":[{"h":"now","text":"Clear structured handovers mean the MS team starts with confidence \u2014 not anxiety"},{"h":"near","text":"Explicit PS-to-MS scope alignment removes the blame cycle when day-2 support is unclear"},{"h":"near","text":"Transition managers stop inheriting undocumented environments"}]},"domain":"RUN"},{"code":"MGT","name":"Management \u0026 BU Lead","opportunity":"Management time is the most expensive time in the division. Every hour assembling data is an hour not spent on the decisions it should inform \u2014 or the people conversations that keep good staff.","lenses":{"cost":[{"h":"now","text":"Executive summary and narrative drafted from structured data inputs \u2014 BU Lead refines"},{"h":"near","text":"Labour cost against MRC tracked continuously \u2014 over-delivery visible in real time"},{"h":"near","text":"Portfolio health dashboard replaces multiple disconnected status updates"},{"h":"long","text":"AI Finance Manager \u2014 aggregates multiple data feeds, P\u0026L trending and predictive analytics surface issues before month end"}],"qual":[{"h":"near","text":"RAG status across client portfolio with trend direction \u2014 a trajectory, not a snapshot"},{"h":"near","text":"Transition governance \u2014 aged projects and unactivated MRC/NRC surfaced to BU Lead for action"},{"h":"near","text":"Project MORE KPIs tracked continuously \u2014 GP%, MRR growth, retention rate"},{"h":"long","text":"At-risk accounts with contributing factors and predictive churn signal"}],"emp":[{"h":"now","text":"BU Leads spend time on decisions and people \u2014 not assembling data that should already exist"},{"h":"near","text":"Performance conversations based on facts, not anecdote"},{"h":"near","text":"Workload distribution visible \u2014 burnout risk spotted before it becomes a resignation"}]},"domain":"RUN"},{"code":"PMO","name":"PMO","opportunity":"The PMO\u2019s value is governance and visibility \u2014 but most PMO time goes on assembly, not analysis. The transition governance lens makes the PMO the early warning system for revenue not yet activated.","lenses":{"cost":[{"h":"now","text":"Project status report drafted from Kantata data \u2014 PM reviews, doesn\u2019t build"},{"h":"near","text":"Budget burn rate and forecast-to-complete calculated automatically from Kantata actuals"},{"h":"near","text":"Post-implementation reviews assembled in 30 minutes from actuals, not 2 days"},{"h":"near","text":"Resource utilisation forecast \u2014 8-week rolling view"}],"qual":[{"h":"near","text":"Scope drift detected in-flight \u2014 agent flags divergence from SOW before it\u2019s absorbed silently"},{"h":"near","text":"Transition governance \u2014 aged projects where NRC/MRC should have activated, escalated to commercial before revenue slips"},{"h":"near","text":"Change request prompt generated automatically when out-of-scope work is identified"}],"emp":[{"h":"now","text":"PMs stop building status reports from disconnected spreadsheets"},{"h":"near","text":"Scope conversations happen earlier \u2014 PMs aren\u2019t raising creep after months of silent absorption"},{"h":"near","text":"Project closure is clean \u2014 PIR done properly rather than never done at all"}]},"domain":"DELIVER"},{"code":"ENG","name":"Engineering \u0026 Technical Delivery","opportunity":"","lenses":{"cost":[{"h":"now","text":"As-built documentation generated from implementation notes and change records \u2014 engineers implement, agent documents"},{"h":"near","text":"HLD draft components generated from reference architectures \u2014 engineers refine, not start from blank"},{"h":"near","text":"Bill of materials generated from solution design \u2014 no manual catalogue lookup"},{"h":"near","text":"SOW estimates calibrated against comparable past projects"}],"qual":[{"h":"now","text":"PS scope and MS day-2 deliverables explicitly aligned in as-built outputs \u2014 MS team knows exactly what they\u2019re supporting from day one"},{"h":"near","text":"Design decisions logged consistently \u2014 what was considered, what was chosen, and why"},{"h":"near","text":"Technical risks surfaced during design, not discovered mid-delivery"},{"h":"near","text":"Reference architecture patterns applied consistently across engineers"}],"emp":[{"h":"now","text":"Senior engineers stop writing as-built docs for work already completed \u2014 agent does it from their notes"},{"h":"near","text":"Engineers work on design decisions that need them, not BOM lookups and boilerplate"},{"h":"near","text":"Cleaner handovers mean less blame when MS inherits a project"}]},"domain":"DELIVER"},{"code":"ADV","name":"Consulting \u0026 Advisory","opportunity":"","lenses":{"cost":[{"h":"now","text":"Advisory report and recommendation drafts generated from structured inputs"},{"h":"near","text":"Client maturity assessments partially automated \u2014 data gathering from existing sources, human interpretation retained"},{"h":"near","text":"Proposal content library maintained and surfaced automatically for relevant engagements"}],"qual":[{"h":"near","text":"AI readiness scoring produces consistent, comparable outputs across clients"},{"h":"near","text":"Recommendations linked to reference implementations and past outcomes"},{"h":"long","text":"Advisory insights aggregated across the client base \u2014 patterns surfaced as thought leadership"}],"emp":[{"h":"now","text":"Consultants spend time on insight and recommendation, not report assembly"},{"h":"near","text":"Consistent methodology applied even when different consultants run similar engagements"}]},"domain":"DELIVER"},{"code":"ARC","name":"Solution Architecture","opportunity":"","lenses":{"cost":[{"h":"now","text":"Reference architecture components surfaced automatically for relevant solution contexts"},{"h":"near","text":"Bill of materials and effort estimates generated from solution design inputs"},{"h":"near","text":"HLD draft sections generated from reference patterns \u2014 architect refines, not starts blank"}],"qual":[{"h":"near","text":"Design consistency enforced \u2014 deviations from reference patterns flagged for deliberate decision, not oversight"},{"h":"near","text":"Technical risk register populated from design decisions automatically"},{"h":"long","text":"Cross-client architecture patterns identified \u2014 reusable components catalogued and maintained"}],"emp":[{"h":"now","text":"Architects stop reconstructing known patterns from memory and prior documents"},{"h":"near","text":"Design reviews faster when context is assembled before the meeting, not during it"}]},"domain":"DELIVER"},{"code":"BID","name":"Pre-Sales \u0026 Bid","opportunity":"","lenses":{"cost":[{"h":"now","text":"Bid response sections drafted from structured inputs \u2014 BD reviews and refines"},{"h":"near","text":"Proposal library maintained and surfaced for relevant opportunities"},{"h":"near","text":"Competitor and market context assembled automatically for major bids"}],"qual":[{"h":"near","text":"Win/loss patterns analysed \u2014 common objections and winning themes surfaced"},{"h":"near","text":"Pricing consistency checked against past comparable deals before submission"},{"h":"long","text":"Bid quality scoring against RFP requirements \u2014 gaps flagged before submission"}],"emp":[{"h":"now","text":"Bid teams stop rebuilding boilerplate from scratch for every response"},{"h":"near","text":"More time on differentiation and client-specific content, less on template assembly"}]},"domain":"LEAD"}];
+const AGENTS = [
+  {name:"Maeve",what:"Autonomous first-response and auto-resolution at the Service Desk. Handles password resets, known-issue runbooks, and ticket classification without engineer involvement.",serves:"Service Desk · L1/L2",h:"now",lens:"cost"},
+  {name:"Echo",what:"Assembles full ticket context before an engineer opens it — prior incidents, config items, recent changes, and relevant runbooks surfaced automatically.",serves:"L1/L2/L3 Engineers",h:"now",lens:"emp"},
+  {name:"Scribe",what:"Generates as-built documentation from implementation notes and change records. Engineers implement; Scribe documents. Produces structured handover packs aligned to MS day-2 scope.",serves:"Engineering · Transition",h:"now",lens:"emp"},
+  {name:"Archer",what:"Drafts bid response sections from structured inputs — capability statements, case studies, and pricing rationale. BD team refines and approves; Archer removes the blank-page problem.",serves:"Pre-Sales · Bid",h:"now",lens:"cost"},
+  {name:"Sentinel",what:"Monitors ticket queues and XLA/SLA timers continuously. Flags breach risk before it becomes a miss and recommends escalation paths based on ticket profile and engineer availability.",serves:"Service Desk · SDMs",h:"near",lens:"qual"},
+  {name:"Clarity",what:"Generates weekly account health digests and client-facing service reports directly from ServiceNow and other data sources. SDM reviews, edits, and sends — not builds.",serves:"SDMs · BU Leads",h:"near",lens:"cost"},
+  {name:"Aegis",what:"Harvests compliance evidence continuously across the estate. Maintains gap registers, maps to Essential Eight and other frameworks, and raises SNOW remediation tasks automatically.",serves:"Cyber & Security",h:"near",lens:"qual"},
+  {name:"Drift",what:"Detects configuration drift and out-of-scope scope creep in-flight. Flags divergence from SOW and agreed baselines before it is silently absorbed. Prompts change request when warranted.",serves:"Cloud & Platforms · PMO",h:"near",lens:"qual"},
+  {name:"Runway",what:"Governs transition pipeline. Monitors aged projects where MRC/NRC should have activated, validates handover pack completeness against standard, and escalates to commercial before revenue slips.",serves:"Transition · PMO · BU Leads",h:"near",lens:"qual"},
+  {name:"Ledger",what:"Reconciles monthly billing against contracted scope. Identifies out-of-scope work from ticket and time data, builds consumption cases, and validates the billing run before it leaves the business.",serves:"Billing & Commercial",h:"near",lens:"cost"},
+  {name:"Pulse",what:"Maintains a live portfolio health view across all MS accounts — RAG status, XLA trend, labour-to-MRC ratio, and GP% — replacing disconnected status updates with a single continuous signal.",serves:"BU Leads · Management",h:"near",lens:"qual"},
+  {name:"Forge",what:"Calibrates SOW effort estimates and bills of materials against comparable past projects. Surfaces reference architecture patterns and flags design decisions that deviate from proven approaches.",serves:"Solution Architecture · Engineering",h:"near",lens:"cost"},
+  {name:"Pathfinder",what:"Runs structured AI readiness assessments for clients — scoring maturity, surfacing use-case opportunities, and producing a prioritised roadmap. The paid entry point into the portfolio.",serves:"Consulting & Advisory · Pre-Sales",h:"near",lens:"qual"},
+  {name:"Scout",what:"Scores escalation and churn propensity per account using SNOW ticket trends, XLA data, and engagement signals. SDMs act before the client calls, not after.",serves:"SDMs · BU Leads",h:"long",lens:"qual"},
+  {name:"Mosaic",what:"Aggregates win/loss patterns, common objections, and pricing outcomes across bids. Surfaces what is working and what is not so the next proposal is built on evidence, not instinct.",serves:"Pre-Sales · Bid",h:"long",lens:"qual"},
+  {name:"Horizon",what:"AI Finance Manager — aggregates P&L data, labour cost, MRC, and project actuals across feeds. Surfaces margin issues and at-risk accounts before month-end rather than at it.",serves:"BU Leads · Finance",h:"long",lens:"cost"},
+];
 
 /* ═══════════════════════════════════════════════════════
    PRIMITIVES
@@ -801,56 +832,39 @@ function LayerStack(){
 ═══════════════════════════════════════════════════════ */
 function AgentRoadmap(){
   const [horizon,setHorizon]=useState("all");
-  const [domain,setDomain]=useState("RUN");
-  const [teamIdx,setTeamIdx]=useState(0);
-  const domainTeams=AGENT_TEAMS.filter(t=>t.domain===domain);
-  const team=domainTeams[Math.min(teamIdx,domainTeams.length-1)];
-  const LENS_LABELS={"cost":"↓ Cost Out","qual":"↑ Quality","emp":"♦ Employee Satisfaction"};
+  const LENS_LABELS={"cost":"↓ Cost","qual":"↑ Quality","emp":"♦ People"};
+  const visible=AGENTS.filter(a=>horizon==="all"||a.h===horizon);
   return (
     <div className="view">
-      <SecHead num="06" kicker="By Team & Sub-Team" title="AI Agent Roadmap"/>
-      <p className="lede">We need to develop agents where they make the most impact across every team in Services.</p>
+      <SecHead num="06" kicker="Proposed Agents" title="AI Agent Ideas"/>
+      <p className="lede">Sixteen agents drawn from what we know about our operations today.</p>
+      <div className="agent-disclaimer">
+        <p>These are potential agents — illustrative ideas drawn from what we know about our operations today. They are not a committed roadmap. Priorities will be set through the Ideas &amp; Initiatives process in section 09.</p>
+      </div>
       <div className="agent-filter">
         <span className="agent-filter-label">Horizon</span>
-        {[["all","All"],["now","Now — Basic Agents"],["near","Near Term — Platform + Integrations"],["long","Long Term — Data Science / Lakes"]].map(([v,l])=>(
+        {[["all","All"],["now","Now"],["near","Near Term"],["long","Long Term"]].map(([v,l])=>(
           <button key={v} className={`fchip h-${v}${horizon===v?" on":""}`} onClick={()=>setHorizon(v)}>{l}</button>
         ))}
       </div>
-      <div className="agent-filter" style={{marginTop:12}}>
-        <span className="agent-filter-label">Domain</span>
-        {[["RUN","RUN — Managed Services"],["DELIVER","DELIVER — Professional Services"],["LEAD","LEAD — Pre-Sales"]].map(([v,l])=>(
-          <button key={v} className={`fchip${domain===v?" on":""}`} onClick={()=>{setDomain(v);setTeamIdx(0);}}>{l}</button>
-        ))}
-      </div>
-      <div className="team-tabs" style={{marginTop:22}}>
-        {domainTeams.map((t,k)=>(
-          <button key={k} className={"team-tab"+(k===Math.min(teamIdx,domainTeams.length-1)?" on":"")} onClick={()=>setTeamIdx(k)}>
-            <div className="tt-code">{t.code}</div>
-            <div className="tt-name">{t.name}</div>
-          </button>
-        ))}
-      </div>
-      {team && <div className="team-panel">
-        {Object.entries(team.lenses).map(([lens,items])=>{
-          const visible=items.filter(it=>horizon==="all"||it.h===horizon);
-          if(!visible.length) return null;
-          return (
-            <div className="lens-section" key={lens}>
-              <div className={`lens-head lh-${lens}`}>{LENS_LABELS[lens]}</div>
-              {visible.map((it,k)=>(
-                <div key={k} className="agent-item">
-                  <span className={`h-badge hb-${it.h}`}>{it.h==="now"?"Now":it.h==="near"?"Near":"Long"}</span>
-                  <span>{it.text}</span>
-                </div>
-              ))}
+      <div className="agent-cards" style={{marginTop:18}}>
+        {visible.map((a,k)=>(
+          <div key={k} className="agent-card">
+            <div className="ac-left">
+              <div className="ac-name">{a.name}</div>
+              <div className="ac-horizon" style={{marginTop:8}}><span className={`h-badge hb-${a.h}`}>{a.h==="now"?"Now":a.h==="near"?"Near":"Long"}</span></div>
+              <div className="ac-lens">{LENS_LABELS[a.lens]}</div>
             </div>
-          );
-        })}
-        {team.opportunity && <div className="opp-box"><div className="ok">The opportunity</div><p>{team.opportunity}</p></div>}
-        <div style={{marginTop:16}}>
-          <button className="ideas-cta" onClick={()=>navTo('team')}>Have an idea from this? Capture it &#8594;</button>
-        </div>
-      </div>}
+            <div className="ac-body">
+              <div className="ac-what">{a.what}</div>
+              <div className="ac-serve">{a.serves}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{marginTop:20}}>
+        <button className="ideas-cta" onClick={()=>navTo('team')}>Have an idea from this? Capture it &#8594;</button>
+      </div>
     </div>
   );
 }
@@ -1129,7 +1143,7 @@ function Shifts(){
         <h2 className="sub" style={{marginTop:8}}>{pillar.title}</h2>
         {p===0 && <div style={{marginTop:16}}><DeliveryShift/><Callout>AI displacement is the engine. Service grade choice is the commercial opportunity it unlocks. <b>Customers get real options; ETHAN gets a structurally lower cost base underneath every tier.</b></Callout></div>}
         {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>The flywheel only turns if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
-        {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with owners, prices, and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th><th>Owner</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td style={{fontFamily:"var(--mono)",fontSize:12}}>{r[2]}</td></tr>)}</tbody></table></div>}
+        {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with prices and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody></table></div>}
         {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout></div>}
         {p===4 && <div style={{marginTop:16}}><LayerStack/></div>}
         {p===5 && <div style={{marginTop:16}}><p className="body">The way we sell and grow has to change as much as delivery. Three shifts matter.</p><p className="body"><b>Ethan Online becomes the storefront.</b> Where a customer watches Maeve resolve a request live — the proof a slide deck can never give. Every agentic workflow should have an Ethan Online surface.</p><p className="body"><b>Lead with assessment.</b> A packaged, fixed-price assessment scores readiness, surfaces the highest-value use cases, and produces the roadmap that becomes the PoC conversation. It turns ambiguous interest into structured pipeline.</p><p className="body"><b>Drive adoption actively.</b> Adoption is not automatic. If the customer does not adopt, resolution rates stay low, there is no saving to share and no expansion to grow. Adoption is Client Success's core job — and the gap we need to close.</p></div>}
