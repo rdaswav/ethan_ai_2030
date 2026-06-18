@@ -392,12 +392,10 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .ac-left{padding:14px 16px;border-right:1px solid var(--line);background:var(--paper-2)}
 .ac-name{font-weight:700;font-size:15px;letter-spacing:-.01em}
 .ac-horizon{margin-top:6px}
-.ac-lens{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-          color:var(--muted);margin-top:8px}
+.ac-lens{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 .ac-body{padding:14px 16px}
 .ac-what{font-size:13.5px;line-height:1.55;color:var(--ink)}
-.ac-serve{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-           color:var(--muted);margin-top:8px}
+.ac-serve{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
 /* ── EDIT MODE ── */
 .edit-bar{position:fixed;bottom:52px;left:0;width:var(--rail);z-index:200;display:flex;gap:8px;align-items:center;
@@ -670,7 +668,7 @@ const LAER = [
 
 const ARC = [
   {when:"Now",dims:{Delivery:"Labour-led. Maeve in PoC and early production.",Economics:"GP ~27%. Margin fixed on a labour base.",Portfolio:"MS sold by seat and schedule.",People:"Traditional L1–L4 structure. We're working out what the new roles look like — that's in progress.",Platform:"Variable tooling maturity across accounts.",Accounts:"All accounts served the same way. No segmentation by volume, complexity, or AI-readiness."}},
-  {when:"18 months",dims:{Delivery:"Three tracks running in parallel — overt AI pilot with Tier 1 clients; silent back-office agents (billing, transition, reporting) rolled across all accounts; high-volume lower-complexity accounts moved to AI-primary Service Desk.",Economics:"5–8% cost-to-deliver reduction on pilots. Baseline proven.",Portfolio:"Assessment and packaged PoC live as paid products.",People:"First Workflow Specialist(s) in role. OCM piloting.",Platform:"Readiness scored portfolio-wide. Gap-closure funded.",Accounts:"Accounts segmented by volume, complexity, and AI-readiness. Deployment approach tailored accordingly."}},
+  {when:"18 months",dims:{Delivery:"Three tracks in parallel — overt AI pilot with Tier 1 clients; silent back-office agents rolled across all accounts; high-volume accounts moved to AI-primary Service Desk.",Economics:"5–8% cost-to-deliver reduction on pilots. Baseline proven.",Portfolio:"Assessment and packaged PoC live as paid products.",People:"First Workflow Specialist(s) in role. OCM piloting.",Platform:"Readiness scored portfolio-wide. Gap-closure funded.",Accounts:"Accounts segmented by volume, complexity, and AI-readiness. Deployment approach tailored accordingly."}},
   {when:"3 years",dims:{Delivery:"Majority of routine volume AI-resolved on mature accounts.",Economics:"GP high-30s on AI-mature accounts. Flywheel turning.",Portfolio:"Embedded and standalone services generating new-line revenue.",People:"Redesigned roles across the team. AI capabilities established.",Platform:"L1–L6 target architecture live on key accounts.",Accounts:"Segmentation model mature. High-volume accounts AI-primary. Strategic accounts co-designed with clients."}},
   {when:"5 years",dims:{Delivery:"Platform-led by default. Human effort is the exception layer.",Economics:"Margin structurally higher and compounding. Growth decoupled from headcount.",Portfolio:"A priced product portfolio with prices and roadmaps.",People:"A platform-operations workforce. Capability is the constraint.",Platform:"Tooling is a strategic asset and a differentiator.",Accounts:"Account model fully tiered. AI depth matches account profile. Human resource concentrated where it creates most value."}},
 ];
@@ -712,7 +710,7 @@ const AGENTS = [
   {name:"Scout",what:"Scores escalation and churn propensity per account using SNOW ticket trends, XLA data, and engagement signals. SDMs act before the client calls, not after.",serves:"SDMs · BU Leads",h:"long",lens:"qual"},
   {name:"Mosaic",what:"Aggregates win/loss patterns, common objections, and pricing outcomes across bids. Surfaces what is working and what is not so the next proposal is built on evidence, not instinct.",serves:"Pre-Sales · Bid",h:"long",lens:"qual"},
   {name:"Horizon",what:"AI Finance Manager — aggregates P&L data, labour cost, MRC, and project actuals across feeds. Surfaces margin issues and at-risk accounts before month-end rather than at it.",serves:"BU Leads · Finance",h:"long",lens:"cost"},
-];
+]
 
 /* ═══════════════════════════════════════════════════════
    PRIMITIVES
@@ -744,7 +742,7 @@ function DeliveryShift(){
         <div className="lever">
           <div className="lname">The opportunity</div>
           <h3>Service grade choice</h3>
-          <p>When everything is human-staffed, every client gets broadly the same service. AI changes that. We can offer genuine tiers — full AI, hybrid, or full human for clients who need it for premium or compliance reasons — at price points that reflect the actual cost of delivery.</p>
+          <p>AI creates a genuine tiering of service that didn't exist when everything was human-staffed. Customers can choose Full AI, a Hybrid mix, or Full Human delivery — at price points that reflect the cost structure underneath.</p>
         </div>
       </div>
       <div className="summ">The goal is not to extract margin silently. It is to use AI to build a better, more flexible service — and to price that flexibility transparently. Customers get choice; ETHAN gets a structurally lower cost base underneath every tier.</div>
@@ -833,27 +831,30 @@ function LayerStack(){
 ═══════════════════════════════════════════════════════ */
 function AgentRoadmap(){
   const [horizon,setHorizon]=useState("all");
+  const HORIZON_LABELS={"now":"Now","near":"Near","long":"Long"};
   const LENS_LABELS={"cost":"↓ Cost","qual":"↑ Quality","emp":"♦ People"};
-  const visible=AGENTS.filter(a=>horizon==="all"||a.h===horizon);
+  const visible=horizon==="all"?AGENTS:AGENTS.filter(a=>a.h===horizon);
   return (
     <div className="view">
-      <SecHead num="06" kicker="Proposed Agents" title="AI Agent Ideas"/>
-      <p className="lede">Sixteen agents drawn from what we know about our operations today.</p>
+      <SecHead num="06" kicker="Named Agents" title="The Agent Portfolio"/>
+      <p className="lede">16 named agents across the delivery, commercial, and operational stack. Each has a defined purpose, a target audience, and a deployment horizon.</p>
       <div className="agent-disclaimer">
-        <p>These are potential agents — illustrative ideas drawn from what we know about our operations today. They are not a committed roadmap. Priorities will be set through the Ideas &amp; Initiatives process in section 09.</p>
+        <p>These are internal working names used to make the roadmap tangible and discussable — not product or brand names. Deployment horizons are indicative. Agents marked <b>Now</b> are in active development or PoC; <b>Near</b> targets 6–18 months subject to platform readiness; <b>Long</b> requires data maturity we are building toward.</p>
       </div>
       <div className="agent-filter">
         <span className="agent-filter-label">Horizon</span>
-        {[["all","All"],["now","Now"],["near","Near Term"],["long","Long Term"]].map(([v,l])=>(
+        {[["all","All"],["now","Now"],["near","Near"],["long","Long"]].map(([v,l])=>(
           <button key={v} className={`fchip h-${v}${horizon===v?" on":""}`} onClick={()=>setHorizon(v)}>{l}</button>
         ))}
       </div>
-      <div className="agent-cards" style={{marginTop:18}}>
+      <div className="agent-cards">
         {visible.map((a,k)=>(
           <div key={k} className="agent-card">
             <div className="ac-left">
               <div className="ac-name">{a.name}</div>
-              <div className="ac-horizon" style={{marginTop:8}}><span className={`h-badge hb-${a.h}`}>{a.h==="now"?"Now":a.h==="near"?"Near":"Long"}</span></div>
+              <div className="ac-horizon">
+                <span className={`h-badge hb-${a.h}`}>{HORIZON_LABELS[a.h]}</span>
+              </div>
               <div className="ac-lens">{LENS_LABELS[a.lens]}</div>
             </div>
             <div className="ac-body">
@@ -1145,9 +1146,9 @@ function Shifts(){
         {p===0 && <div style={{marginTop:16}}><DeliveryShift/><Callout>AI displacement is the engine. Service grade choice is the commercial opportunity it unlocks. <b>Customers get real options; ETHAN gets a structurally lower cost base underneath every tier.</b></Callout></div>}
         {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>The flywheel only turns if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
         {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with prices and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody></table></div>}
-        {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout><div className="note" style={{marginTop:16}}>Different accounts will see different levels of AI. In high-volume accounts, Maeve carries most of the load — your job shifts to the hard stuff, not the routine. Where that changes team shape, we'll work through it with you.</div></div>}
+        {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout><p className="body" style={{marginTop:16}}>Account segmentation also changes what different people in the team do day-to-day. Service Desk engineers on high-volume AI-primary accounts will operate very differently from those managing complex strategic accounts where human judgement remains central. Role design needs to reflect that split — not treat the team as a single uniform group.</p></div>}
         {p===4 && <div style={{marginTop:16}}><LayerStack/></div>}
-        {p===5 && <div style={{marginTop:16}}><p className="body">The way we sell has to change as much as the way we deliver. Clients are not buying technology — they are buying confidence that AI will work in their environment without creating new risk. That is a consulting conversation, not a product pitch.</p><p className="body"><b>Sell the transformation first.</b> Gartner and KPMG data is consistent: 93% of executives want providers who combine technology and process expertise — not one or the other. We lead with business impact, not features. The AI story only lands when it is anchored to a client's specific cost, quality, or risk problem.</p><p className="body"><b>Lead with assessment.</b> A packaged, fixed-price assessment scores AI readiness, surfaces the highest-value use cases, and produces the roadmap that becomes the PoC conversation. It turns ambiguous interest into structured pipeline — and it positions ETHAN as the expert, not a vendor responding to an RFP.</p><p className="body"><b>Drive adoption actively.</b> Adoption is not automatic. If the customer does not adopt, resolution rates stay low, there is no saving to share and no expansion to grow. Adoption is Client Success's core job — and the gap we need to close.</p></div>}
+        {p===5 && <div style={{marginTop:16}}><p className="body">The way we sell and grow has to change as much as delivery. Three shifts matter.</p><p className="body"><b>Lead with consulting.</b> A packaged, fixed-price AI readiness assessment scores maturity, surfaces the highest-value use cases, and produces the roadmap that becomes the PoC conversation. Consulting-led entry builds the pipeline — and positions ETHAN as the operator that understands AI in production, not just sells it.</p><p className="body"><b>Sell the platform, not the headcount.</b> Growth comes from landing new workloads and expanding AI depth on existing accounts — not adding bodies. The portfolio of agentic services is what scales revenue without scaling cost.</p><p className="body"><b>Drive adoption actively.</b> Adoption is not automatic. If the customer does not adopt, resolution rates stay low, there is no saving to share and no expansion to grow. Adoption is Client Success's core job — and the gap we need to close.</p></div>}
       </div>
     </div>
   );
@@ -1186,7 +1187,7 @@ function Exec(){
       <SecHead num="App" kicker="Subordinate to the strategy" title={"The Execution\nPlan"}/>
       <div className="note">Phase 0–2 below is the Now → 18 months row of the Arc made operational — the same journey at a closer zoom.</div>
       <p className="lede">The near-term layer beneath the strategy</p>
-      <table className="dtable"><thead><tr><th>Lever</th><th>Priority</th><th>Primary dependency</th></tr></thead>
+      <table className="dtable" style={{marginTop:20}}><thead><tr><th>Lever</th><th>Priority</th><th>Primary dependency</th></tr></thead>
       <tbody>{EXEC_LEVERS.map((r,k)=><tr key={k}><td>{r[0]}</td><td style={{fontFamily:"var(--mono)",fontWeight:700}}>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table>
       <h2 className="sub">Phasing</h2>
       <div className="phases">
