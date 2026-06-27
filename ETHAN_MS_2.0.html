@@ -7,6 +7,7 @@
 <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/PptxGenJS@3.12.0/dist/pptxgen.bundle.js"></script>
 <style>
 :root{
   --ink:#1A1A1A;--black:#111;--paper:#fff;--paper-2:#F5F5F5;--paper-3:#EDEDED;
@@ -1245,6 +1246,192 @@ function RoadAhead(){
 }
 
 /* ═══════════════════════════════════════════════════════
+   PROPOSAL BUILDER
+═══════════════════════════════════════════════════════ */
+const EXPORT_SECTIONS = [
+  {id:"moment",label:"The Moment — Market Signals"},
+  {id:"dest",label:"The Destination — Today vs 2030"},
+  {id:"agents",label:"AI Agent Portfolio"},
+  {id:"margin",label:"Margin Trajectory"},
+  {id:"arc",label:"Five-Year Arc"},
+  {id:"levers",label:"Execution Levers"},
+  {id:"layers",label:"L1–L6 Platform Stack"},
+];
+
+function buildPptx(clientName, selected){
+  const pptx = new PptxGenJS();
+  pptx.layout = "LAYOUT_WIDE";
+  const BG = "1A1A1A";
+  const WHITE = "FFFFFF";
+  const GREY = "8C8C8C";
+  const addTitle = (slide,title,sub) => {
+    slide.addText(title,{x:0.6,y:0.4,w:8,fontSize:28,fontFace:"Arial Black",color:WHITE,bold:true});
+    if(sub) slide.addText(sub,{x:0.6,y:1.1,w:8,fontSize:12,fontFace:"Arial",color:GREY});
+  };
+
+  // Cover
+  const cover = pptx.addSlide();
+  cover.background = {color:BG};
+  cover.addText("MANAGED\nSERVICES 2.0",{x:0.6,y:1.2,w:8,fontSize:44,fontFace:"Arial Black",color:WHITE,bold:true,lineSpacingMultiple:0.9});
+  cover.addText(clientName ? "Prepared for "+clientName : "ETHAN Managed Services",{x:0.6,y:3.4,w:8,fontSize:16,fontFace:"Arial",color:GREY});
+  cover.addText("Autonomous. Outcome-driven. Platform-built.",{x:0.6,y:4.2,w:8,fontSize:12,fontFace:"Arial",color:GREY,italic:true});
+
+  if(selected.moment){
+    const s = pptx.addSlide();
+    s.background = {color:BG};
+    addTitle(s,"The Moment We Are In","Three forces reshaping managed services");
+    const rows = SIGNALS.map(sig=>[
+      {text:sig.pillar,options:{fontSize:9,fontFace:"Arial",color:GREY,bold:true}},
+      {text:sig.n,options:{fontSize:22,fontFace:"Arial Black",color:WHITE,bold:true}},
+      {text:sig.t,options:{fontSize:10,fontFace:"Arial",color:"CCCCCC"}},
+    ]);
+    rows.forEach((r,k)=>{
+      const yOff = 1.8 + k*1.3;
+      s.addText(r[0].text,{x:0.6,y:yOff,w:1.2,fontSize:9,fontFace:"Arial",color:GREY,bold:true});
+      s.addText(r[1].text,{x:1.9,y:yOff-0.1,w:0.8,fontSize:22,fontFace:"Arial Black",color:WHITE,bold:true});
+      s.addText(r[2].text,{x:2.8,y:yOff,w:9,fontSize:10,fontFace:"Arial",color:"CCCCCC"});
+    });
+  }
+
+  if(selected.dest){
+    DEST_ROWS.forEach(r=>{
+      const s = pptx.addSlide();
+      s.background = {color:BG};
+      addTitle(s,r.dim);
+      s.addText("TODAY",{x:0.6,y:1.6,w:2,fontSize:9,fontFace:"Arial",color:GREY,bold:true});
+      s.addText(r.today,{x:0.6,y:2.0,w:5.5,fontSize:13,fontFace:"Arial",color:"AAAAAA"});
+      s.addText("BY 2030",{x:0.6,y:3.0,w:2,fontSize:9,fontFace:"Arial",color:GREY,bold:true});
+      s.addText(r.future,{x:0.6,y:3.4,w:5.5,fontSize:14,fontFace:"Arial",color:WHITE,bold:true});
+      if(r.detail) s.addText(r.detail,{x:0.6,y:4.3,w:10,fontSize:11,fontFace:"Arial",color:"999999",italic:true});
+    });
+  }
+
+  if(selected.agents){
+    const perSlide = 6;
+    for(let start=0;start<AGENTS.length;start+=perSlide){
+      const batch = AGENTS.slice(start,start+perSlide);
+      const s = pptx.addSlide();
+      s.background = {color:BG};
+      addTitle(s,"AI Agent Portfolio",start===0?"We have the platform. FY27 is the ROI year.":null);
+      const tblRows = [
+        [{text:"Agent",options:{fontSize:9,bold:true,color:WHITE,fill:"333333"}},{text:"What it does",options:{fontSize:9,bold:true,color:WHITE,fill:"333333"}},{text:"Serves",options:{fontSize:9,bold:true,color:WHITE,fill:"333333"}},{text:"Horizon",options:{fontSize:9,bold:true,color:WHITE,fill:"333333"}}]
+      ];
+      batch.forEach(a=>{
+        tblRows.push([
+          {text:a.name,options:{fontSize:9,color:WHITE,bold:true}},
+          {text:a.what,options:{fontSize:8.5,color:"CCCCCC"}},
+          {text:a.serves,options:{fontSize:8,color:GREY}},
+          {text:a.h==="now"?"Now":a.h==="near"?"Near":"Long",options:{fontSize:8,color:GREY}},
+        ]);
+      });
+      s.addTable(tblRows,{x:0.6,y:start===0?1.6:0.8,w:12,fontSize:9,fontFace:"Arial",border:{type:"solid",pt:0.5,color:"444444"},color:WHITE,rowH:0.5});
+    }
+  }
+
+  if(selected.margin){
+    const s = pptx.addSlide();
+    s.background = {color:BG};
+    addTitle(s,"Margin Trajectory","As AI takes volume, cost falls faster than revenue");
+    const tblRows = [
+      [{text:"",options:{bold:true,fill:"333333",color:WHITE}},{text:"Revenue",options:{bold:true,fill:"333333",color:WHITE}},{text:"Cost",options:{bold:true,fill:"333333",color:WHITE}},{text:"GP %",options:{bold:true,fill:"333333",color:WHITE}}]
+    ];
+    TRAJ.forEach(t=>{
+      tblRows.push([
+        {text:t.when,options:{bold:true,color:WHITE}},
+        {text:String(t.rev),options:{color:"CCCCCC"}},
+        {text:String(t.cost),options:{color:"CCCCCC"}},
+        {text:t.gp+"%",options:{color:WHITE,bold:true}},
+      ]);
+    });
+    s.addTable(tblRows,{x:0.6,y:1.8,w:8,fontSize:12,fontFace:"Arial",border:{type:"solid",pt:0.5,color:"444444"},color:WHITE,rowH:0.55});
+    TRAJ.forEach((t,k)=>{
+      s.addText(t.cap,{x:0.6,y:3.6+k*0.7,w:10,fontSize:10,fontFace:"Arial",color:"999999"});
+    });
+  }
+
+  if(selected.arc){
+    ARC.forEach(a=>{
+      const s = pptx.addSlide();
+      s.background = {color:BG};
+      addTitle(s,"Arc — "+a.when);
+      const dims = Object.entries(a.dims);
+      dims.forEach(([k,v],idx)=>{
+        const yOff = 1.6 + idx*0.55;
+        s.addText(k,{x:0.6,y:yOff,w:1.8,fontSize:9,fontFace:"Arial",color:GREY,bold:true});
+        s.addText(v,{x:2.5,y:yOff,w:9.5,fontSize:9.5,fontFace:"Arial",color:"CCCCCC"});
+      });
+    });
+  }
+
+  if(selected.levers){
+    const s = pptx.addSlide();
+    s.background = {color:BG};
+    addTitle(s,"Execution Levers");
+    const tblRows = [
+      [{text:"Lever",options:{bold:true,fill:"333333",color:WHITE}},{text:"Priority",options:{bold:true,fill:"333333",color:WHITE}},{text:"Dependency",options:{bold:true,fill:"333333",color:WHITE}}]
+    ];
+    EXEC_LEVERS.forEach(r=>{
+      tblRows.push([
+        {text:r[0],options:{color:WHITE,bold:true}},
+        {text:r[1],options:{color:GREY}},
+        {text:r[2],options:{color:"CCCCCC"}},
+      ]);
+    });
+    s.addTable(tblRows,{x:0.6,y:1.6,w:12,fontSize:10,fontFace:"Arial",border:{type:"solid",pt:0.5,color:"444444"},color:WHITE,rowH:0.55});
+  }
+
+  if(selected.layers){
+    const s = pptx.addSlide();
+    s.background = {color:BG};
+    addTitle(s,"L1–L6 Platform Stack","The honest truth: our tooling maturity sets the ceiling on AI");
+    LAYERS.forEach((l,k)=>{
+      const yOff = 1.8 + k*0.8;
+      s.addShape(pptx.ShapeType.rect,{x:0.6,y:yOff,w:1.4,h:0.6,fill:"333333"});
+      s.addText(l[0],{x:0.6,y:yOff+0.05,w:1.4,h:0.5,fontSize:11,fontFace:"Arial Black",color:WHITE,bold:true,align:"center",valign:"middle"});
+      s.addText(l[1],{x:2.2,y:yOff,w:3,fontSize:11,fontFace:"Arial",color:WHITE,bold:true});
+      s.addText(l[2],{x:5.4,y:yOff,w:7,fontSize:9.5,fontFace:"Arial",color:"AAAAAA"});
+    });
+  }
+
+  const fname = clientName ? "ETHAN_MS_2.0_"+clientName.replace(/\s+/g,"_")+".pptx" : "ETHAN_MS_2.0_Proposal.pptx";
+  pptx.writeFile({fileName:fname});
+}
+
+function ProposalBuilder({onClose}){
+  const [client,setClient]=useState("");
+  const [sel,setSel]=useState(()=>{
+    const o={};EXPORT_SECTIONS.forEach(s=>o[s.id]=true);return o;
+  });
+  const toggle=id=>setSel(p=>({...p,[id]:!p[id]}));
+  const count=Object.values(sel).filter(Boolean).length;
+  return (
+    <div style={{position:"fixed",inset:0,zIndex:9999,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(0,0,0,.7)"}}>
+      <div style={{background:"var(--paper)",borderRadius:4,width:520,maxHeight:"90vh",overflow:"auto",padding:32}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:20}}>
+          <h2 style={{fontFamily:"var(--display)",fontSize:20,letterSpacing:"-.02em"}}>Proposal Builder</h2>
+          <button onClick={onClose} style={{fontSize:18,cursor:"pointer",background:"none",border:"none"}}>✕</button>
+        </div>
+        <label style={{display:"block",marginBottom:16}}>
+          <div style={{fontFamily:"var(--mono)",fontSize:9,letterSpacing:".12em",textTransform:"uppercase",color:"var(--muted)",marginBottom:4}}>Client name (optional)</div>
+          <input value={client} onChange={e=>setClient(e.target.value)} placeholder="e.g. Acme Corp" style={{width:"100%",padding:"8px 12px",border:"1px solid var(--line)",fontSize:14,fontFamily:"var(--sans)"}}/>
+        </label>
+        <div style={{fontFamily:"var(--mono)",fontSize:9,letterSpacing:".12em",textTransform:"uppercase",color:"var(--muted)",marginBottom:8}}>Include sections</div>
+        {EXPORT_SECTIONS.map(s=>(
+          <label key={s.id} style={{display:"flex",alignItems:"center",gap:10,padding:"8px 0",cursor:"pointer",borderBottom:"1px solid var(--line)"}}>
+            <input type="checkbox" checked={sel[s.id]} onChange={()=>toggle(s.id)}/>
+            <span style={{fontSize:13.5}}>{s.label}</span>
+          </label>
+        ))}
+        <button onClick={()=>{buildPptx(client,sel);onClose();}} disabled={count===0} style={{marginTop:20,width:"100%",padding:"12px",background:"var(--ink)",color:"#fff",fontWeight:700,fontSize:14,border:"none",cursor:count?"pointer":"default",opacity:count?1:.4}}>
+          Generate PPTX ({count} section{count!==1?"s":""})
+        </button>
+        <p style={{marginTop:10,fontSize:11,color:"var(--muted)",textAlign:"center"}}>Downloads a branded .pptx you can edit in PowerPoint or Google Slides</p>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════════ */
 function Hero({onEnter}){
@@ -1697,6 +1884,7 @@ function EditBar({editMode, setEditMode}){
 function App(){
   const [view,setView]=useState("hero");
   const [editMode,setEditMode]=useState(false);
+  const [showProposal,setShowProposal]=useState(false);
   const stageRef=useRef(null);
   const idx=SECTIONS.findIndex(s=>s.id===view);
 
@@ -1741,6 +1929,9 @@ function App(){
             </button>
           ))}
         </nav>
+        <div style={{padding:"12px 22px"}}>
+          <button onClick={()=>setShowProposal(true)} style={{width:"100%",padding:"10px 16px",background:"#333",color:"#fff",border:"1px solid #555",fontSize:12,fontWeight:700,cursor:"pointer",letterSpacing:".04em"}}>&#9658; Build Proposal</button>
+        </div>
         <div className="rail-foot">Strategy · FY26 · MS 2.0<br/>← → to navigate</div>
       </aside>
 
@@ -1767,6 +1958,7 @@ function App(){
         </div>
       </main>
 
+      {showProposal && <ProposalBuilder onClose={()=>setShowProposal(false)}/>}
     </div>
   );
 }
