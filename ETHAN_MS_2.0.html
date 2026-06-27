@@ -550,15 +550,9 @@ const SECTIONS = [
 ];
 
 const SIGNALS = [
-  {n:"45%", src:"Forrester 2025",   t:"Nearly half of enterprise buyers are moving away from paying for labour-based models. They want to pay for outcomes. Our pricing model is built on the thing they're walking away from."},
-  {n:"94%", src:"Gartner 2026",     t:"AI-native tools grew at 94% last year while traditional IT spend grew at 8%. Our clients are spending it somewhere — with us or without us."},
-  {n:"50%", src:"Gartner 2026",     t:"Half of all AI projects at service desks will be abandoned by 2027. The reason is almost always the same: no one measured what \"good\" looked like before they started, so they couldn't prove it worked. Knowing how to set that baseline before deployment is the discipline that makes AI stick — and it's something ETHAN can sell."},
-  {n:"60%", src:"Gartner 2026",     t:"Most large IT contracts will soon require vendors to share AI efficiency gains with the client. If we don't walk in with a position on this, the client will bring one to us."},
-  {n:"93%", src:"KPMG / HFS 2025", t:"of executives want providers who combine technology and process expertise. The MSP that only keeps the lights on is being disintermediated. Clients expect AI, strategy and consulting capability bundled into the same relationship — not as separate engagements."},
-  {n:"57%", src:"McKinsey MGI 2025",t:"of work hours are technically automatable today. The highest-exposure roles in IT ops are routine and specialised: ticket triage, event management, patch compliance. The roles that survive are those that cannot be encoded into a prompt or a runbook."},
-  {n:"40%", src:"Gartner 2025",t:"of large enterprises will use AIOps and observability to automate IT operations by 2026 — up from under 15%. The shift from reactive monitoring to autonomous, signal-driven action is already underway. MSPs without a unified stack get left running dashboards while the work happens elsewhere."},
-  {n:"70%", src:"TSIA 2025",t:"of services leaders say outcome-based and platform-led delivery is now their primary growth strategy — not staff augmentation. You cannot guarantee an outcome you cannot see, which is why observability and proactive services are the same investment."},
-  {n:"30%", src:"Gartner 2026",t:"of routine IT operational tasks will be executed by autonomous agents acting on observability signals without human intervention by 2028. The convergence of AIOps and agentic AI is where margin and proactive service meet — agents that don't just detect, but resolve."},
+  {pillar:"AI Transformation",n:"57%", src:"McKinsey MGI 2025",t:"of work hours are technically automatable today. The highest-exposure roles in IT ops are routine and specialised: ticket triage, event management, patch compliance. AI is not a future bet — it is a present displacement force, and the MSPs that move first set the terms."},
+  {pillar:"Platform Modernisation",n:"40%", src:"Gartner 2025",t:"of large enterprises will use AIOps and observability to automate IT operations by 2026 — up from under 15%. The shift from reactive monitoring to autonomous, signal-driven action is already underway. MSPs without a unified stack get left running dashboards while the work happens elsewhere."},
+  {pillar:"Autonomous Operations",n:"30%", src:"Gartner 2026",t:"of routine IT operational tasks will be executed by autonomous agents acting on observability signals without human intervention by 2028. The convergence of AIOps and agentic AI is where margin and proactive service meet — agents that don't just detect, but resolve."},
 ];
 
 const OKRS = [
@@ -909,11 +903,11 @@ function Moment(){
   return (
     <div className="view">
       <SecHead num="01" kicker="The Case for Change" title={"The Moment\nWe Are In"}/>
-      <p className="lede">AI is not arriving. It has arrived. The question is not whether it changes the business but <b>how fast.</b></p>
-      <p className="body">Labour has always been our primary cost and the unit by which MS has been built for 30 years. For the first time, AI makes it partially substitutable. The market and our clients are asking for more outcomes, lower prices. We need to be ready.</p>
+      <p className="lede">Three forces are reshaping managed services simultaneously. FY27 is where we respond — or fall behind.</p>
       <div className="stats">
         {SIGNALS.map((s,k)=>(
           <div className="stat" key={k}>
+            <div style={{fontFamily:"var(--mono)",fontSize:9,letterSpacing:".14em",textTransform:"uppercase",color:"var(--muted)",marginBottom:8}}>{s.pillar}</div>
             <div className="n">{s.n}</div>
             <div className="t">{s.t}</div>
             <div className="src">{s.src}</div>
