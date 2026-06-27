@@ -128,15 +128,6 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .rb-m{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
 
 /* ── COMPARE TABLE ── */
-.cmp{margin-top:36px;border:1px solid var(--line)}
-.cmp-head-row{display:grid;grid-template-columns:190px 1fr 1fr;background:var(--black);color:#fff}
-.cmp-head-row>div{padding:13px 18px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
-.cmp-row{display:grid;grid-template-columns:190px 1fr 1fr;border-top:1px solid var(--line)}
-.cmp-row>div{padding:16px 18px;font-size:14px;line-height:1.5;border-left:1px solid var(--line)}
-.cmp-row>div:first-child{border-left:none;font-weight:700;background:var(--paper-2);display:flex;align-items:center}
-.cmp-today{color:var(--grey-1)}
-.cmp-2030 b{font-weight:700}
-
 /* ── TRANSFORMATION STATE ── */
 .xform{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
 .xform-col{border:1px solid var(--line);padding:20px}
@@ -659,12 +650,7 @@ const PORT = [
   ["Consulting-led entry","A paid AI assessment scoring readiness and producing a use-case roadmap. Builds the pipeline above."],
 ];
 
-const LAER = [
-  ["Land","AD-led. Assessment or PoC as entry. Baseline agreed and locked.","Reasonably strong"],
-  ["Adopt","CS-led. Adoption tracked monthly. The weak link today.","Weak — the gap"],
-  ["Expand","Each new workload is a priced commercial event, not a free add-on.","Underdeveloped"],
-  ["Renew","Driven by demonstrated value — a data conversation, not a rescue.","Depends on the middle"],
-];
+
 
 const ARC = [
   {when:"Now",dims:{Delivery:"Labour-led. Maeve in PoC and early production.",Economics:"GP ~27%. Margin fixed on a labour base.",Portfolio:"MS sold by seat and schedule.",People:"Traditional L1–L4 structure. We're working out what the new roles look like — that's in progress.",Platform:"Variable tooling maturity across accounts.",Observability:"Fragmented monitoring. Signals live in silos per tool and per account; correlation is manual. We see incidents after they bite, not before.",Accounts:"All accounts served the same way. No segmentation by volume, complexity, or AI-readiness."}},
@@ -745,8 +731,6 @@ const SecHead = ({num,kicker,title}) => (
   </div>
 );
 const Callout = ({children}) => <div className="callout"><p>{children}</p></div>;
-const E = ({tag:Tag="span", children, edit}) =>
-  edit ? <Tag contentEditable suppressContentEditableWarning>{children}</Tag> : <Tag>{children}</Tag>;
 
 /* ═══════════════════════════════════════════════════════
    INTERACTIVE COMPONENTS
@@ -1272,12 +1256,6 @@ function Hero({onEnter}){
 ═══════════════════════════════════════════════════════ */
 
 // Module-level store — survives section navigation (same pattern as EDIT_STORE)
-const TEAM_STATE = {
-  name:'', team:'',
-  q1:'', q2:'', q3:'', q4:'',
-  confidence:'', champion:'', headline:''
-};
-
 // Module-level nav function for cross-component navigation
 let _navSetView = null;
 function navTo(viewId){ if(_navSetView) _navSetView(viewId); }
@@ -1309,23 +1287,6 @@ function ToggleRow({opts,value,onChange}){
     </div>
   );
 }
-
-function simpleHash(str){
-  let h=0;
-  for(let i=0;i<str.length;i++){ h=Math.imul(31,h)+str.charCodeAt(i)|0; }
-  return (h>>>0).toString(16).padStart(8,'0');
-}
-
-const TSB_QUESTIONS=[
-  {key:'q1',label:'Where are we now?',
-   prompt:"Describe your team's current state honestly — delivery model, tooling, capability. What are the top 3 processes or platforms limiting your team's capacity."},
-  {key:'q2',label:'What are we changing this year?',
-   prompt:"What does your team commit to changing in the next 12 months to resolve the above? AI, platforms, processes may be the answer."},
-  {key:'q3',label:'How will we know it\'s working?',
-   prompt:"What will you measure that tells you the change actually happened?"},
-  {key:'q4',label:'What do we need?',
-   prompt:"What has to happen — a decision, a dependency, a capability, something from another team?"},
-];
 
 function IdeasCapture(){
   const [meta,setMeta]=useState({...IDEAS_STATE});
@@ -1489,7 +1450,7 @@ body{font-family:Arial,'Helvetica Neue',Helvetica,sans-serif;color:#1A1A1A;backg
 
   return (
     <div className="view">
-      <SecHead num="09" kicker="Feed the backlog" title={"Ideas &\nInitiatives"}/>
+      <SecHead num="08" kicker="Feed the backlog" title={"Ideas &\nInitiatives"}/>
       <p className="lede">You have seen the strategy and what is possible in your area. Capture your highest-value ideas here — they go straight into the AI and automation backlog.</p>
       <p className="body" style={{marginTop:12}}>ETHAN is building an AI and automation programme across managed services. This tool captures ideas from team leads and their teams — what to automate, what to agent-ise, what is taking too long or breaking too often. There are no wrong answers. Specificity is what makes an idea actionable.</p>
 
