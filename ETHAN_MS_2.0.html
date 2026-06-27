@@ -556,6 +556,9 @@ const SIGNALS = [
   {n:"60%", src:"Gartner 2026",     t:"Most large IT contracts will soon require vendors to share AI efficiency gains with the client. If we don't walk in with a position on this, the client will bring one to us."},
   {n:"93%", src:"KPMG / HFS 2025", t:"of executives want providers who combine technology and process expertise. The MSP that only keeps the lights on is being disintermediated. Clients expect AI, strategy and consulting capability bundled into the same relationship — not as separate engagements."},
   {n:"57%", src:"McKinsey MGI 2025",t:"of work hours are technically automatable today. The highest-exposure roles in IT ops are routine and specialised: ticket triage, event management, patch compliance. The roles that survive are those that cannot be encoded into a prompt or a runbook."},
+  {n:"40%", src:"Gartner 2025",t:"of large enterprises will use AIOps and observability to automate IT operations by 2026 — up from under 15%. The shift from reactive monitoring to autonomous, signal-driven action is already underway. MSPs without a unified stack get left running dashboards while the work happens elsewhere."},
+  {n:"70%", src:"TSIA 2025",t:"of services leaders say outcome-based and platform-led delivery is now their primary growth strategy — not staff augmentation. You cannot guarantee an outcome you cannot see, which is why observability and proactive services are the same investment."},
+  {n:"30%", src:"Gartner 2026",t:"of routine IT operational tasks will be executed by autonomous agents acting on observability signals without human intervention by 2028. The convergence of AIOps and agentic AI is where margin and proactive service meet — agents that don't just detect, but resolve."},
 ];
 
 const OKRS = [
@@ -610,29 +613,14 @@ const RAGS = [
 
 const DEST_ROWS = [
   {dim:"Delivery",today:"Labour-intensive. Cost and quality scale with headcount.",future:"Platform-led. AI carries routine volume; people hold the complex and ambiguous.",detail:"The shift is not about removing people — it is about changing what people do. Routine volume moves to AI; human effort concentrates on the work that builds relationships and solves hard problems."},
-  {dim:"Service Desk",today:"54 staff handling L1 triage and routing. Every ticket touches a human.",future:"AI-primary by default. Maeve resolves; humans handle escalations and complexity.",detail:"Maeve is live and in PoC. Target: 30–50% AI resolution within 18 months on pilot accounts. The Service Desk becomes the proving ground for the entire strategy."},
+  {dim:"Service Desk",today:"L1 triage and routing. Every ticket touches a human.",future:"AI-primary by default. Maeve resolves; humans handle escalations and complexity.",detail:"Maeve is live and in PoC. Target: 30–50% AI resolution within 18 months on pilot accounts. The Service Desk becomes the proving ground for the entire strategy."},
   {dim:"Economics",today:"GP ~27% against a 30% target. Margin fixed on a labour base.",future:"GP structurally above 30% and compounding as AI matures — 40%+ on proven accounts.",detail:"FY26 missed the 30% floor due to high labour and recurring costs. AI displacement is how we fix the cost structure — not by cutting corners, but by changing what carries the volume."},
   {dim:"Growth",today:"Revenue scales with headcount. More accounts, more people.",future:"Growth through expansion onto the platform — new workloads, not new bodies.",detail:"Consulting-led entry builds the pipeline. Assessment scores readiness, surfaces use cases, and produces a roadmap. Growth comes from landing new AI workloads on existing accounts, not hiring more staff."},
   {dim:"Portfolio",today:"Sold by seat, schedule, and resource.",future:"A portfolio of agentic services — embedded, standalone, consulting-led.",detail:"Six portfolio directions: AI-powered MS, standalone agentic services, agents as a service, model as a service, GPU as a service, and consulting-led entry. Products with roadmaps, not resource schedules."},
+  {dim:"Platform & Observability",today:"Basic monitoring. Signals live in silos per tool and per account. L3–L6 largely absent.",future:"Unified L1–L6 observability on Ethan Cloud — correlated signals, closed-loop remediation, the signal layer every agent runs on.",detail:"Agents act on signals. Observability is the substrate of the entire AI strategy. Ethan Cloud and GPUaaS provide the compute; the observability stack provides the eyes. Without it, the agent strategy is blind."},
   {dim:"Position",today:"A capable regional MSP competing on service.",future:"The operator that makes AI work in production — governed and accountable.",detail:"The market is moving to AI-augmented delivery. ETHAN's advantage is that we are building our own agent platform — Maeve, ChangeMate, Eventra — not reselling someone else's. We own the IP and the roadmap."},
 ];
 
-const XFORM_TODAY = [
-  {k:"Service Desk (ESS-HD)",v:"L1 triage and ticket routing. 54 staff. High volume, people-staffed. GDC"},
-  {k:"Service Assurance & MIM",v:"Monitoring and alerting. MIM sits within assurance. Reactive posture. GDC"},
-  {k:"Event Management",v:"Alert triage, noise filtering. Manual and tool-dependent today. GDC"},
-  {k:"Engineering BUs",v:"Break-fix and change delivery. Reactive as desk filters up. AU Onshore"},
-  {k:"Observability",v:"Basic monitoring only. No unified stack. L3–L6 largely absent."},
-  {k:"Billing",v:"MRC reconciliation. Manual process. AU Onshore"},
-];
-const XFORM_FUTURE = [
-  {k:"Service Desk — Agentic",v:"Agents handle exception, complexity and empathy. AI owns L1 volume via Maeve. Target: AI 55%+ / Human 45%"},
-  {k:"Service Assurance & MIM",v:"Mature assurance. MIM with named commander, pre-agreed escalation, PIR within 48hrs"},
-  {k:"Event Management",v:"Fully autonomous. AI-driven noise suppression, anomaly detection, predictive alerting. No human in loop for standard events"},
-  {k:"Engineering BUs",v:"AI-augmented, outcome-anchored. AI Workflow Specialist role. Observability-driven operations"},
-  {k:"Observability Platform",v:"Unified L1–L6 stack. Queen/Bee pipeline, Grafana, Prometheus, closed-loop remediation"},
-  {k:"Billing",v:"Automated reconciliation and anomaly detection. Zero manual MRC adjustments"},
-];
 
 const PILLARS = [
   {n:"3.1",k:"Delivery",title:"From labour-led to platform-led"},
@@ -687,10 +675,10 @@ const LAER = [
 ];
 
 const ARC = [
-  {when:"Now",dims:{Delivery:"Labour-led. Maeve in PoC and early production.",Economics:"GP ~27%. Margin fixed on a labour base.",Portfolio:"MS sold by seat and schedule.",People:"Traditional L1–L4 structure. We're working out what the new roles look like — that's in progress.",Platform:"Variable tooling maturity across accounts.",Accounts:"All accounts served the same way. No segmentation by volume, complexity, or AI-readiness."}},
-  {when:"18 months",dims:{Delivery:"Three tracks in parallel — overt AI pilot with Tier 1 clients; silent back-office agents rolled across all accounts; high-volume accounts moved to AI-primary Service Desk.",Economics:"5–8% cost-to-deliver reduction on pilots. Baseline proven.",Portfolio:"Assessment and packaged PoC live as paid products.",People:"First Workflow Specialist(s) in role. OCM piloting.",Platform:"Readiness scored portfolio-wide. Gap-closure funded.",Accounts:"Accounts segmented by volume, complexity, and AI-readiness. Deployment approach tailored accordingly."}},
-  {when:"3 years",dims:{Delivery:"Majority of routine volume AI-resolved on mature accounts.",Economics:"GP high-30s on AI-mature accounts. Flywheel turning.",Portfolio:"Embedded and standalone services generating new-line revenue.",People:"Redesigned roles across the team. AI capabilities established.",Platform:"L1–L6 target architecture live on key accounts.",Accounts:"Segmentation model mature. High-volume accounts AI-primary. Strategic accounts co-designed with clients."}},
-  {when:"5 years",dims:{Delivery:"Platform-led by default. Human effort is the exception layer.",Economics:"Margin structurally higher and compounding. Growth decoupled from headcount.",Portfolio:"A priced product portfolio with prices and roadmaps.",People:"A platform-operations workforce. Capability is the constraint.",Platform:"Tooling is a strategic asset and a differentiator.",Accounts:"Account model fully tiered. AI depth matches account profile. Human resource concentrated where it creates most value."}},
+  {when:"Now",dims:{Delivery:"Labour-led. Maeve in PoC and early production.",Economics:"GP ~27%. Margin fixed on a labour base.",Portfolio:"MS sold by seat and schedule.",People:"Traditional L1–L4 structure. We're working out what the new roles look like — that's in progress.",Platform:"Variable tooling maturity across accounts.",Observability:"Fragmented monitoring. Signals live in silos per tool and per account; correlation is manual. We see incidents after they bite, not before.",Accounts:"All accounts served the same way. No segmentation by volume, complexity, or AI-readiness."}},
+  {when:"18 months",dims:{Delivery:"Three tracks in parallel — overt AI pilot with Tier 1 clients; silent back-office agents rolled across all accounts; high-volume accounts moved to AI-primary Service Desk.",Economics:"5–8% cost-to-deliver reduction on pilots. Baseline proven.",Portfolio:"Assessment and packaged PoC live as paid products.",People:"First Workflow Specialist(s) in role. OCM piloting.",Platform:"Readiness scored portfolio-wide. Gap-closure funded.",Observability:"Unified L3 observability live on pilot accounts — correlated signals, dependency mapping, OTEL pipeline feeding the agent layer. First closed-loop remediation on low-risk events.",Accounts:"Accounts segmented by volume, complexity, and AI-readiness. Deployment approach tailored accordingly."}},
+  {when:"3 years",dims:{Delivery:"Majority of routine volume AI-resolved on mature accounts.",Economics:"GP high-30s on AI-mature accounts. Flywheel turning.",Portfolio:"Embedded and standalone services generating new-line revenue.",People:"Redesigned roles across the team. AI capabilities established.",Platform:"L1–L6 target architecture live on key accounts.",Observability:"Full L1–L6 stack on key accounts. Predictive alerting and anomaly detection standard; agents act on signals for routine events with no human in the loop.",Accounts:"Segmentation model mature. High-volume accounts AI-primary. Strategic accounts co-designed with clients."}},
+  {when:"5 years",dims:{Delivery:"Platform-led by default. Human effort is the exception layer.",Economics:"Margin structurally higher and compounding. Growth decoupled from headcount.",Portfolio:"A priced product portfolio with prices and roadmaps.",People:"A platform-operations workforce. Capability is the constraint.",Platform:"Tooling is a strategic asset and a differentiator.",Observability:"Observability is the nervous system. Predict-and-prevent is the default posture; the platform sees, decides, and acts. Human attention is reserved for genuine novelty.",Accounts:"Account model fully tiered. AI depth matches account profile. Human resource concentrated where it creates most value."}},
 ];
 
 const IMPS = [
@@ -711,28 +699,25 @@ const EXEC_LEVERS = [
   ["Lever 1 — Service delivery transformation","Primary lever","AI resolution reaching 30–50% of volume in 18 months, building to 60–70% by month 24–36."],
   ["Lever 2 — Delivery-mix evolution","Secondary lever","Delivery mix evolves as AI proves itself — we're not restructuring ahead of the evidence."],
   ["Lever 3 — Engineer capacity expansion","Supporting lever","Every hour AI frees converts to avoided hiring and allows for advisory work our clients love."],
+  ["Lever 4 — Observability & platform foundation","Enabling lever","The L1–L6 signal layer that sets the ceiling on every agent's autonomy. Without it, the other three levers stall."],
 ];
 
 const INVESTMENTS = [
   {cat:"Platform & Infrastructure",items:[
-    {t:"AI agent platform (continued build)",d:"Maeve, ChangeMate, Eventra live — sustaining engineering, new agent development, and production scaling."},
+    {t:"AI agent platform (continued build)",d:"Maeve, ChangeMate, Eventra live — sustaining engineering, new agent development, and production scaling. Agents run on Ethan Cloud."},
     {t:"LLM & token budget for engineers",d:"Every engineer and SDM gets access to AI assistants in their daily workflow — coding, documentation, ticket analysis, reporting."},
-    {t:"GPU / compute capacity",d:"On-demand GPU for model fine-tuning, inference, and client-facing AI workloads. Build or broker decision per workload."},
+    {t:"Ethan Cloud & GPUaaS",d:"Our existing cloud platform and GPU-as-a-Service infrastructure. Where AI agents run in production and where client-facing AI workloads will scale."},
+    {t:"Observability & AIOps stack",d:"Unified L1–L6 telemetry on Ethan Cloud — Grafana, Prometheus, OTEL pipeline, closed-loop remediation. The signal layer agents depend on. The single biggest gap-closure investment of FY27."},
   ]},
   {cat:"People & Capability",items:[
     {t:"AI Workflow Specialist — hire and develop",d:"The linchpin role. First hires in FY27, with a structured pathway from existing senior engineers."},
     {t:"Training & certification programme",d:"Structured AI literacy across all MS roles — prompt engineering, agent supervision, output quality assessment."},
-    {t:"Build Weeks & Hackathons",d:"Quarterly protected time for teams to prototype agents, test integrations, and solve real problems with AI. Ideas become backlog."},
-    {t:"Citizen coding initiative",d:"Enable non-developers to build lightweight automations — low-code agent configuration, workflow design, Power Platform integration."},
+    {t:"Build Weeks, Hackathons & citizen coding",d:"Quarterly protected time for teams to prototype agents, test integrations, and solve real problems with AI. Includes low-code enablement so non-developers can build lightweight automations. Ideas become backlog."},
   ]},
   {cat:"Process & Governance",items:[
     {t:"OCM — Organisational Change Management",d:"Dedicated change management for role redesign, new ways of working, and adoption. Not a side-of-desk activity."},
     {t:"Data quality programme",d:"AI is only as good as its inputs. Ticket data, CMDB accuracy, time recording, and contract data all need baseline quality before agents can be trusted."},
     {t:"AI governance framework",d:"Approval workflows, output audit, escalation criteria, and the supervised → autonomous progression model applied consistently."},
-  ]},
-  {cat:"Commercial & Go-to-Market",items:[
-    {t:"Assessment & consulting collateral",d:"Packaged AI readiness assessment, reference architectures, and case study library to support consulting-led entry."},
-    {t:"Partner & vendor ecosystem",d:"Strategic partnerships for model providers, tooling vendors, and specialist capability we choose to buy rather than build."},
   ]},
 ];
 
@@ -750,6 +735,9 @@ const AGENTS = [
   {name:"Portfolio health dashboard",what:"Maintains a live portfolio health view across all MS accounts — RAG status, XLA trend, labour-to-MRC ratio, and GP% — replacing disconnected status updates with a single continuous signal.",serves:"BU Leads · Management",h:"near",lens:"qual"},
   {name:"SOW estimation & calibration",what:"Calibrates SOW effort estimates and bills of materials against comparable past projects. Surfaces reference architecture patterns and flags design decisions that deviate from proven approaches.",serves:"Solution Architecture · Engineering",h:"near",lens:"cost"},
   {name:"AI readiness assessment",what:"Runs structured AI readiness assessments for clients — scoring maturity, surfacing use-case opportunities, and producing a prioritised roadmap. The paid entry point into the portfolio.",serves:"Consulting & Advisory · Pre-Sales",h:"near",lens:"qual"},
+  {name:"Anomaly detection & noise suppression",what:"Filters alert noise and surfaces genuine anomalies from the observability pipeline. Engineers engage with events that warrant attention — not the 90% that don't.",serves:"Event Management · Platform Eng",h:"now",lens:"qual"},
+  {name:"Closed-loop auto-remediation",what:"Detects known failure patterns from correlated signals and executes proven remediation runbooks autonomously. The first step from reactive monitoring to predict-and-prevent.",serves:"Platform Eng · SRE",h:"near",lens:"cost"},
+  {name:"Signal quality & coverage monitor",what:"Tracks telemetry coverage and data quality across the estate. Flags accounts where observability gaps limit agent autonomy — the readiness gate for scaling AI-primary operations.",serves:"Platform & Tooling · BU Leads",h:"near",lens:"qual"},
   {name:"Churn & escalation scoring",what:"Scores escalation and churn propensity per account using SNOW ticket trends, XLA data, and engagement signals. SDMs act before the client calls, not after.",serves:"SDMs · BU Leads",h:"long",lens:"qual"},
   {name:"Bid intelligence & win/loss",what:"Aggregates win/loss patterns, common objections, and pricing outcomes across bids. Surfaces what is working and what is not so the next proposal is built on evidence, not instinct.",serves:"Pre-Sales · Bid",h:"long",lens:"qual"},
   {name:"AI finance manager",what:"Aggregates P&L data, labour cost, MRC, and project actuals across feeds. Surfaces margin issues and at-risk accounts before month-end rather than at it.",serves:"BU Leads · Finance",h:"long",lens:"cost"},
@@ -880,7 +868,7 @@ function AgentRoadmap(){
   return (
     <div className="view">
       <SecHead num="06" kicker="Named Agents" title="The Agent Portfolio"/>
-      <p className="lede">ETHAN has built its own AI agent platform. Maeve (Service Desk), ChangeMate (Change Management) and Eventra (Event Management) are live. FY27 is the year we start seeing the return on that investment — and scaling the backlog below across the business.</p>
+      <p className="lede">We have the AI platform. FY27 is the year we start seeing the return on that investment — and scaling the backlog below across the business.</p>
       <div className="agent-disclaimer">
         <p>16 agents across the delivery, commercial, and operational stack — each defined by the problem it solves. Deployment horizons are indicative. <b>Now</b> = in active development or PoC; <b>Near</b> = 6–18 months subject to platform readiness; <b>Long</b> = requires data maturity we are building toward.</p>
       </div>
@@ -1116,7 +1104,7 @@ function OrgChart(){
           <div className="oc-layer">
             <div className="oc-lbl">Service Operations</div>
             <div className="oc-cards">
-              <div className="oc-card ck-soft"><div className="ocn">Service Desk</div><div className="ocs">L1 triage and ticket routing. 54 staff. High volume, people-staffed</div><span className="oc-tag ot-slate">GDC</span></div>
+              <div className="oc-card ck-soft"><div className="ocn">Service Desk</div><div className="ocs">L1 triage and ticket routing. High volume, people-staffed</div><span className="oc-tag ot-slate">GDC</span></div>
               <div className="oc-card ck-base"><div className="ocn">Service Management</div><div className="ocs">SDMs, SLAs, client reviews, CSI register</div><span className="oc-tag ot-navy">AU Onshore</span></div>
               <div className="oc-card ck-soft"><div className="ocn">Service Assurance</div><div className="ocs">Monitoring, alerting and major incident management. Reactive posture</div><span className="oc-tag ot-slate">GDC</span></div>
               <div className="oc-card ck-soft"><div className="ocn">Event Management</div><div className="ocs">Alert triage, noise filtering, event correlation. Manual and tool-dependent today</div><span className="oc-tag ot-slate">GDC</span></div>
@@ -1154,8 +1142,7 @@ function Destination(){
     <div className="view">
       <SecHead num="04" kicker="Where We Are Going" title={"The 2.0\nDestination"}/>
       <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> AI handles volumes and our people are free to do what they do best.</p>
-      <OrgChart/>
-      <p className="body" style={{marginTop:24,marginBottom:4}}>Click any card to see where we are headed — and why.</p>
+      <p className="body" style={{marginTop:16,marginBottom:4}}>Click any card to see where we are headed — and why.</p>
       <div className="flip-grid">
         {DEST_ROWS.map((r,k)=>(
           <div key={k} className={`flip-card${flipped[k]?" flipped":""}`} onClick={()=>toggle(k)}>
@@ -1178,6 +1165,8 @@ function Destination(){
         ))}
       </div>
       <p className="body" style={{marginTop:20}}>None of this is automatic. Left to drift, AI becomes a cost we absorb and a discount our customers extract. Built intentionally, it becomes the engine of a structurally better business. <b>The difference is strategy, confidence and execution.</b></p>
+      <h2 className="sub" style={{marginTop:32}}>How we're organised to get there</h2>
+      <OrgChart/>
     </div>
   );
 }
@@ -1189,6 +1178,7 @@ function Shifts(){
     <div className="view">
       <SecHead num="05" kicker="The Heart" title="Strategic Shifts"/>
       <p className="body">Getting from today to 2030 takes a small number of fundamental changes — not projects to finish, but directions to hold for years.</p>
+      <p className="body">Three pillars carry FY27, and they only work together. <b>AI without signals is blind</b> — an agent that cannot see the estate can only answer the phone. <b>Signals without AI are just dashboards</b> — observability that watches problems arrive but never acts. <b>Autonomous operations is where they converge:</b> agents acting on live signals to resolve routine work before a human is ever paged. Build one without the others and the strategy stalls.</p>
       <div className="subtabs">
         {PILLARS.map((pl,k)=>(
           <button key={k} className={"subtab"+(p===k?" on":"")} onClick={()=>setP(k)}>
@@ -1204,7 +1194,7 @@ function Shifts(){
         {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>The flywheel only turns if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
         {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with prices and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody></table></div>}
         {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout><p className="body" style={{marginTop:16}}>Account segmentation also changes what different people in the team do day-to-day. Service Desk engineers on high-volume AI-primary accounts will operate very differently from those managing complex strategic accounts where human judgement remains central. Role design needs to reflect that split — not treat the team as a single uniform group.</p></div>}
-        {p===4 && <div style={{marginTop:16}}><LayerStack/></div>}
+        {p===4 && <div style={{marginTop:16}}><p className="body">Proactive is not a posture — it is an architecture. TSIA frames the destination as <b>outcome-based services</b>: clients pay for results, not effort, and you cannot guarantee an outcome you cannot see. Unified observability is what turns "we'll fix it fast" into "we stopped it before it started." Gartner expects 30% of routine IT operational tasks to be run by agents acting on signals without human intervention by 2028 — predict-and-prevent becomes the standard, and reactive becomes the exception.</p><LayerStack/><p className="body" style={{marginTop:16}}>Unified observability is also the client's window in. The same signal layer that lets agents act feeds <b>Ethan Assurance</b> — live SLO dashboards, obligation tracking against the contract, and compliance evidence the client can see for themselves rather than wait for in a monthly pack. Insight stops being a report we write after the fact and becomes a surface the client watches in real time.</p></div>}
         {p===5 && <div style={{marginTop:16}}><p className="body">The way we sell and grow has to change as much as delivery. Three shifts matter.</p><p className="body"><b>Lead with consulting.</b> A packaged, fixed-price AI readiness assessment scores maturity, surfaces the highest-value use cases, and produces the roadmap that becomes the PoC conversation. Consulting-led entry builds the pipeline — and positions ETHAN as the operator that understands AI in production, not just sells it.</p><p className="body"><b>Sell the platform, not the headcount.</b> Growth comes from landing new workloads and expanding AI depth on existing accounts — not adding bodies. The portfolio of agentic services is what scales revenue without scaling cost.</p><p className="body"><b>Drive adoption actively.</b> Adoption is not automatic. If the customer does not adopt, resolution rates stay low, there is no saving to share and no expansion to grow. Adoption is Client Success's core job — and the gap we need to close.</p></div>}
       </div>
     </div>
