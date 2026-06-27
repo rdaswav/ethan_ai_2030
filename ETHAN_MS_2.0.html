@@ -397,6 +397,25 @@ h3.ssub{font-size:17px;font-weight:700;margin-top:24px}
 .ac-what{font-size:13.5px;line-height:1.55;color:var(--ink)}
 .ac-serve{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:8px}
 
+/* ── FLIP CARDS ── */
+.flip-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.flip-card{perspective:800px;cursor:pointer;min-height:220px}
+.flip-inner{position:relative;width:100%;height:100%;min-height:220px;transition:transform .5s;transform-style:preserve-3d}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;top:0;left:0;width:100%;height:100%;backface-visibility:hidden;border:1px solid var(--line);padding:20px;box-sizing:border-box;display:flex;flex-direction:column}
+.flip-front{background:var(--paper-2)}
+.flip-back{background:var(--ink);color:#fff;transform:rotateY(180deg)}
+.flip-dim{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.flip-back .flip-dim{color:rgba(255,255,255,.5)}
+.flip-label{font-family:var(--mono);font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.flip-back .flip-label{color:rgba(255,255,255,.4)}
+.flip-text{font-size:14px;line-height:1.55;flex:1}
+.flip-back .flip-text{color:rgba(255,255,255,.92)}
+.flip-detail{font-size:12.5px;line-height:1.55;margin-top:10px;color:rgba(255,255,255,.7)}
+.flip-hint{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:auto;padding-top:10px}
+.flip-back .flip-hint{color:rgba(255,255,255,.4)}
+@media(max-width:700px){.flip-grid{grid-template-columns:1fr}}
+
 /* ── EDIT MODE ── */
 .edit-bar{position:fixed;bottom:52px;left:0;width:var(--rail);z-index:200;display:flex;gap:8px;align-items:center;
           background:transparent;color:#3a3a3a;padding:6px 22px;font-family:var(--mono);
@@ -526,6 +545,7 @@ const SECTIONS = [
   {id:"agents",  label:"AI Agent Roadmap"},
   {id:"arc",     label:"Five-Year Arc"},
   {id:"exec",    label:"Execution Plan"},
+  {id:"invest",  label:"What It Takes"},
   {id:"team",    label:"Ideas & Initiatives"},
 ];
 
@@ -589,12 +609,12 @@ const RAGS = [
 ];
 
 const DEST_ROWS = [
-  ["Delivery","Labour-intensive. Cost and quality scale with headcount.","Platform-led. AI carries routine volume; people hold the complex and ambiguous."],
-  ["Service Desk","54 staff handling L1 triage and routing. Every ticket touches a human.","AI-primary by default. Maeve resolves; humans handle escalations and complexity."],
-  ["Economics","GP ~27% against a 30% target. Margin fixed on a labour base.","GP structurally high-30s and compounding on AI-mature accounts."],
-  ["Growth","Revenue scales with headcount. More accounts, more people.","Growth through expansion onto the platform — new workloads, not new bodies."],
-  ["Portfolio","Sold by seat, schedule, and resource.","A portfolio of agentic services — embedded, standalone, consulting-led."],
-  ["Position","A capable regional MSP competing on service.","The operator that makes AI work in production — governed and accountable."],
+  {dim:"Delivery",today:"Labour-intensive. Cost and quality scale with headcount.",future:"Platform-led. AI carries routine volume; people hold the complex and ambiguous.",detail:"The shift is not about removing people — it is about changing what people do. Routine volume moves to AI; human effort concentrates on the work that builds relationships and solves hard problems."},
+  {dim:"Service Desk",today:"54 staff handling L1 triage and routing. Every ticket touches a human.",future:"AI-primary by default. Maeve resolves; humans handle escalations and complexity.",detail:"Maeve is live and in PoC. Target: 30–50% AI resolution within 18 months on pilot accounts. The Service Desk becomes the proving ground for the entire strategy."},
+  {dim:"Economics",today:"GP ~27% against a 30% target. Margin fixed on a labour base.",future:"GP structurally above 30% and compounding as AI matures — 40%+ on proven accounts.",detail:"FY26 missed the 30% floor due to high labour and recurring costs. AI displacement is how we fix the cost structure — not by cutting corners, but by changing what carries the volume."},
+  {dim:"Growth",today:"Revenue scales with headcount. More accounts, more people.",future:"Growth through expansion onto the platform — new workloads, not new bodies.",detail:"Consulting-led entry builds the pipeline. Assessment scores readiness, surfaces use cases, and produces a roadmap. Growth comes from landing new AI workloads on existing accounts, not hiring more staff."},
+  {dim:"Portfolio",today:"Sold by seat, schedule, and resource.",future:"A portfolio of agentic services — embedded, standalone, consulting-led.",detail:"Six portfolio directions: AI-powered MS, standalone agentic services, agents as a service, model as a service, GPU as a service, and consulting-led entry. Products with roadmaps, not resource schedules."},
+  {dim:"Position",today:"A capable regional MSP competing on service.",future:"The operator that makes AI work in production — governed and accountable.",detail:"The market is moving to AI-augmented delivery. ETHAN's advantage is that we are building our own agent platform — Maeve, ChangeMate, Eventra — not reselling someone else's. We own the IP and the roadmap."},
 ];
 
 const XFORM_TODAY = [
@@ -624,9 +644,9 @@ const PILLARS = [
 ];
 
 const TRAJ = [
-  {when:"Today",rev:200,cost:150,gp:25,cap:"Labour-heavy delivery. The platform fee is introduced but margin is still set by the human cost base."},
-  {when:"AI-mature",rev:150,cost:90,gp:40,cap:"Margin peaks. AI carries volume and the labour pool thins. A deal at 25% GP reaches 40%+ before a dollar of new revenue."},
-  {when:"Expanded",rev:230,cost:145,gp:37,cap:"The flywheel turns. New workloads run on an already-paid-for platform at higher incremental margin. Revenue recovers; GP dollars compound on a larger base."},
+  {when:"Today",rev:200,cost:150,gp:25,cap:"Labour-heavy delivery. GP ~25–27% — below the 30% floor. Margin is set by the human cost base and recurring tool costs."},
+  {when:"AI-mature",rev:180,cost:108,gp:40,cap:"AI carries routine volume. Labour cost falls faster than any revenue adjustment. GP crosses the 30% floor and keeps climbing."},
+  {when:"Expanded",rev:230,cost:130,gp:43,cap:"New workloads land on a paid-for platform at high incremental margin. Revenue recovers above baseline; GP dollars and margin compound together."},
 ];
 
 const ROLES = [
@@ -693,23 +713,46 @@ const EXEC_LEVERS = [
   ["Lever 3 — Engineer capacity expansion","Supporting lever","Every hour AI frees converts to avoided hiring and allows for advisory work our clients love."],
 ];
 
+const INVESTMENTS = [
+  {cat:"Platform & Infrastructure",items:[
+    {t:"AI agent platform (continued build)",d:"Maeve, ChangeMate, Eventra live — sustaining engineering, new agent development, and production scaling."},
+    {t:"LLM & token budget for engineers",d:"Every engineer and SDM gets access to AI assistants in their daily workflow — coding, documentation, ticket analysis, reporting."},
+    {t:"GPU / compute capacity",d:"On-demand GPU for model fine-tuning, inference, and client-facing AI workloads. Build or broker decision per workload."},
+  ]},
+  {cat:"People & Capability",items:[
+    {t:"AI Workflow Specialist — hire and develop",d:"The linchpin role. First hires in FY27, with a structured pathway from existing senior engineers."},
+    {t:"Training & certification programme",d:"Structured AI literacy across all MS roles — prompt engineering, agent supervision, output quality assessment."},
+    {t:"Build Weeks & Hackathons",d:"Quarterly protected time for teams to prototype agents, test integrations, and solve real problems with AI. Ideas become backlog."},
+    {t:"Citizen coding initiative",d:"Enable non-developers to build lightweight automations — low-code agent configuration, workflow design, Power Platform integration."},
+  ]},
+  {cat:"Process & Governance",items:[
+    {t:"OCM — Organisational Change Management",d:"Dedicated change management for role redesign, new ways of working, and adoption. Not a side-of-desk activity."},
+    {t:"Data quality programme",d:"AI is only as good as its inputs. Ticket data, CMDB accuracy, time recording, and contract data all need baseline quality before agents can be trusted."},
+    {t:"AI governance framework",d:"Approval workflows, output audit, escalation criteria, and the supervised → autonomous progression model applied consistently."},
+  ]},
+  {cat:"Commercial & Go-to-Market",items:[
+    {t:"Assessment & consulting collateral",d:"Packaged AI readiness assessment, reference architectures, and case study library to support consulting-led entry."},
+    {t:"Partner & vendor ecosystem",d:"Strategic partnerships for model providers, tooling vendors, and specialist capability we choose to buy rather than build."},
+  ]},
+];
+
 const AGENTS = [
-  {name:"Maeve",what:"Autonomous first-response and auto-resolution at the Service Desk. Handles password resets, known-issue runbooks, and ticket classification without engineer involvement.",serves:"Service Desk · L1/L2",h:"now",lens:"cost"},
-  {name:"Echo",what:"Assembles full ticket context before an engineer opens it — prior incidents, config items, recent changes, and relevant runbooks surfaced automatically.",serves:"L1/L2/L3 Engineers",h:"now",lens:"emp"},
-  {name:"Scribe",what:"Generates as-built documentation from implementation notes and change records. Engineers implement; Scribe documents. Produces structured handover packs aligned to MS day-2 scope.",serves:"Engineering · Transition",h:"now",lens:"emp"},
-  {name:"Archer",what:"Drafts bid response sections from structured inputs — capability statements, case studies, and pricing rationale. BD team refines and approves; Archer removes the blank-page problem.",serves:"Pre-Sales · Bid",h:"now",lens:"cost"},
-  {name:"Sentinel",what:"Monitors ticket queues and XLA/SLA timers continuously. Flags breach risk before it becomes a miss and recommends escalation paths based on ticket profile and engineer availability.",serves:"Service Desk · SDMs",h:"near",lens:"qual"},
-  {name:"Clarity",what:"Generates weekly account health digests and client-facing service reports directly from ServiceNow and other data sources. SDM reviews, edits, and sends — not builds.",serves:"SDMs · BU Leads",h:"near",lens:"cost"},
-  {name:"Aegis",what:"Harvests compliance evidence continuously across the estate. Maintains gap registers, maps to Essential Eight and other frameworks, and raises SNOW remediation tasks automatically.",serves:"Cyber & Security",h:"near",lens:"qual"},
-  {name:"Drift",what:"Detects configuration drift and out-of-scope scope creep in-flight. Flags divergence from SOW and agreed baselines before it is silently absorbed. Prompts change request when warranted.",serves:"Cloud & Platforms · PMO",h:"near",lens:"qual"},
-  {name:"Runway",what:"Governs transition pipeline. Monitors aged projects where MRC/NRC should have activated, validates handover pack completeness against standard, and escalates to commercial before revenue slips.",serves:"Transition · PMO · BU Leads",h:"near",lens:"qual"},
-  {name:"Ledger",what:"Reconciles monthly billing against contracted scope. Identifies out-of-scope work from ticket and time data, builds consumption cases, and validates the billing run before it leaves the business.",serves:"Billing & Commercial",h:"near",lens:"cost"},
-  {name:"Pulse",what:"Maintains a live portfolio health view across all MS accounts — RAG status, XLA trend, labour-to-MRC ratio, and GP% — replacing disconnected status updates with a single continuous signal.",serves:"BU Leads · Management",h:"near",lens:"qual"},
-  {name:"Forge",what:"Calibrates SOW effort estimates and bills of materials against comparable past projects. Surfaces reference architecture patterns and flags design decisions that deviate from proven approaches.",serves:"Solution Architecture · Engineering",h:"near",lens:"cost"},
-  {name:"Pathfinder",what:"Runs structured AI readiness assessments for clients — scoring maturity, surfacing use-case opportunities, and producing a prioritised roadmap. The paid entry point into the portfolio.",serves:"Consulting & Advisory · Pre-Sales",h:"near",lens:"qual"},
-  {name:"Scout",what:"Scores escalation and churn propensity per account using SNOW ticket trends, XLA data, and engagement signals. SDMs act before the client calls, not after.",serves:"SDMs · BU Leads",h:"long",lens:"qual"},
-  {name:"Mosaic",what:"Aggregates win/loss patterns, common objections, and pricing outcomes across bids. Surfaces what is working and what is not so the next proposal is built on evidence, not instinct.",serves:"Pre-Sales · Bid",h:"long",lens:"qual"},
-  {name:"Horizon",what:"AI Finance Manager — aggregates P&L data, labour cost, MRC, and project actuals across feeds. Surfaces margin issues and at-risk accounts before month-end rather than at it.",serves:"BU Leads · Finance",h:"long",lens:"cost"},
+  {name:"SD auto-resolution (Maeve)",what:"Autonomous first-response and auto-resolution at the Service Desk. Handles password resets, known-issue runbooks, and ticket classification without engineer involvement.",serves:"Service Desk · L1/L2",h:"now",lens:"cost"},
+  {name:"Ticket context assembly",what:"Assembles full ticket context before an engineer opens it — prior incidents, config items, recent changes, and relevant runbooks surfaced automatically.",serves:"L1/L2/L3 Engineers",h:"now",lens:"emp"},
+  {name:"As-built documentation",what:"Generates as-built documentation from implementation notes and change records. Engineers implement; agent documents. Produces structured handover packs aligned to MS day-2 scope.",serves:"Engineering · Transition",h:"now",lens:"emp"},
+  {name:"Bid response drafting",what:"Drafts bid response sections from structured inputs — capability statements, case studies, and pricing rationale. BD team refines and approves; removes the blank-page problem.",serves:"Pre-Sales · Bid",h:"now",lens:"cost"},
+  {name:"SLA breach prediction",what:"Monitors ticket queues and XLA/SLA timers continuously. Flags breach risk before it becomes a miss and recommends escalation paths based on ticket profile and engineer availability.",serves:"Service Desk · SDMs",h:"near",lens:"qual"},
+  {name:"Account health reporting",what:"Generates weekly account health digests and client-facing service reports directly from ServiceNow and other data sources. SDM reviews, edits, and sends — not builds.",serves:"SDMs · BU Leads",h:"near",lens:"cost"},
+  {name:"Compliance evidence harvesting",what:"Harvests compliance evidence continuously across the estate. Maintains gap registers, maps to Essential Eight and other frameworks, and raises SNOW remediation tasks automatically.",serves:"Cyber & Security",h:"near",lens:"qual"},
+  {name:"Config drift & scope creep detection",what:"Detects configuration drift and out-of-scope scope creep in-flight. Flags divergence from SOW and agreed baselines before it is silently absorbed. Prompts change request when warranted.",serves:"Cloud & Platforms · PMO",h:"near",lens:"qual"},
+  {name:"Transition pipeline governance",what:"Governs transition pipeline. Monitors aged projects where MRC/NRC should have activated, validates handover pack completeness against standard, and escalates to commercial before revenue slips.",serves:"Transition · PMO · BU Leads",h:"near",lens:"qual"},
+  {name:"Billing reconciliation",what:"Reconciles monthly billing against contracted scope. Identifies out-of-scope work from ticket and time data, builds consumption cases, and validates the billing run before it leaves the business.",serves:"Billing & Commercial",h:"near",lens:"cost"},
+  {name:"Portfolio health dashboard",what:"Maintains a live portfolio health view across all MS accounts — RAG status, XLA trend, labour-to-MRC ratio, and GP% — replacing disconnected status updates with a single continuous signal.",serves:"BU Leads · Management",h:"near",lens:"qual"},
+  {name:"SOW estimation & calibration",what:"Calibrates SOW effort estimates and bills of materials against comparable past projects. Surfaces reference architecture patterns and flags design decisions that deviate from proven approaches.",serves:"Solution Architecture · Engineering",h:"near",lens:"cost"},
+  {name:"AI readiness assessment",what:"Runs structured AI readiness assessments for clients — scoring maturity, surfacing use-case opportunities, and producing a prioritised roadmap. The paid entry point into the portfolio.",serves:"Consulting & Advisory · Pre-Sales",h:"near",lens:"qual"},
+  {name:"Churn & escalation scoring",what:"Scores escalation and churn propensity per account using SNOW ticket trends, XLA data, and engagement signals. SDMs act before the client calls, not after.",serves:"SDMs · BU Leads",h:"long",lens:"qual"},
+  {name:"Bid intelligence & win/loss",what:"Aggregates win/loss patterns, common objections, and pricing outcomes across bids. Surfaces what is working and what is not so the next proposal is built on evidence, not instinct.",serves:"Pre-Sales · Bid",h:"long",lens:"qual"},
+  {name:"AI finance manager",what:"Aggregates P&L data, labour cost, MRC, and project actuals across feeds. Surfaces margin issues and at-risk accounts before month-end rather than at it.",serves:"BU Leads · Finance",h:"long",lens:"cost"},
 ];
 
 /* ═══════════════════════════════════════════════════════
@@ -837,9 +880,9 @@ function AgentRoadmap(){
   return (
     <div className="view">
       <SecHead num="06" kicker="Named Agents" title="The Agent Portfolio"/>
-      <p className="lede">16 named agents across the delivery, commercial, and operational stack. Each has a defined purpose, a target audience, and a deployment horizon.</p>
+      <p className="lede">ETHAN has built its own AI agent platform. Maeve (Service Desk), ChangeMate (Change Management) and Eventra (Event Management) are live. FY27 is the year we start seeing the return on that investment — and scaling the backlog below across the business.</p>
       <div className="agent-disclaimer">
-        <p>These are internal working names used to make the roadmap tangible and discussable — not product or brand names. Deployment horizons are indicative. Agents marked <b>Now</b> are in active development or PoC; <b>Near</b> targets 6–18 months subject to platform readiness; <b>Long</b> requires data maturity we are building toward.</p>
+        <p>16 agents across the delivery, commercial, and operational stack — each defined by the problem it solves. Deployment horizons are indicative. <b>Now</b> = in active development or PoC; <b>Near</b> = 6–18 months subject to platform readiness; <b>Long</b> = requires data maturity we are building toward.</p>
       </div>
       <div className="agent-filter">
         <span className="agent-filter-label">Horizon</span>
@@ -1105,18 +1148,32 @@ function OrgChart(){
 }
 
 function Destination(){
+  const [flipped,setFlipped]=useState({});
+  const toggle=k=>setFlipped(p=>({...p,[k]:!p[k]}));
   return (
     <div className="view">
       <SecHead num="04" kicker="Where We Are Going" title={"The 2.0\nDestination"}/>
       <p className="lede">By 2030, ETHAN's managed services business is <b>platform-led, not labour-led.</b> AI handles volumes and our people are free to do what they do best.</p>
       <OrgChart/>
-      <div className="cmp" style={{marginTop:24}}>
-        <div className="cmp-head-row"><div>Dimension</div><div>Today</div><div>By 2030</div></div>
+      <p className="body" style={{marginTop:24,marginBottom:4}}>Click any card to see where we are headed — and why.</p>
+      <div className="flip-grid">
         {DEST_ROWS.map((r,k)=>(
-          <div className="cmp-row" key={k}>
-            <div>{r[0]}</div>
-            <div className="cmp-today">{r[1]}</div>
-            <div className="cmp-2030"><b>{r[2]}</b></div>
+          <div key={k} className={`flip-card${flipped[k]?" flipped":""}`} onClick={()=>toggle(k)}>
+            <div className="flip-inner">
+              <div className="flip-front">
+                <div className="flip-dim">{r.dim}</div>
+                <div className="flip-label">Today</div>
+                <div className="flip-text">{r.today}</div>
+                <div className="flip-hint">Click to flip →</div>
+              </div>
+              <div className="flip-back">
+                <div className="flip-dim">{r.dim}</div>
+                <div className="flip-label">By 2030</div>
+                <div className="flip-text"><b>{r.future}</b></div>
+                <div className="flip-detail">{r.detail}</div>
+                <div className="flip-hint">Click to flip back →</div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -1143,7 +1200,7 @@ function Shifts(){
       <div className="pillar" key={p}>
         <Eyebrow>{pillar.n} {pillar.k}</Eyebrow>
         <h2 className="sub" style={{marginTop:8}}>{pillar.title}</h2>
-        {p===0 && <div style={{marginTop:16}}><DeliveryShift/><Callout>AI displacement is the engine. Service grade choice is the commercial opportunity it unlocks. <b>Customers get real options; ETHAN gets a structurally lower cost base underneath every tier.</b></Callout></div>}
+        {p===0 && <div style={{marginTop:16}}><DeliveryShift/><Callout>AI displacement is the engine. Service grade choice is the commercial opportunity it unlocks. <b>Customers get real options; ETHAN gets a structurally lower cost base underneath every tier.</b></Callout><h3 className="ssub">The three-track deployment</h3><p className="body">Delivery transformation runs on three parallel tracks — not a single big-bang rollout:</p><div className="levers"><div className="lever"><div className="lname">Track 1</div><h3>Overt AI pilot</h3><p>Tier 1 clients. Joint design, visible AI, shared metrics. The proof case that builds the reference story and earns the right to scale.</p></div><div className="lever"><div className="lname">Track 2</div><h3>Silent back-office agents</h3><p>Billing reconciliation, transition governance, reporting — rolled across all accounts. No client-facing change. Immediate cost and quality uplift with low risk.</p></div><div className="lever"><div className="lname">Track 3</div><h3>AI-primary Service Desk</h3><p>High-volume, lower-complexity accounts moved to Maeve-first resolution. The track that delivers the biggest cost-to-deliver reduction and proves the margin thesis.</p></div></div><p className="body" style={{marginTop:16}}>Track 2 is already underway. Track 1 requires client partnership. Track 3 depends on Maeve reaching production-grade resolution rates — the Phase 0 baseline tells us when we are ready.</p></div>}
         {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>The flywheel only turns if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
         {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with prices and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody></table></div>}
         {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout><p className="body" style={{marginTop:16}}>Account segmentation also changes what different people in the team do day-to-day. Service Desk engineers on high-volume AI-primary accounts will operate very differently from those managing complex strategic accounts where human judgement remains central. Role design needs to reflect that split — not treat the team as a single uniform group.</p></div>}
@@ -1204,6 +1261,39 @@ function Exec(){
         ))}
       </div>
       <Callout>We need to move hard and fast to realise the benefits of our AI investments and be a leader in the market — while keeping what makes ETHAN special intact.</Callout>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════
+   WHAT IT TAKES
+═══════════════════════════════════════════════════════ */
+function WhatItTakes(){
+  const [openCat,setOpenCat]=useState(null);
+  return (
+    <div className="view">
+      <SecHead num="09" kicker="Enablers" title={"What It\nTakes"}/>
+      <p className="lede">The strategy does not run on ambition alone. These are the investments — in platform, people, process, and commercial capability — that make everything else possible.</p>
+      <div style={{marginTop:20}}>
+        {INVESTMENTS.map((group,g)=>(
+          <div key={g} style={{marginBottom:16}}>
+            <div className="invest-cat" onClick={()=>setOpenCat(openCat===g?null:g)} style={{cursor:"pointer",display:"flex",alignItems:"center",gap:10,padding:"12px 16px",background:"var(--paper-2)",border:"1px solid var(--line)"}}>
+              <span style={{fontFamily:"var(--mono)",fontSize:18,lineHeight:1,width:20,textAlign:"center"}}>{openCat===g?"−":"+"}</span>
+              <span style={{fontWeight:700,fontSize:15,letterSpacing:"-.01em"}}>{group.cat}</span>
+              <span style={{fontFamily:"var(--mono)",fontSize:10,color:"var(--muted)",marginLeft:"auto"}}>{group.items.length} items</span>
+            </div>
+            {openCat===g && <div>
+              {group.items.map((it,k)=>(
+                <div key={k} style={{display:"grid",gridTemplateColumns:"240px 1fr",border:"1px solid var(--line)",borderTop:"none"}}>
+                  <div style={{padding:"12px 16px",borderRight:"1px solid var(--line)",fontWeight:700,fontSize:13.5}}>{it.t}</div>
+                  <div style={{padding:"12px 16px",fontSize:13.5,lineHeight:1.55,color:"var(--ink)"}}>{it.d}</div>
+                </div>
+              ))}
+            </div>}
+          </div>
+        ))}
+      </div>
+      <Callout>Every item here is an input to the margin thesis — not overhead. The AI platform was the investment; FY27 is when we start compounding the return.</Callout>
     </div>
   );
 }
@@ -1354,7 +1444,7 @@ function IdeasCapture(){
 
   const updBlocker=(v)=>{ IDEAS_BLOCKER=v; setBlocker(v); };
 
-  const LENS_OPTS=['Cost Out','Quality','Employee Satisfaction'];
+  const LENS_OPTS=['Cost Out','Quality','People'];
   const HORIZON_OPTS=[
     {label:'Now — Basic agent',cls:'hb-now'},
     {label:'Near — Platform + integrations',cls:'hb-near'},
@@ -1686,7 +1776,7 @@ function App(){
   if(view==="hero") return <Hero onEnter={()=>setView("moment")}/> ;
 
   const pct=((idx+1)/SECTIONS.length)*100;
-  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,team:<IdeasCapture/>};
+  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,invest:<WhatItTakes/>,team:<IdeasCapture/>};
 
   return (
     <div id="app">
