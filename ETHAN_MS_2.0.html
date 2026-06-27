@@ -543,9 +543,7 @@ const SECTIONS = [
   {id:"dest",    label:"The Destination"},
   {id:"shifts",  label:"Strategic Shifts"},
   {id:"agents",  label:"AI Agent Roadmap"},
-  {id:"arc",     label:"Five-Year Arc"},
-  {id:"exec",    label:"Execution Plan"},
-  {id:"invest",  label:"What It Takes"},
+  {id:"road",    label:"The Road Ahead"},
   {id:"team",    label:"Ideas & Initiatives"},
 ];
 
@@ -670,7 +668,7 @@ const LAER = [
 const ARC = [
   {when:"Now",dims:{Delivery:"Labour-led. Maeve in PoC and early production.",Economics:"GP ~27%. Margin fixed on a labour base.",Portfolio:"MS sold by seat and schedule.",People:"Traditional L1–L4 structure. We're working out what the new roles look like — that's in progress.",Platform:"Variable tooling maturity across accounts.",Observability:"Fragmented monitoring. Signals live in silos per tool and per account; correlation is manual. We see incidents after they bite, not before.",Accounts:"All accounts served the same way. No segmentation by volume, complexity, or AI-readiness."}},
   {when:"18 months",dims:{Delivery:"Three tracks in parallel — overt AI pilot with Tier 1 clients; silent back-office agents rolled across all accounts; high-volume accounts moved to AI-primary Service Desk.",Economics:"5–8% cost-to-deliver reduction on pilots. Baseline proven.",Portfolio:"Assessment and packaged PoC live as paid products.",People:"First Workflow Specialist(s) in role. OCM piloting.",Platform:"Readiness scored portfolio-wide. Gap-closure funded.",Observability:"Unified L3 observability live on pilot accounts — correlated signals, dependency mapping, OTEL pipeline feeding the agent layer. First closed-loop remediation on low-risk events.",Accounts:"Accounts segmented by volume, complexity, and AI-readiness. Deployment approach tailored accordingly."}},
-  {when:"3 years",dims:{Delivery:"Majority of routine volume AI-resolved on mature accounts.",Economics:"GP high-30s on AI-mature accounts. Flywheel turning.",Portfolio:"Embedded and standalone services generating new-line revenue.",People:"Redesigned roles across the team. AI capabilities established.",Platform:"L1–L6 target architecture live on key accounts.",Observability:"Full L1–L6 stack on key accounts. Predictive alerting and anomaly detection standard; agents act on signals for routine events with no human in the loop.",Accounts:"Segmentation model mature. High-volume accounts AI-primary. Strategic accounts co-designed with clients."}},
+  {when:"3 years",dims:{Delivery:"Majority of routine volume AI-resolved on mature accounts.",Economics:"GP high-30s on AI-mature accounts. Margin compounding.",Portfolio:"Embedded and standalone services generating new-line revenue.",People:"Redesigned roles across the team. AI capabilities established.",Platform:"L1–L6 target architecture live on key accounts.",Observability:"Full L1–L6 stack on key accounts. Predictive alerting and anomaly detection standard; agents act on signals for routine events with no human in the loop.",Accounts:"Segmentation model mature. High-volume accounts AI-primary. Strategic accounts co-designed with clients."}},
   {when:"5 years",dims:{Delivery:"Platform-led by default. Human effort is the exception layer.",Economics:"Margin structurally higher and compounding. Growth decoupled from headcount.",Portfolio:"A priced product portfolio with prices and roadmaps.",People:"A platform-operations workforce. Capability is the constraint.",Platform:"Tooling is a strategic asset and a differentiator.",Observability:"Observability is the nervous system. Predict-and-prevent is the default posture; the platform sees, decides, and acts. Human attention is reserved for genuine novelty.",Accounts:"Account model fully tiered. AI depth matches account profile. Human resource concentrated where it creates most value."}},
 ];
 
@@ -678,7 +676,7 @@ const IMPS = [
   ["The two levers stay separate.","AI displacement may be shared with strategic customers; the delivery-model mix never is."],
   ["The platform foundation is the ceiling on AI.","Tooling and integration maturity set the limit — and that, not size or willingness, drives sequencing."],
   ["The AI team must be built deliberately, now.","The capabilities the model needs don't yet exist inside ETHAN and won't emerge on their own."],
-  ["The flywheel only turns if expansion is active.","Displacement lowers cost; expansion compounds margin on a paid-for platform."],
+  ["Expansion must be actively driven.","Displacement lowers cost; expansion compounds margin on a paid-for platform."],
   ["The first proven reference is the most urgent move.","One clean baseline, one documented PoC, one account where the model demonstrably worked."],
 ];
 
@@ -755,7 +753,7 @@ const E = ({tag:Tag="span", children, edit}) =>
 function DeliveryShift(){
   return (
     <div>
-      <p className="body">The shift from labour-led to platform-led changes how we price and structure service — and opens a genuine choice architecture for customers.</p>
+      <p className="body">The shift from labour-led to platform-led changes how we price and structure service — and gives customers real options for the first time.</p>
       <div className="levers">
         <div className="lever">
           <div className="lname">The shift</div>
@@ -1151,7 +1149,7 @@ function Shifts(){
   const pillar=PILLARS[p];
   return (
     <div className="view">
-      <SecHead num="05" kicker="The Heart" title="Strategic Shifts"/>
+      <SecHead num="05" kicker="What Changes" title="Strategic Shifts"/>
       <p className="body">Getting from today to 2030 takes a small number of fundamental changes — not projects to finish, but directions to hold for years.</p>
       <p className="body">Three pillars carry FY27, and they only work together. <b>AI without signals is blind</b> — an agent that cannot see the estate can only answer the phone. <b>Signals without AI are just dashboards</b> — observability that watches problems arrive but never acts. <b>Autonomous operations is where they converge:</b> agents acting on live signals to resolve routine work before a human is ever paged. Build one without the others and the strategy stalls.</p>
       <div className="subtabs">
@@ -1166,7 +1164,7 @@ function Shifts(){
         <Eyebrow>{pillar.n} {pillar.k}</Eyebrow>
         <h2 className="sub" style={{marginTop:8}}>{pillar.title}</h2>
         {p===0 && <div style={{marginTop:16}}><DeliveryShift/><Callout>AI displacement is the engine. Service grade choice is the commercial opportunity it unlocks. <b>Customers get real options; ETHAN gets a structurally lower cost base underneath every tier.</b></Callout><h3 className="ssub">The three-track deployment</h3><p className="body">Delivery transformation runs on three parallel tracks — not a single big-bang rollout:</p><div className="levers"><div className="lever"><div className="lname">Track 1</div><h3>Overt AI pilot</h3><p>Tier 1 clients. Joint design, visible AI, shared metrics. The proof case that builds the reference story and earns the right to scale.</p></div><div className="lever"><div className="lname">Track 2</div><h3>Silent back-office agents</h3><p>Billing reconciliation, transition governance, reporting — rolled across all accounts. No client-facing change. Immediate cost and quality uplift with low risk.</p></div><div className="lever"><div className="lname">Track 3</div><h3>AI-primary Service Desk</h3><p>High-volume, lower-complexity accounts moved to Maeve-first resolution. The track that delivers the biggest cost-to-deliver reduction and proves the margin thesis.</p></div></div><p className="body" style={{marginTop:16}}>Track 2 is already underway. Track 1 requires client partnership. Track 3 depends on Maeve reaching production-grade resolution rates — the Phase 0 baseline tells us when we are ready.</p></div>}
-        {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>The flywheel only turns if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
+        {p===1 && <div style={{marginTop:16}}><MarginChart/><Callout>Displacement lowers the cost of the original scope. Expansion adds higher-margin workloads on a paid-for platform. <b>But it only compounds if expansion is actively driven.</b></Callout><h3 className="ssub">The AI Dividend — one model, not the strategy</h3><p className="body">A contractual mechanism that shares a defined portion of the displacement saving with strategic customers, protecting an ETHAN margin floor. <b>Day 1 baseline − actual mid-term cost, split at an agreed ratio, ETHAN never below its Day 1 margin.</b> A tool in the commercial kit — not the centre of the strategy.</p></div>}
         {p===2 && <div style={{marginTop:16}}><p className="body">The portfolio stops being resource schedules and becomes products — with prices and roadmaps.</p><table className="dtable"><thead><tr><th>Direction</th><th>What it is</th></tr></thead><tbody>{PORT.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td></tr>)}</tbody></table></div>}
         {p===3 && <div style={{marginTop:16}}><p className="body">The transformation is a people problem before a technology one, and the part most likely to fail quietly.</p><table className="dtable"><thead><tr><th>Role</th><th>Today</th><th>AI-augmented</th></tr></thead><tbody>{ROLES.map((r,k)=><tr key={k}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table><div style={{marginTop:24}}><Governance/></div><Callout><b>Role ambiguity, not resistance, is the real risk.</b> People know AI is coming; they don't know what their job becomes. Explicit role redesign, communicated early — owned by MS Managers, supported by HR and OCM.</Callout><p className="body" style={{marginTop:16}}>Account segmentation also changes what different people in the team do day-to-day. Service Desk engineers on high-volume AI-primary accounts will operate very differently from those managing complex strategic accounts where human judgement remains central. Role design needs to reflect that split — not treat the team as a single uniform group.</p></div>}
         {p===4 && <div style={{marginTop:16}}><p className="body">Proactive is not a posture — it is an architecture. TSIA frames the destination as <b>outcome-based services</b>: clients pay for results, not effort, and you cannot guarantee an outcome you cannot see. Unified observability is what turns "we'll fix it fast" into "we stopped it before it started." Gartner expects 30% of routine IT operational tasks to be run by agents acting on signals without human intervention by 2028 — predict-and-prevent becomes the standard, and reactive becomes the exception.</p><LayerStack/><p className="body" style={{marginTop:16}}>Unified observability is also the client's window in. The same signal layer that lets agents act feeds <b>Ethan Assurance</b> — live SLO dashboards, obligation tracking against the contract, and compliance evidence the client can see for themselves rather than wait for in a monthly pack. Insight stops being a report we write after the fact and becomes a surface the client watches in real time.</p></div>}
@@ -1176,12 +1174,13 @@ function Shifts(){
   );
 }
 
-function Arc(){
+function RoadAhead(){
   const [i,setI]=useState(0);
+  const [openCat,setOpenCat]=useState(null);
   return (
     <div className="view">
-      <SecHead num="07" kicker="Trajectory, not schedule" title="The Five-Year Arc"/>
-      <p className="body">Direction matters more than dates. The point is the shape of the journey — select a horizon.</p>
+      <SecHead num="07" kicker="Trajectory & Execution" title={"The Road\nAhead"}/>
+      <p className="lede">Direction matters more than dates. Select a horizon to see where each dimension is headed — then scroll down for how we get the first 18 months right.</p>
       <div className="arc-bar">
         {ARC.map((a,k)=>(
           <button key={k} className={"arc-stop"+(i===k?" on":"")} onClick={()=>setI(k)}>
@@ -1198,20 +1197,12 @@ function Arc(){
           </div>
         ))}
       </div>
-      <Callout>The strategy is set out here. The execution plan — the next twelve to eighteen months is the next step. <b>We need to start now.</b></Callout>
-    </div>
-  );
-}
 
-function Exec(){
-  return (
-    <div className="view">
-      <SecHead num="App" kicker="Subordinate to the strategy" title={"The Execution\nPlan"}/>
-      <div className="note">Phase 0–2 below is the Now → 18 months row of the Arc made operational — the same journey at a closer zoom.</div>
-      <p className="lede">The near-term layer beneath the strategy</p>
-      <table className="dtable" style={{marginTop:20}}><thead><tr><th>Lever</th><th>Priority</th><th>Primary dependency</th></tr></thead>
+      <h2 className="sub" style={{marginTop:32}}>The levers</h2>
+      <table className="dtable"><thead><tr><th>Lever</th><th>Priority</th><th>Primary dependency</th></tr></thead>
       <tbody>{EXEC_LEVERS.map((r,k)=><tr key={k}><td>{r[0]}</td><td style={{fontFamily:"var(--mono)",fontWeight:700}}>{r[1]}</td><td>{r[2]}</td></tr>)}</tbody></table>
-      <h2 className="sub">Phasing</h2>
+
+      <h2 className="sub" style={{marginTop:32}}>The first 18 months</h2>
       <div className="phases">
         {PHASES.map((ph,k)=>(
           <div className="phase" key={k}>
@@ -1225,21 +1216,10 @@ function Exec(){
           </div>
         ))}
       </div>
-      <Callout>We need to move hard and fast to realise the benefits of our AI investments and be a leader in the market — while keeping what makes ETHAN special intact.</Callout>
-    </div>
-  );
-}
 
-/* ═══════════════════════════════════════════════════════
-   WHAT IT TAKES
-═══════════════════════════════════════════════════════ */
-function WhatItTakes(){
-  const [openCat,setOpenCat]=useState(null);
-  return (
-    <div className="view">
-      <SecHead num="09" kicker="Enablers" title={"What It\nTakes"}/>
-      <p className="lede">The strategy does not run on ambition alone. These are the investments — in platform, people, process, and commercial capability — that make everything else possible.</p>
-      <div style={{marginTop:20}}>
+      <h2 className="sub" style={{marginTop:32}}>What it takes</h2>
+      <p className="body">The investments — in platform, people, and process — that make everything above possible.</p>
+      <div style={{marginTop:12}}>
         {INVESTMENTS.map((group,g)=>(
           <div key={g} style={{marginBottom:16}}>
             <div className="invest-cat" onClick={()=>setOpenCat(openCat===g?null:g)} style={{cursor:"pointer",display:"flex",alignItems:"center",gap:10,padding:"12px 16px",background:"var(--paper-2)",border:"1px solid var(--line)"}}>
@@ -1258,7 +1238,8 @@ function WhatItTakes(){
           </div>
         ))}
       </div>
-      <Callout>Every item here is an input to the margin thesis — not overhead. The AI platform was the investment; FY27 is when we start compounding the return.</Callout>
+
+      <Callout>We need to move hard and fast to realise the benefits of our AI investments and be a leader in the market — while keeping what makes ETHAN special intact. The platform was the investment; FY27 is when we start compounding the return.</Callout>
     </div>
   );
 }
@@ -1276,7 +1257,7 @@ function Hero({onEnter}){
       </div>
       <div className="hero-bottom">
         <div>
-          <div className="hero-sub">Autonomous. Outcome-driven. Platform-built. The next five years of managed services.</div>
+          <div className="hero-sub">The platform does the work. The people do the thinking.</div>
           <button className="enter" onClick={onEnter}>Enter the strategy →</button>
         </div>
         <div className="hero-yr">2.0</div>
@@ -1741,7 +1722,7 @@ function App(){
   if(view==="hero") return <Hero onEnter={()=>setView("moment")}/> ;
 
   const pct=((idx+1)/SECTIONS.length)*100;
-  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,arc:<Arc/>,exec:<Exec/>,invest:<WhatItTakes/>,team:<IdeasCapture/>};
+  const VIEWS={moment:<Moment/>,fy26okr:<FY26OKR/>,fy26rag:<FY26RAG/>,dest:<Destination/>,shifts:<Shifts/>,agents:<AgentRoadmap/>,road:<RoadAhead/>,team:<IdeasCapture/>};
 
   return (
     <div id="app">
